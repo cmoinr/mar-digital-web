@@ -4,22 +4,78 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a,b)=> b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+// Derivar listado único de tags (placeholder simple)
+const allTags = Array.from(new Set(posts.flatMap(p => p.data.tags))).slice(0,8);
 ---
 <BaseLayout title="Blog" description="Ideas, aprendizajes y visión de impacto.">
-  <div class="max-w-3xl mx-auto px-6 py-12">
-    <h1 class="text-3xl font-bold mb-8">Blog</h1>
-    <ul class="space-y-6">
-      {posts.map(post => (
-        <li>
-          <a href={`/blog/${post.slug}`} class="block group">
-            <h2 class="text-xl font-semibold group-hover:underline">{post.data.title}</h2>
-            <p class="text-gray-600 text-sm">{post.data.description}</p>
-            <time class="text-xs text-gray-500">
-              {post.data.publishedAt.toLocaleDateString("es")}
-            </time>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
+  <!-- Hero -->
+  <section class="relative pt-28 pb-16 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_35%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_80%_55%,rgba(46,106,255,0.08),transparent_60%)]"></div>
+    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur border border-white/70 text-xs font-medium text-brand-dark shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-gradient-to-r from-brand to-brand-dark animate-pulse"></span>
+        Ideas & Aprendizajes
+      </div>
+      <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent max-w-3xl">Notas, experimentos y patrones que generan impacto</h1>
+      <p class="mt-6 max-w-2xl text-lg text-gray-700 leading-relaxed">Publicamos destilados: menos ruido, más señal accionable. Exploramos estrategia, producto, analítica, optimización y operaciones de crecimiento.</p>
+      {allTags.length > 0 && (
+        <div class="mt-10 flex flex-wrap gap-3">
+          {allTags.map(tag => <span class="px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white/60 text-xs font-medium text-gray-700">#{tag}</span>)}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Posts List -->
+  <section class="relative pb-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_30%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <h2 class="text-xl font-semibold tracking-tight text-gray-900">Últimas publicaciones</h2>
+        <div class="flex flex-wrap gap-2 text-xs">
+          {['Todos','Estrategia','Producto','Optimización','Analytics'].map(f => (
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white/60 text-gray-700 hover:text-brand-dark hover:shadow transition">{f}</button>
+          ))}
+        </div>
+      </div>
+      <div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map(post => {
+          const firstTag = post.data.tags[0];
+          return (
+            <a href={`/blog/${post.slug}`} class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden flex flex-col">
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+              <div class="relative flex items-start justify-between gap-4">
+                <h3 class="font-semibold text-gray-900 text-base leading-snug group-hover:text-brand-dark transition">{post.data.title}</h3>
+              </div>
+              <p class="relative mt-3 text-sm text-gray-600 line-clamp-3 leading-relaxed">{post.data.description}</p>
+              <div class="relative mt-4 flex items-center justify-between text-[11px] text-gray-500">
+                <time>{post.data.publishedAt.toLocaleDateString('es')}</time>
+                {firstTag && <span class="px-2 py-0.5 rounded-full bg-white/60 border border-white/60 text-gray-600">#{firstTag}</span>}
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {posts.length === 0 && (
+        <div class="mt-12 p-8 rounded-2xl bg-white/60 backdrop-blur border border-white/60 text-center text-sm text-gray-600">
+          Aún no hay publicaciones.
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA / Footer Promo -->
+  <section class="relative pb-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(46,106,255,0.12),transparent_75%)]"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">¿Exploramos algo específico?</h2>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">Si buscás aplicar estas ideas en tu contexto, podemos revisar métricas, procesos y oportunidades de optimización.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-7 py-3 shadow hover:brightness-110 transition">Iniciar conversación</a>
+        <a href="/servicios" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm font-semibold px-7 py-3 text-gray-800 hover:text-brand-dark hover:shadow transition">Ver servicios</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

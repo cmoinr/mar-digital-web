@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+---
+<BaseLayout title="Optimiza tu negocio" description="Estrategias y herramientas para mejorar procesos, marketing y crecimiento digital.">
+  <!-- Hero / Intro -->
+  <section class="relative pt-28 pb-20 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_35%_30%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_80%_60%,rgba(46,106,255,0.08),transparent_65%)]"></div>
+    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur border border-white/70 text-xs font-medium text-brand-dark shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-gradient-to-r from-brand to-brand-dark animate-pulse"></span>
+        Programa continuo
+      </div>
+      <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent max-w-3xl">Optimización compuesta para un crecimiento sostenible</h1>
+      <p class="mt-6 max-w-2xl text-lg text-gray-700 leading-relaxed">Un sistema iterativo que prioriza impacto, reduce fricción e incrementa velocidad de aprendizaje. Desde auditorías profundas hasta ciclos de mejora continua orquestados.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Core Web Vitals</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">CRO</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">SEO Técnico</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">UX Fluida</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Analítica limpia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars / Capabilities -->
+  <section class="relative py-14">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_30%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Capacidades" title="Bloques clave" subtitle="Auditoría profunda, priorización rigurosa y ejecución cíclica sostienen el programa." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {[
+          { t: 'Diagnóstico Integral', d: 'Mapa claro del estado base y cuello de botella crítico.', bullets: ['Funnels & retención', 'Velocidad & UX', 'Arquitectura SEO'] },
+          { t: 'Priorización & Tesis', d: 'Apuestas ordenadas por impacto, riesgo y costo.', bullets: ['Modelo ICE adaptado', 'Definición de éxito', 'Secuenciación lógica'] },
+          { t: 'Implementación Iterativa', d: 'Sprints con entregables verificables.', bullets: ['Refactors graduales', 'Experimentos controlados', 'Mejoras acumulativas'] },
+          { t: 'Instrumentación Limpia', d: 'Datos confiables para evaluar señal real.', bullets: ['Eventos normalizados', 'Dashboards accionables', 'Alertas de regresión'] },
+          { t: 'Medición & Aprendizaje', d: 'Capturamos y volvemos reusable el conocimiento.', bullets: ['Repositorio de experimentos', 'Libreta de hipótesis', 'Ciclos de retro'] },
+          { t: 'Escalamiento', d: 'Extendemos patrones que demostraron retorno.', bullets: ['Plantillas reutilizables', 'Playbooks', 'Automatización selectiva'] }
+        ].map(p => (
+          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+            <h3 class="relative font-semibold text-gray-900">{p.t}</h3>
+            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{p.d}</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+              {p.bullets.map(b => <li>• {b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Optimization Cycle -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_60%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Ciclo" title="Flujo de optimización" subtitle="Un loop diseñado para mantener tracción y reducir desperdicio." />
+      <ol class="mt-12 relative grid gap-10 md:grid-cols-6">
+        {[
+          { n: 1, t: 'Mapear', d: 'Estado base, métricas, fricción.' },
+          { n: 2, t: 'Formular', d: 'Hipótesis claras y priorizadas.' },
+          { n: 3, t: 'Instrumentar', d: 'Aseguramos medición confiable.' },
+          { n: 4, t: 'Ejecutar', d: 'Iteraciones enfocadas y rápidas.' },
+          { n: 5, t: 'Medir', d: 'Comparación vs baseline & control.' },
+          { n: 6, t: 'Escalar', d: 'Convertimos en patrón y playbook.' }
+        ].map(step => (
+          <li class="group relative flex flex-col">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white font-semibold shadow">{step.n}</span>
+              <h3 class="font-semibold text-gray-900">{step.t}</h3>
+            </div>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">{step.d}</p>
+            <div class="absolute left-5 top-10 w-px h-full bg-gradient-to-b from-brand/40 to-transparent pointer-events-none"></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Differentiators / Why -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_40%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Diferenciales" title="Por qué este enfoque" subtitle="Reducimos ruido, maximizamos señal y construimos compuestos a largo plazo." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {[
+          { t: 'Rigor + Velocidad', d: 'Balance entre estructura analítica y shipping constante.' },
+          { t: 'Menos vanity', d: 'Nos enfocamos en métricas accionables, no en distracciones.' },
+          { t: 'Aprendizaje acumulativo', d: 'Cada hipótesis documentada alimenta la siguiente.' },
+          { t: 'Visibilidad continua', d: 'Transparencia total: backlog, estado y métricas.' },
+          { t: 'No lock-in', d: 'Patrones y activos quedan en tu organización.' },
+          { t: 'Efecto compuesto', d: 'Mejoras pequeñas sostenidas > apuesta única masiva.' }
+        ].map(item => (
+          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+            <h3 class="relative font-semibold text-gray-900">{item.t}</h3>
+            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes / Metrics -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Impacto" title="Resultados frecuentes" subtitle="Ejemplos de señales que buscamos mover (placeholders)." />
+      <div class="mt-12 grid gap-8 md:grid-cols-4">
+        {[
+          { v: '+28%', l: 'Tasa de conversión en funnel principal' },
+          { v: '-35%', l: 'Tiempo de carga LCP promedio' },
+          { v: '+18%', l: 'Retención cohorte M2 → M3' },
+          { v: '+42%', l: 'Velocidad de shipping (issues/mes)' }
+        ].map(m => (
+          <div class="relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm text-center">
+            <div class="text-3xl font-extrabold bg-gradient-to-r from-brand to-brand-dark bg-clip-text text-transparent">{m.v}</div>
+            <p class="mt-2 text-sm text-gray-600 leading-relaxed">{m.l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_45%_55%,rgba(46,106,255,0.12),transparent_75%)]"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">¿Iniciamos el ciclo?</h2>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">Agenda una llamada exploratoria: identificamos estado base y definimos si tiene sentido avanzar con un programa de optimización compuesto.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-7 py-3 shadow hover:brightness-110 transition">Solicitar evaluación</a>
+        <a href="/servicios" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm font-semibold px-7 py-3 text-gray-800 hover:text-brand-dark hover:shadow transition">Ver otros servicios</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

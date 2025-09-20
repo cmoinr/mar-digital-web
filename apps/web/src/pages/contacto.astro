@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import LeadForm from "../components/LeadForm.jsx";
+---
+<BaseLayout title="Contacto" description="Conversemos sobre tus objetivos y el contexto actual de tu negocio.">
+  <section class="relative pt-28 pb-20 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_40%_45%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_75%_60%,rgba(46,106,255,0.08),transparent_65%)]"></div>
+    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <SectionTitle eyebrow="Contacto" title="Hablemos" subtitle="Envíanos contexto y te respondemos con próximos pasos claros. Menos fricción, más claridad inicial." />
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        {[
+          { v: '24-48h', l: 'Tiempo de respuesta' },
+          { v: '80%+', l: 'Continuidad tras primera call' },
+          { v: '30 min', l: 'Duración exploratoria' }
+        ].map(item => (
+          <div class="p-4 rounded-xl bg-white/60 backdrop-blur border border-white/60 text-center shadow-sm">
+            <div class="text-sm font-semibold text-gray-900">{item.v}</div>
+            <div class="mt-1 text-[11px] tracking-wide text-gray-600">{item.l}</div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-14 grid gap-12 md:grid-cols-2 items-start">
+        <div class="space-y-6 text-gray-700 leading-relaxed">
+          <p>Cuéntanos brevemente tu situación actual: etapa del negocio, desafíos principales y qué te gustaría lograr en los próximos 3 a 6 meses.</p>
+          <div class="grid gap-5">
+            <div class="group relative p-5 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+              <h3 class="relative font-semibold text-gray-900">Qué esperar</h3>
+              <p class="relative mt-2 text-sm text-gray-600">Respondemos normalmente en 24-48h con próximos pasos claros. Si hay encaje, proponemos una exploración más profunda.</p>
+            </div>
+            <div class="group relative p-5 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+              <h3 class="relative font-semibold text-gray-900">Formatos posibles</h3>
+              <p class="relative mt-2 text-sm text-gray-600">Diagnóstico puntual, acompañamiento mensual, sprints de growth o construcción de activos clave.</p>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/60 backdrop-blur border border-white/60 shadow-sm">
+            <h3 class="font-semibold text-gray-900">Info útil opcional</h3>
+            <ul class="mt-2 space-y-1.5 text-sm text-gray-600">
+              <li>• Métrica clave actual (ej. conversión, retención)</li>
+              <li>• Stack principal (tech / marketing / analytics)</li>
+              <li>• Horizonte de objetivos (3–6 meses)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-br from-brand/0 via-brand/0 to-brand-dark/0 group-[.has-focus]:from-brand/10 transition"></div>
+          <div class="mb-4">
+            <h3 class="font-semibold text-gray-900 text-lg">Formulario</h3>
+            <p class="mt-1 text-xs text-gray-600">Sólo pedimos lo mínimo para iniciar la conversación.</p>
+          </div>
+          <LeadForm client:only="react" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

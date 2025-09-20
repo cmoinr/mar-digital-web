@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+  throw new Error('Post not received via getStaticPaths props');
+}
+
+// post.render() returns { Content, headings, remarkPluginFrontmatter } (no data)
+// Frontmatter is available directly as post.data
+const { Content } = await post.render();
+const { data } = post;
+---
+<BaseLayout title={data.title} description={data.description}>
+  <article class="prose lg:prose-lg mx-auto px-6 py-12">
+    <h1>{data.title}</h1>
+    <Content />
+  </article>
+</BaseLayout>

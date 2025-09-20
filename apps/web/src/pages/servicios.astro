@@ -1,17 +1,159 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 ---
 <BaseLayout title="Servicios" description="Qué ofrecemos para acelerar tu impacto.">
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <h1 class="text-3xl font-bold mb-8">Servicios</h1>
-    <div class="grid gap-6 md:grid-cols-3">
-      <Card title="Estrategia" description="Discovery, roadmap y priorización basada en datos." />
-      <Card title="Desarrollo" description="Sitios y apps rápidos, seguros y escalables." />
-      <Card title="Optimización" description="SEO técnico, performance y CRO." />
-      <Card title="Automatización" description="Integraciones y flujos para eficiencia." />
-      <Card title="Analytics" description="Instrumentación y tableros accionables." />
-      <Card title="Experimentación" description="Pruebas A/B y aprendizaje validado." />
+  <!-- Hero / Intro -->
+  <section class="relative pt-28 pb-20 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_35%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_75%_55%,rgba(46,106,255,0.08),transparent_65%)]"></div>
+    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur border border-white/70 text-xs font-medium text-brand-dark shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-gradient-to-r from-brand to-brand-dark animate-pulse"></span>
+        Portafolio de capacidades
+      </div>
+      <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent max-w-3xl">Habilitamos crecimiento con un stack de servicios especializado</h1>
+      <p class="mt-6 max-w-2xl text-lg text-gray-700 leading-relaxed">Integramos estrategia, producto, datos y ejecución ágil para pasar de la intuición a mejoras medibles y compuestas. Cada servicio se puede contratar de forma modular o como parte de un programa integral.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">B2B & SaaS</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">eCommerce con escala</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Equipos en crecimiento</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Startups post-PMF</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Expanded -->
+  <section class="relative py-14">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_30%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Servicios" title="Lo que hacemos" subtitle="Seis bloques que combinan para construir un sistema de crecimiento continuo." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Estrategia & Dirección</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Alineamos objetivos, narrativa y focos trimestrales.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• Research & diagnóstico</li>
+            <li>• Roadmap priorizado</li>
+            <li>• Modelo de métricas</li>
+          </ul>
+        </div>
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Desarrollo & Producto</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Implementación ágil de funcionalidades y activos.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• Sitios & landings</li>
+            <li>• Componentes UI</li>
+            <li>• Integraciones API</li>
+          </ul>
+        </div>
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Optimización & Performance</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Mejoramos velocidad, conversión y experiencia.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• SEO & Core Web Vitals</li>
+            <li>• CRO & UX heurístico</li>
+            <li>• Refactor incremental</li>
+          </ul>
+        </div>
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Automatización & Flujos</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Eliminamos fricción y tareas repetitivas.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• Integraciones SaaS</li>
+            <li>• Zaps / Webhooks</li>
+            <li>• Enriquecimiento de datos</li>
+          </ul>
+        </div>
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Analytics & Instrumentación</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Medimos lo que importa y limpiamos ruido.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• Eventos & tracking</li>
+            <li>• Dashboards accionables</li>
+            <li>• Cohortes & funnels</li>
+          </ul>
+        </div>
+        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+          <h3 class="relative font-semibold text-gray-900">Experimentación & Aprendizaje</h3>
+          <p class="relative mt-2 text-sm text-gray-600">Validamos hipótesis rápido y con rigor.</p>
+          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+            <li>• Diseño de pruebas</li>
+            <li>• Análisis estadístico</li>
+            <li>• Knowledge base</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process / Methodology -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_60%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Método" title="Cómo trabajamos" subtitle="Un ciclo iterativo que mantiene foco y reduce desperdicio." />
+      <ol class="mt-12 relative grid gap-10 md:grid-cols-5">
+        {[
+          { n: 1, t: 'Descubrir', d: 'Contexto, métricas base y fricciones clave.' },
+          { n: 2, t: 'Priorizar', d: 'Alineamos impacto vs. esfuerzo y definimos apuestas.' },
+          { n: 3, t: 'Implementar', d: 'Sprints cortos con entregables claros.' },
+          { n: 4, t: 'Medir', d: 'Dashboards y retro sobre señal real.' },
+          { n: 5, t: 'Iterar', d: 'Escalamos lo que funciona y archivamos lo que no.' }
+        ].map(step => (
+          <li class="group relative flex flex-col">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white font-semibold shadow">{step.n}</span>
+              <h3 class="font-semibold text-gray-900">{step.t}</h3>
+            </div>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">{step.d}</p>
+            <div class="absolute left-5 top-10 w-px h-full bg-gradient-to-b from-brand/40 to-transparent pointer-events-none"></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_40%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Diferenciales" title="Por qué nosotros" subtitle="No somos una fábrica de tareas: operamos como una extensión estratégica orientada a compuestos." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {[
+          { t: 'Integración real', d: 'Nos sumamos a tus rituales, stack y forma de trabajar.' },
+          { t: 'Data sobre ego', d: 'Decisiones basadas en señal, no en narrativas internas.' },
+          { t: 'Escalabilidad', d: 'Diseñamos para iterar rápido sin incurrir en deuda tóxica.' },
+          { t: 'Velocidad responsable', d: 'Entregamos rápido sin sacrificar mantenibilidad.' },
+          { t: 'Contexto profundo', d: 'Aprendizaje acumulativo documentado y reutilizable.' },
+          { t: 'Trazabilidad', d: 'Cada iniciativa se vincula a una métrica o hipótesis.' }
+        ].map(item => (
+          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+            <h3 class="relative font-semibold text-gray-900">{item.t}</h3>
+            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(46,106,255,0.12),transparent_75%)]"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">¿Listo para acelerar?</h2>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">Empecemos con una evaluación breve: en 30-45 minutos identificamos quick wins y definimos si hay encaje. Sin compromiso.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-7 py-3 shadow hover:brightness-110 transition">Solicitar contacto</a>
+        <a href="/blog" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm font-semibold px-7 py-3 text-gray-800 hover:text-brand-dark hover:shadow transition">Ver ideas & aprendizajes</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

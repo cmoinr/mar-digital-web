@@ -1,17 +1,126 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Card from "../components/Card.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 ---
 <BaseLayout title="Nosotros" description="Quiénes somos y nuestra misión.">
-  <section class="max-w-4xl mx-auto px-6 py-16 space-y-10">
-    <div>
-      <h1 class="text-3xl font-bold mb-4">Sobre Nosotros</h1>
-      <p class="text-gray-600 leading-relaxed">Impulsamos productos y experiencias digitales centradas en impacto y conversión. Combinamos estrategia, diseño y performance para acelerar resultados.</p>
+  <!-- Hero -->
+  <section class="relative pt-28 pb-20 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_30%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_75%_55%,rgba(46,106,255,0.08),transparent_65%)]"></div>
+    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur border border-white/70 text-xs font-medium text-brand-dark shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-gradient-to-r from-brand to-brand-dark animate-pulse"></span>
+        Equipo & Cultura
+      </div>
+      <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent max-w-3xl">Construimos impacto compuesto con equipos que aprenden rápido</h1>
+      <p class="mt-6 max-w-2xl text-lg text-gray-700 leading-relaxed">Acompañamos a organizaciones que valoran la claridad, la iteración y la trazabilidad. Mezclamos estrategia, producto y ejecución pragmática para crear sistemas que escalan.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Estrategia</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Producto</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Crecimiento</span>
+        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Operaciones</span>
+      </div>
     </div>
-    <div class="grid gap-6 md:grid-cols-3">
-      <Card title="Misión" description="Maximizar impacto digital con ejecución ágil." />
-      <Card title="Visión" description="Organizaciones escalando soluciones sostenibles." />
-      <Card title="Valores" description="Transparencia, aprendizaje continuo y colaboración." />
+  </section>
+
+  <!-- Mission / Vision / Values Expanded -->
+  <section class="relative py-16">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_30%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Fundamentos" title="Misión, visión y valores" subtitle="El marco que guía cada decisión y colaboración." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {[
+          { t: 'Misión', d: 'Maximizar impacto digital con ejecución ágil y medible.', bullets: ['Claridad estratégica', 'Enfoque en métricas', 'Entrega continua'] },
+          { t: 'Visión', d: 'Organizaciones construyendo soluciones sostenibles que escalan.', bullets: ['Sistemas adaptables', 'Aprendizaje compuesto', 'Operación eficiente'] },
+          { t: 'Valores', d: 'Principios que protegen foco y relaciones a largo plazo.', bullets: ['Transparencia', 'Autonomía responsable', 'Iteración rigurosa'] }
+        ].map(card => (
+          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+            <h3 class="relative font-semibold text-gray-900">{card.t}</h3>
+            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{card.d}</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
+              {card.bullets.map(b => <li>• {b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_60%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6">
+      <SectionTitle eyebrow="Principios" title="Cómo operamos" subtitle="Seis lineamientos que repetimos hasta que se vuelven cultura." />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {[
+          { t: 'Claridad antes de velocidad', d: 'Aseguramos entendimiento compartido para evitar retrabajo.' },
+          { t: 'Propiedad radical', d: 'Cada entrega tiene dueño y definición de completo.' },
+          { t: 'Feedback corto', d: 'Reducimos ciclos largos con validaciones tempranas.' },
+          { t: 'Instrumentar temprano', d: 'Medimos desde el inicio para no improvisar base.' },
+          { t: 'Aprendizaje visible', d: 'Documentamos y socializamos hallazgos clave.' },
+          { t: 'Simplicidad defensiva', d: 'Preferimos soluciones extensibles sobre complejidad precoz.' }
+        ].map(item => (
+          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
+            <h3 class="relative font-semibold text-gray-900">{item.t}</h3>
+            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline / Story -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_40%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-5xl mx-auto px-6">
+      <SectionTitle eyebrow="Historia" title="Evolución" subtitle="Iteraciones que moldean nuestro enfoque actual." />
+      <ol class="mt-12 space-y-10 relative">
+        {[
+          { y: 'Fase 1', t: 'Validación de enfoque', d: 'Casos iniciales centrados en performance y funnel.' },
+          { y: 'Fase 2', t: 'Integración multidisciplinaria', d: 'Sumamos producto y analítica en un mismo ciclo.' },
+          { y: 'Fase 3', t: 'Estructura compuesta', d: 'Playbooks y patrones reusables emergen.' },
+          { y: 'Hoy', t: 'Escalamiento sostenible', d: 'Optimización continua como función estratégica.' }
+        ].map(step => (
+          <li class="group relative pl-10">
+            <div class="absolute left-0 top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark text-white text-[11px] font-semibold shadow">{step.y}</div>
+            <h3 class="font-semibold text-gray-900">{step.t}</h3>
+            <p class="mt-1.5 text-sm text-gray-600 leading-relaxed">{step.d}</p>
+            <div class="absolute left-3 top-6 w-px h-full bg-gradient-to-b from-brand/40 to-transparent"></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Team Placeholder -->
+  <section class="relative py-20">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(46,106,255,0.10),transparent_70%)]"></div>
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <SectionTitle eyebrow="Equipo" title="Personas detrás" subtitle="Pronto compartiremos roles, especialidades y cómo colaboramos." />
+      <div class="mt-12 grid gap-8 md:grid-cols-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div class="relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm flex flex-col items-center">
+            <div class="h-20 w-20 rounded-full bg-gradient-to-br from-brand/30 to-brand-dark/30 flex items-center justify-center text-sm font-semibold text-brand-dark">Foto</div>
+            <div class="mt-4 font-semibold text-gray-900">Rol {i + 1}</div>
+            <div class="mt-1 text-xs text-gray-600">Especialidad</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_40%_55%,rgba(46,106,255,0.12),transparent_75%)]"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">¿Colaboramos?</h2>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">Si lo que buscas es reducir fricción, acelerar aprendizaje y construir fundamentos sólidos, podemos explorar un encaje.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-7 py-3 shadow hover:brightness-110 transition">Iniciar conversación</a>
+        <a href="/servicios" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm font-semibold px-7 py-3 text-gray-800 hover:text-brand-dark hover:shadow transition">Ver qué hacemos</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
