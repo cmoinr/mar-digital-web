@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "env": { "browser": true, "es2023": true },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react","@typescript-eslint"],
+  "settings": { "react": { "version":"detect" } },
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": { "parser": "@typescript-eslint/parser" },
+      "rules": {}
+    }
+  ]
+}

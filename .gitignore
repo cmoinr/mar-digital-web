@@ -1,0 +1,20 @@
+# Node / Frontend
+node_modules
+dist
+.pnpm-store
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv
+.env
+.env.*
+
+# General
+.DS_Store
+.idea
+*.log
+
+# Generated
+packages/api-client/src/generated

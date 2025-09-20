@@ -1,0 +1,74 @@
+---
+// Nav.astro - Navbar moderna responsive con efecto glass & menú móvil sin JS extra
+// Definición de enlaces principales
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/about', label: 'Nosotros' },
+  { href: '/blog', label: 'Blog' }
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<nav class="fixed top-0 inset-x-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="mt-4 flex items-center justify-between rounded-2xl border border-white/50 bg-white/85 dark:bg-gray-950/70 backdrop-blur-xl shadow-sm dark:border-white/10 py-3 pl-5 pr-4 relative overflow-hidden">
+      <!-- Subtle luminous overlay (lighter, no gray cast) -->
+      <div class="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_25%_35%,rgba(226,236,255,0.9),transparent_55%),radial-gradient(circle_at_85%_40%,rgba(46,106,255,0.25),transparent_60%)]"></div>
+      <div class="absolute -inset-px rounded-2xl border border-white/60 dark:border-white/5 pointer-events-none"></div>
+      <!-- Brand -->
+      <a href="/" class="relative font-extrabold tracking-tight text-lg flex items-center gap-2 text-gray-900 dark:text-white">
+        <span class="bg-gradient-to-r from-brand to-brand-dark bg-clip-text text-transparent">Impacto</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center gap-2 font-medium text-sm">
+        {links.map(l => {
+          const active = l.href === pathname || (l.href !== '/' && pathname.startsWith(l.href));
+          return (
+            <li>
+              <a href={l.href} class={`group relative inline-flex items-center gap-1 px-3 py-2 rounded-full transition font-medium
+                ${active ? 'text-brand-dark dark:text-brand bg-brand/15 dark:bg-brand/20 shadow-inner' : 'text-gray-700 dark:text-gray-300 hover:text-brand-dark dark:hover:text-brand'}
+              `}>
+                <span class="relative z-10">{l.label}</span>
+                <span class={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-brand/10 to-brand-dark/10 ${active ? 'opacity-100' : ''}`}></span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <!-- CTA / Actions -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/#contacto" class="relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-5 py-2 shadow hover:brightness-110 transition focus:outline-none focus:ring-4 focus:ring-brand/30">
+          <span>Contacto</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <details class="md:hidden relative group">
+        <summary class="list-none flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 bg-white/80 dark:bg-gray-900/70 backdrop-blur cursor-pointer hover:shadow transition">
+          <div class="space-y-1.5">
+            <span class="block h-0.5 w-5 bg-gray-800 dark:bg-white transition"></span>
+            <span class="block h-0.5 w-5 bg-gray-800 dark:bg-white transition"></span>
+            <span class="block h-0.5 w-5 bg-gray-800 dark:bg-white transition"></span>
+          </div>
+        </summary>
+        <div class="absolute right-0 mt-4 w-64 origin-top shadow-lg rounded-xl border border-white/30 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg p-4 flex flex-col gap-2 animate-scale-in">
+          {links.map(l => {
+            const active = l.href === pathname || (l.href !== '/' && pathname.startsWith(l.href));
+            return (
+              <a href={l.href} class={`px-3 py-2 rounded-lg text-sm font-medium transition
+                ${active ? 'bg-brand/20 text-brand-dark dark:text-brand' : 'text-gray-700 dark:text-gray-300 hover:bg-brand/10 hover:text-brand-dark dark:hover:text-brand'}
+              `}>{l.label}</a>
+            );
+          })}
+          <a href="/#contacto" class="mt-2 inline-flex justify-center rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-5 py-2 shadow hover:brightness-110 transition">Contacto</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to avoid content hidden under fixed navbar -->
+<div class="h-24"></div>

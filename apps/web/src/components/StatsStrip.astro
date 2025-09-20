@@ -1,0 +1,13 @@
+---
+const { items = [] } = Astro.props;
+---
+<div class="relative isolate">
+  <div class="grid gap-6 sm:grid-cols-3 max-w-5xl mx-auto px-6">
+    {items.map((it) => (
+      <div class="text-center p-6 rounded-xl bg-white/70 backdrop-blur border shadow-sm animate-fade-in-up" style={`animation-delay:${it.delay || 0}ms`}>
+        <p class="text-3xl md:text-4xl font-extrabold text-brand">{it.value}</p>
+        <p class="mt-1 text-sm font-medium tracking-wide text-gray-600">{it.label}</p>
+      </div>
+    ))}
+  </div>
+</div>

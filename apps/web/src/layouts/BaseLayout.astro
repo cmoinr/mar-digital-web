@@ -1,0 +1,21 @@
+---
+import Nav from "../components/Nav.astro";
+const { title = "Sitio", description = "Impacto digital", } = Astro.props;
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title} | Impacto</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Nav />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <footer class="p-6 text-center text-sm text-gray-500">
+      © {new Date().getFullYear()} Impacto. Todos los derechos reservados.
+    </footer>
+  </body>
+</html>

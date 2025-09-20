@@ -1,0 +1,10 @@
+---
+const { type = 'info', message } = Astro.props;
+const colors = {
+  info: 'bg-brand-light text-brand-dark',
+  success: 'bg-green-50 text-green-700 border-green-300',
+  warning: 'bg-yellow-50 text-yellow-800 border-yellow-300',
+  error: 'bg-red-50 text-red-700 border-red-300'
+};
+---
+<div class={`border rounded px-4 py-3 text-sm ${colors[type]}`}> {message} </div>

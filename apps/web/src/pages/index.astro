@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.jsx";
+import LeadForm from "../components/LeadForm.jsx";
+import SectionTitle from "../components/SectionTitle.astro";
+import StatsStrip from "../components/StatsStrip.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import CTASection from "../components/CTASection.astro";
+
+const stats = [
+  { value: '120+', label: 'Proyectos impulsados', delay: 0 },
+  { value: '3x', label: 'Mejora en performance', delay: 120 },
+  { value: '-40%', label: 'Tiempo a producción', delay: 240 }
+];
+
+const features = [
+  { icon: '⚡', title: 'Velocidad', description: 'Arquitecturas optimizadas y métricas web vitales sobresalientes.' },
+  { icon: '🧠', title: 'Estrategia', description: 'Alineamos objetivos de negocio con roadmap técnico claro.' },
+  { icon: '🔒', title: 'Confianza', description: 'Buenas prácticas de seguridad y despliegues reproducibles.' },
+  { icon: '📊', title: 'Datos accionables', description: 'Instrumentación analítica y experimentación continua.' },
+  { icon: '🚀', title: 'Escalabilidad', description: 'Diseño para crecer con mantenibilidad y bajo costo operativo.' },
+  { icon: '🤝', title: 'Partnering', description: 'Acompañamiento cercano y transferencia de conocimiento.' }
+];
+---
+<BaseLayout title="Inicio" description="Plataforma para amplificar tu impacto">
+  <!-- HERO -->
+  <section class="relative overflow-hidden pt-24 pb-28 px-6 bg-radial-brand">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none" aria-hidden="true" style="background:radial-gradient(circle at 30% 30%,#2E6AFF 0,transparent 60%),radial-gradient(circle at 70% 50%,#1B47A8 0,transparent 55%)"></div>
+    <div class="relative max-w-6xl mx-auto grid gap-14 lg:grid-cols-2 items-center">
+      <div class="space-y-8">
+  <Hero headline="Aceleramos tu impacto digital" sub="Experiencias web veloces, escalables y orientadas a conversión." client:load />
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition animate-scale-in">Ver servicios</a>
+          <a href="#contacto" class="px-6 py-3 rounded-full bg-white text-brand font-semibold shadow hover:shadow-md transition animate-scale-in" style="animation-delay:120ms">Hablar ahora</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-10 bg-gradient-to-br from-brand/10 to-brand-dark/20 blur-3xl rounded-full" />
+        <div class="relative grid gap-4 sm:grid-cols-2">
+          {features.slice(0,4).map(f => (
+            <div class="p-5 rounded-xl bg-white/80 backdrop-blur border shadow-sm animate-fade-in-up" style="animation-delay:150ms">
+              <p class="text-2xl mb-2">{f.icon}</p>
+              <p class="font-semibold text-sm">{f.title}</p>
+              <p class="text-xs text-gray-500 leading-relaxed mt-1">{f.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="mt-16">
+      <StatsStrip items={stats} />
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="servicios" class="py-24 px-6 bg-gray-50 relative">
+    <SectionTitle eyebrow="Capacidades" title="Lo que desbloqueamos" sub="Ejecución técnica y estrategia alineadas a resultados medibles." />
+    <div class="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
+      {features.map(f => <FeatureCard icon={f.icon} title={f.title} description={f.description} />)}
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="py-24 px-6">
+    <SectionTitle eyebrow="Confianza" title="Lo que dicen" sub="Colaboraciones que generan tracción y aprendizaje acelerado." />
+    <Testimonial quote="El equipo elevó nuestra plataforma: lanzamos 3 veces más rápido y con métricas de performance que superaron expectativas." author="María López" role="Directora de Producto" />
+  </section>
+
+  <!-- CONTACT / LEAD FORM -->
+  <section id="contacto" class="py-24 px-6 bg-white relative">
+    <SectionTitle eyebrow="Contacto" title="Conversemos" sub="Cuéntanos dónde estás y diseñemos el siguiente salto." />
+    <div class="max-w-3xl mx-auto">
+  <LeadForm client:only="react" />
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="px-6 pb-28">
+    <div class="max-w-6xl mx-auto">
+      <CTASection title="Listo para acelerar tu impacto?" sub="Agendemos una conversación y revisemos oportunidades concretas." />
+    </div>
+  </div>
+</BaseLayout>

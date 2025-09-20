@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+---
+<BaseLayout title="Servicios" description="Qué ofrecemos para acelerar tu impacto.">
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold mb-8">Servicios</h1>
+    <div class="grid gap-6 md:grid-cols-3">
+      <Card title="Estrategia" description="Discovery, roadmap y priorización basada en datos." />
+      <Card title="Desarrollo" description="Sitios y apps rápidos, seguros y escalables." />
+      <Card title="Optimización" description="SEO técnico, performance y CRO." />
+      <Card title="Automatización" description="Integraciones y flujos para eficiencia." />
+      <Card title="Analytics" description="Instrumentación y tableros accionables." />
+      <Card title="Experimentación" description="Pruebas A/B y aprendizaje validado." />
+    </div>
+  </section>
+</BaseLayout>

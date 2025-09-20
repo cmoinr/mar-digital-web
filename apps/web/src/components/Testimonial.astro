@@ -1,0 +1,17 @@
+---
+const { quote, author, role, avatar='https://avatars.githubusercontent.com/u/000?v=4' } = Astro.props;
+---
+<figure class="max-w-4xl mx-auto text-center space-y-6">
+  <blockquote class="text-xl md:text-2xl font-medium leading-relaxed relative">
+    <span class="block text-brand-dark/30 text-6xl -mb-6 font-serif">“</span>
+    <p class="relative z-10">{quote}</p>
+    <span class="block text-brand-dark/30 text-6xl -mt-4 font-serif">”</span>
+  </blockquote>
+  <figcaption class="flex flex-col items-center gap-3">
+    <img src={avatar} alt={author} class="w-14 h-14 rounded-full ring-4 ring-brand-light object-cover animate-float" />
+    <div>
+      <p class="font-semibold">{author}</p>
+      {role && <p class="text-xs text-gray-500 mt-0.5">{role}</p>}
+    </div>
+  </figcaption>
+</figure>

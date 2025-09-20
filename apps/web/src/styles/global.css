@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 8px;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #ffffff;
+  color: #111827;
+  line-height: 1.5;
+}
+
+/* Decorative utilities */
+.bg-radial-brand {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(46,106,255,0.12), transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(27,71,168,0.12), transparent 60%);
+}
+
+.grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+  pointer-events: none;
+  mask: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.2));
+}
+
+.container-padded {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 1280px;
+}
+
+.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+}

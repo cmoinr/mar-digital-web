@@ -1,0 +1,13 @@
+---
+const { title, sub, ctaLabel='Comencemos', href='/#contacto' } = Astro.props;
+---
+<section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-dark text-white px-8 py-20 shadow-lg">
+  <div class="absolute -top-20 -right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+  <div class="relative max-w-3xl mx-auto text-center space-y-6">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight animate-fade-in-up">{title}</h2>
+    {sub && <p class="text-base md:text-lg text-white/90 animate-fade-in-up" style="animation-delay:100ms">{sub}</p>}
+    <a href={href} class="inline-flex items-center gap-2 bg-white text-brand font-semibold px-7 py-3 rounded-full shadow hover:shadow-md transition focus:outline-none focus:ring-4 focus:ring-white/40 animate-scale-in" style="animation-delay:200ms">
+      {ctaLabel} <span class="text-lg">→</span>
+    </a>
+  </div>
+</section>

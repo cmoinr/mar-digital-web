@@ -1,0 +1,13 @@
+{
+  "name": "@impacto/api-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "generate": "openapi-typescript ../../apps/backend/openapi.json --output src/generated/types.ts"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^6.7.0",
+    "typescript": "^5.4.0"
+  }
+}
