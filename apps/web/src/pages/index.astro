@@ -7,6 +7,9 @@ import StatsStrip from "../components/StatsStrip.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import Testimonial from "../components/Testimonial.astro";
 import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import HeroCarousel from "../components/HeroCarousel.jsx";
+import TestimonialCarousel from "../components/TestimonialCarousel.jsx";
 
 const stats = [
   { value: '120+', label: 'Proyectos impulsados', delay: 0 },
@@ -22,8 +25,68 @@ const features = [
   { icon: '🚀', title: 'Escalabilidad', description: 'Diseño para crecer con mantenibilidad y bajo costo operativo.' },
   { icon: '🤝', title: 'Partnering', description: 'Acompañamiento cercano y transferencia de conocimiento.' }
 ];
+
+// Slides del carrusel hero (reemplaza las URLs de ejemplo por las tuyas)
+// Puedes usar imágenes locales en /public o URLs externas (CDN). Mantén proporción horizontal (ej. 16:9 o 3:2) para mejor resultado.
+const heroSlides = [
+  {
+    image: 'https://images.pexels.com/photos/175773/pexels-photo-175773.jpeg?_gl=1*168x011*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk2NTkkajQ1JGwwJGgw', // '/images/hero/slide1.jpg',
+    phrase: 'Experiencias web que convierten',
+    sub: 'Performance, escalabilidad y experimentación para acelerar el crecimiento.',
+    ctaText: 'Explorar servicios',
+    ctaHref: '/servicios',
+    tagline: 'Impacto Medible'
+  },
+  {
+    image: 'https://images.pexels.com/photos/1546249/pexels-photo-1546249.jpeg?_gl=1*1btligp*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk3OTEkajQwJGwwJGgw',
+    phrase: 'Arquitecturas modernas, resultados reales',
+    sub: 'Reducimos deuda técnica y tiempo a producción con flujos robustos.',
+    ctaText: 'Ver cómo ayudamos',
+    ctaHref: '/about',
+    tagline: 'Ejecución Técnica'
+  },
+  {
+    image: 'https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?_gl=1*cbzll2*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk4MjkkajIkbDAkaDA.',
+    phrase: 'Datos para decidir y escalar',
+    sub: 'Instrumentación y experimentación continua para priorizar con claridad.',
+    ctaText: 'Iniciar conversación',
+    ctaHref: '#contacto',
+    tagline: 'Inteligencia en Producto'
+  }
+];
+
+// Testimonios (puedes agregar / editar estos items)
+const testimonials = [
+  {
+    quote: 'El equipo elevó nuestra plataforma: lanzamos 3 veces más rápido y con métricas de performance que superaron expectativas.',
+    author: 'María López',
+    role: 'Directora de Producto',
+    avatar: 'https://i.pravatar.cc/160?img=47'
+  },
+  {
+    quote: 'Pasamos de un pipeline frágil a despliegues reproducibles y medibles. La deuda técnica dejó de frenarnos.',
+    author: 'Carlos Herrera',
+    role: 'CTO SaaS B2B',
+    avatar: 'https://i.pravatar.cc/160?img=12'
+  },
+    {
+    quote: 'Implementamos experimentación continua y priorización basada en datos: el roadmap dejó de ser una apuesta ciega.',
+    author: 'Lucía Fernández',
+    role: 'Head of Growth',
+    avatar: 'https://i.pravatar.cc/160?img=33'
+  },
+  {
+    quote: 'El refactor guiado y la arquitectura modular nos permitió acelerar nuevas funcionalidades sin romper lo existente.',
+    author: 'Javier Morales',
+    role: 'Engineering Manager',
+    avatar: 'https://i.pravatar.cc/160?img=5'
+  }
+];
 ---
 <BaseLayout title="Inicio" description="Plataforma para amplificar tu impacto">
+  <!-- HERO CAROUSEL (full width, antes del Hero existente) -->
+  <HeroCarousel slides={heroSlides} client:load />
+
   <!-- HERO -->
   <section class="relative overflow-hidden pt-24 pb-28 px-6 bg-radial-brand">
     <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none" aria-hidden="true" style="background:radial-gradient(circle at 30% 30%,#2E6AFF 0,transparent 60%),radial-gradient(circle at 70% 50%,#1B47A8 0,transparent 55%)"></div>
@@ -61,24 +124,35 @@ const features = [
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <section class="py-24 px-6">
-    <SectionTitle eyebrow="Confianza" title="Lo que dicen" sub="Colaboraciones que generan tracción y aprendizaje acelerado." />
-    <Testimonial quote="El equipo elevó nuestra plataforma: lanzamos 3 veces más rápido y con métricas de performance que superaron expectativas." author="María López" role="Directora de Producto" />
-  </section>
-
-  <!-- CONTACT / LEAD FORM -->
-  <section id="contacto" class="py-24 px-6 bg-white relative">
-    <SectionTitle eyebrow="Contacto" title="Conversemos" sub="Cuéntanos dónde estás y diseñemos el siguiente salto." />
-    <div class="max-w-3xl mx-auto">
-  <LeadForm client:only="react" />
+  <!-- TESTIMONIAL (Carousel) -->
+  <section class="relative py-32 px-6 overflow-hidden">
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand/70"></div>
+    <div class="absolute inset-0 opacity-25 mix-blend-overlay" style="background:radial-gradient(circle at 20% 30%,rgba(255,255,255,0.35),transparent 60%),radial-gradient(circle at 80% 65%,rgba(255,255,255,0.25),transparent 55%)"></div>
+    <div class="relative max-w-6xl mx-auto">
+  <SectionTitle eyebrow="Confianza" title="Lo que dicen" sub="Colaboraciones que generan tracción y aprendizaje acelerado." theme="dark" />
+      <div class="mt-16">
+        <TestimonialCarousel items={testimonials} client:load />
+      </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
-  <div class="px-6 pb-28">
-    <div class="max-w-6xl mx-auto">
-      <CTASection title="Listo para acelerar tu impacto?" sub="Agendemos una conversación y revisemos oportunidades concretas." />
+  <section class="px-6 pt-32 pb-40 relative">
+    <!-- Fondo con imagen (reemplaza la URL por la tuya o mueve la imagen a /public/images/cta/cta-bg.jpg) -->
+    <div class="absolute inset-0 -z-10">
+      <div class="w-full h-full bg-cover bg-center" style="background-image:url('https://images.pexels.com/photos/3169299/pexels-photo-3169299.jpeg?_gl=1*xrz72x*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2ODAyNjEkbzQkZzEkdDE3NTg2ODA3OTYkajQ3JGwwJGgw'); filter:brightness(.75);"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-white/30 mix-blend-overlay"></div>
     </div>
-  </div>
+    <div class="relative max-w-6xl mx-auto">
+      <CTASection 
+        title="Listo para acelerar tu impacto?" 
+        sub="Agendemos una conversación y revisemos oportunidades concretas." 
+        backgroundImage="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+        animated={true}
+      />
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>

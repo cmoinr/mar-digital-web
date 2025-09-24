@@ -43,3 +43,21 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.3);
 }
+
+/* CTA animated words */
+@keyframes wordIn {
+  0% { opacity: 0; transform: translateY(18px) scale(.98); filter: blur(4px); }
+  55% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.animate-word { animation: wordIn .75s cubic-bezier(.22,.9,.34,1.01) forwards; }
+
+@keyframes fadeRise {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-rise { animation: fadeRise .9s ease forwards; opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-word, .animate-fade-rise { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}

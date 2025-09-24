@@ -1,8 +1,28 @@
 ---
-const { eyebrow, title, sub } = Astro.props;
+/**
+ * Props:
+ *  eyebrow?: string
+ *  title: string
+ *  sub?: string
+ *  theme?: 'light' | 'dark' (default: 'light')
+ */
+const { eyebrow, title, sub, theme = 'light' } = Astro.props;
+const isDark = theme === 'dark';
+
+const eyebrowClass = isDark
+  ? 'text-xs tracking-widest font-semibold text-white/60 mb-2 uppercase'
+  : 'text-xs tracking-widest font-semibold text-brand-dark mb-2 uppercase';
+
+const titleClass = isDark
+  ? 'text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-brand-light'
+  : 'text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-dark';
+
+const subClass = isDark
+  ? 'mt-4 text-white/70 text-base md:text-lg'
+  : 'mt-4 text-gray-600 text-base md:text-lg';
 ---
 <div class="mb-10 text-center max-w-3xl mx-auto">
-  {eyebrow && <p class="text-xs tracking-widest font-semibold text-brand-dark mb-2 uppercase">{eyebrow}</p>}
-  <h2 class="text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-dark">{title}</h2>
-  {sub && <p class="mt-4 text-gray-600 text-base md:text-lg">{sub}</p>}
+  {eyebrow && <p class={eyebrowClass}>{eyebrow}</p>}
+  <h2 class={titleClass}>{title}</h2>
+  {sub && <p class={subClass}>{sub}</p>}
 </div>

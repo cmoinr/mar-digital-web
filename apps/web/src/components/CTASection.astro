@@ -1,13 +1,53 @@
 ---
-const { title, sub, ctaLabel='Comencemos', href='/#contacto' } = Astro.props;
+/*
+ Props:
+  - title: string
+  - sub?: string
+  - ctaLabel?: string
+  - href?: string
+  - backgroundImage?: string (si se provee, reemplaza el gradiente por una imagen de fondo)
+  - overlay?: boolean (default true) aplica capa de degradado para legibilidad
+  - animated?: boolean (default true) activa animaciones palabra a palabra
+  - dark?: boolean (default true cuando hay imagen) ajusta contraste
+*/
+const {
+  title,
+  sub,
+  ctaLabel = 'Comencemos',
+  href = '/#contacto',
+  backgroundImage,
+  overlay = true,
+  animated = true,
+  dark
+} = Astro.props;
+
+const useDark = typeof dark === 'boolean' ? dark : Boolean(backgroundImage);
+const words = typeof title === 'string' ? title.split(/\s+/) : [];
 ---
-<section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-dark text-white px-8 py-20 shadow-lg">
-  <div class="absolute -top-20 -right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-  <div class="relative max-w-3xl mx-auto text-center space-y-6">
-    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight animate-fade-in-up">{title}</h2>
-    {sub && <p class="text-base md:text-lg text-white/90 animate-fade-in-up" style="animation-delay:100ms">{sub}</p>}
-    <a href={href} class="inline-flex items-center gap-2 bg-white text-brand font-semibold px-7 py-3 rounded-full shadow hover:shadow-md transition focus:outline-none focus:ring-4 focus:ring-white/40 animate-scale-in" style="animation-delay:200ms">
-      {ctaLabel} <span class="text-lg">→</span>
-    </a>
+<section
+  class={`relative overflow-hidden rounded-3xl text-white px-8 py-20 shadow-lg backdrop-brightness-[.85] ${backgroundImage ? 'bg-cover bg-center' : 'bg-gradient-to-br from-brand to-brand-dark'}`}
+  style={backgroundImage ? `background-image:url('${backgroundImage}')` : ''}
+>
+  {overlay && (
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,.55),transparent_75%)] bg-blend-multiply"></div>
+  )}
+  <div class="absolute -top-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-28 -left-24 w-72 h-72 bg-brand/30 rounded-full blur-3xl mix-blend-overlay"></div>
+  <div class="relative max-w-3xl mx-auto text-center space-y-7">
+    <h2 class={`text-3xl md:text-4xl font-extrabold tracking-tight leading-tight ${animated ? 'cta-words' : ''}`}>
+      {animated && words.length > 0 ? (
+        words.map((w, i) => <span class="inline-block animate-word will-change-transform" style={`animation-delay:${i * 70}ms`}>{w}&nbsp;</span>)
+      ) : title}
+    </h2>
+    {sub && <p class="text-base md:text-lg text-white/85 animate-fade-rise [animation-delay:120ms] max-w-2xl mx-auto">{sub}</p>}
+    <div class="pt-2">
+      <a href={href} class="group inline-flex items-center gap-2 bg-white text-brand font-semibold px-8 py-3 rounded-full shadow-lg shadow-brand/30 hover:shadow-xl transition focus:outline-none focus:ring-4 focus:ring-white/40">
+        <span class="relative">
+          {ctaLabel}
+          <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-dark transition-all duration-300 group-hover:w-full"></span>
+        </span>
+        <span class="text-lg group-hover:translate-x-1 transition">→</span>
+      </a>
+    </div>
   </div>
 </section>
