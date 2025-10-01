@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
+import "../styles/global.css";
 const { title = "Sitio", description = "Impacto digital", } = Astro.props;
 ---
 <html lang="es">
@@ -10,9 +11,42 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
     <meta name="viewport" content="width=device-width,initial-scale=1" />
   </head>
   <body class="min-h-screen flex flex-col">
+      <!-- Fondo dinámico difuminado (parallax) -->
+      <div id="bg-dynamic" aria-hidden="true">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="blob blob-c"></div>
+      </div>
     <Nav />
     <main class="flex-1">
       <slot />
     </main>
+      <script is:inline>
+        // Parallax suave de blobs al hacer scroll
+        const root = document.getElementById('bg-dynamic');
+        if (root) {
+          const a = root.querySelector('.blob-a');
+          const b = root.querySelector('.blob-b');
+          const c = root.querySelector('.blob-c');
+          let ticking = false;
+          const update = () => {
+            const y = window.scrollY || 0;
+            // Factores distintos para sensación de profundidad
+              a && (a.style.transform = `translateY(${y * 0.12}px)`);
+              b && (b.style.transform = `translateY(${y * 0.08}px)`);
+              c && (c.style.transform = `translateY(${y * 0.15}px)`);
+          };
+          window.addEventListener('scroll', () => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                update();
+                ticking = false;
+              });
+              ticking = true;
+            }
+          }, { passive: true });
+        }
+      </script>
   </body>
 </html>

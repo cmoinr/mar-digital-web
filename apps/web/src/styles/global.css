@@ -8,9 +8,59 @@
 
 body {
   font-family: system-ui, sans-serif;
-  background: #ffffff;
+  background: radial-gradient(circle at 20% 20%, #f0f9ff, #ffffff 60%);
   color: #111827;
   line-height: 1.5;
+}
+
+/* Dynamic blurred color background */
+#bg-dynamic {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  filter: saturate(120%);
+}
+
+#bg-dynamic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 80%, rgba(255,255,255,0.6), transparent 70%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  filter: blur(80px) brightness(1.05);
+  opacity: 0.55;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+  animation: floatPulse 18s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .blob { width: 80vmax; height: 80vmax; filter: blur(100px); }
+}
+
+.blob-a { left: -10vmax; top: -10vmax; background: radial-gradient(circle at 30% 30%, #3b82f6, #0d47a1 60%, rgba(13,71,161,0)); animation-delay: 0s; }
+.blob-b { right: -12vmax; top: 10vmax; background: radial-gradient(circle at 60% 40%, #06b6d4, #0e7490 55%, rgba(14,116,144,0)); animation-delay: 4s; }
+.blob-c { left: 20vmax; bottom: -15vmax; background: radial-gradient(circle at 50% 50%, #1d4ed8, #0f3d91 55%, rgba(29,78,216,0)); animation-delay: 8s; }
+
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-4%) scale(1.05); }
+  50% { transform: translateY(3%) scale(0.97); }
+  75% { transform: translateY(-2%) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; filter: blur(60px); }
 }
 
 /* Decorative utilities */

@@ -1,158 +1,162 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.jsx";
-import LeadForm from "../components/LeadForm.jsx";
 import SectionTitle from "../components/SectionTitle.astro";
-import StatsStrip from "../components/StatsStrip.astro";
 import FeatureCard from "../components/FeatureCard.astro";
-import Testimonial from "../components/Testimonial.astro";
-import CTASection from "../components/CTASection.astro";
 import Footer from "../components/Footer.astro";
-import HeroCarousel from "../components/HeroCarousel.jsx";
-import TestimonialCarousel from "../components/TestimonialCarousel.jsx";
 
-const stats = [
-  { value: '120+', label: 'Proyectos impulsados', delay: 0 },
-  { value: '3x', label: 'Mejora en performance', delay: 120 },
-  { value: '-40%', label: 'Tiempo a producción', delay: 240 }
+// Beneficios y servicios para la home
+const beneficios = [
+  'Diseño profesional con enfoque estratégico',
+  'Procesos claros y acompañamiento constante',
+  'Paquetes adaptados a cada etapa de tu negocio',
+  'Resultados medibles y sostenibles'
 ];
 
-const features = [
-  { icon: '⚡', title: 'Velocidad', description: 'Arquitecturas optimizadas y métricas web vitales sobresalientes.' },
-  { icon: '🧠', title: 'Estrategia', description: 'Alineamos objetivos de negocio con roadmap técnico claro.' },
-  { icon: '🔒', title: 'Confianza', description: 'Buenas prácticas de seguridad y despliegues reproducibles.' },
-  { icon: '📊', title: 'Datos accionables', description: 'Instrumentación analítica y experimentación continua.' },
-  { icon: '🚀', title: 'Escalabilidad', description: 'Diseño para crecer con mantenibilidad y bajo costo operativo.' },
-  { icon: '🤝', title: 'Partnering', description: 'Acompañamiento cercano y transferencia de conocimiento.' }
-];
-
-// Slides del carrusel hero (reemplaza las URLs de ejemplo por las tuyas)
-// Puedes usar imágenes locales en /public o URLs externas (CDN). Mantén proporción horizontal (ej. 16:9 o 3:2) para mejor resultado.
-const heroSlides = [
-  {
-    image: 'https://images.pexels.com/photos/175773/pexels-photo-175773.jpeg?_gl=1*168x011*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk2NTkkajQ1JGwwJGgw', // '/images/hero/slide1.jpg',
-    phrase: 'Experiencias web que convierten',
-    sub: 'Performance, escalabilidad y experimentación para acelerar el crecimiento.',
-    ctaText: 'Explorar servicios',
-    ctaHref: '/servicios',
-    tagline: 'Impacto Medible'
-  },
-  {
-    image: 'https://images.pexels.com/photos/1546249/pexels-photo-1546249.jpeg?_gl=1*1btligp*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk3OTEkajQwJGwwJGgw',
-    phrase: 'Arquitecturas modernas, resultados reales',
-    sub: 'Reducimos deuda técnica y tiempo a producción con flujos robustos.',
-    ctaText: 'Ver cómo ayudamos',
-    ctaHref: '/about',
-    tagline: 'Ejecución Técnica'
-  },
-  {
-    image: 'https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?_gl=1*cbzll2*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2NTk2NDQkbzMkZzEkdDE3NTg2NTk4MjkkajIkbDAkaDA.',
-    phrase: 'Datos para decidir y escalar',
-    sub: 'Instrumentación y experimentación continua para priorizar con claridad.',
-    ctaText: 'Iniciar conversación',
-    ctaHref: '#contacto',
-    tagline: 'Inteligencia en Producto'
-  }
-];
-
-// Testimonios (puedes agregar / editar estos items)
-const testimonials = [
-  {
-    quote: 'El equipo elevó nuestra plataforma: lanzamos 3 veces más rápido y con métricas de performance que superaron expectativas.',
-    author: 'María López',
-    role: 'Directora de Producto',
-    avatar: 'https://i.pravatar.cc/160?img=47'
-  },
-  {
-    quote: 'Pasamos de un pipeline frágil a despliegues reproducibles y medibles. La deuda técnica dejó de frenarnos.',
-    author: 'Carlos Herrera',
-    role: 'CTO SaaS B2B',
-    avatar: 'https://i.pravatar.cc/160?img=12'
-  },
-    {
-    quote: 'Implementamos experimentación continua y priorización basada en datos: el roadmap dejó de ser una apuesta ciega.',
-    author: 'Lucía Fernández',
-    role: 'Head of Growth',
-    avatar: 'https://i.pravatar.cc/160?img=33'
-  },
-  {
-    quote: 'El refactor guiado y la arquitectura modular nos permitió acelerar nuevas funcionalidades sin romper lo existente.',
-    author: 'Javier Morales',
-    role: 'Engineering Manager',
-    avatar: 'https://i.pravatar.cc/160?img=5'
-  }
+const serviciosDestacados = [
+  { icon: '💻', title: 'Diseño Web', description: 'Páginas y tiendas online que convierten visitantes en clientes.' },
+  { icon: '🎨', title: 'Branding & Diseño', description: 'Identidades visuales que transmiten confianza.' },
+  { icon: '📱', title: 'Marketing & Redes', description: 'Contenido y campañas que generan crecimiento.' },
+  { icon: '📊', title: 'Consultoría Estratégica', description: 'Modelos de negocio, finanzas y transformación digital.' }
 ];
 ---
-<BaseLayout title="Inicio" description="Plataforma para amplificar tu impacto">
-  <!-- HERO CAROUSEL (full width, antes del Hero existente) -->
-  <HeroCarousel slides={heroSlides} client:load />
-
-  <!-- HERO -->
-  <section class="relative overflow-hidden pt-24 pb-28 px-6 bg-radial-brand">
-    <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none" aria-hidden="true" style="background:radial-gradient(circle at 30% 30%,#2E6AFF 0,transparent 60%),radial-gradient(circle at 70% 50%,#1B47A8 0,transparent 55%)"></div>
-    <div class="relative max-w-6xl mx-auto grid gap-14 lg:grid-cols-2 items-center">
-      <div class="space-y-8">
-  <Hero headline="Aceleramos tu impacto digital" sub="Experiencias web veloces, escalables y orientadas a conversión." client:load />
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition animate-scale-in">Ver servicios</a>
-          <a href="#contacto" class="px-6 py-3 rounded-full bg-white text-brand font-semibold shadow hover:shadow-md transition animate-scale-in" style="animation-delay:120ms">Hablar ahora</a>
-        </div>
+<BaseLayout title="Inicio" description="Impulsa tu marca con diseño y estrategia digital - Mar Digital">
+  <!-- HERO PRINCIPAL -->
+  <section class="relative overflow-hidden pt-28 pb-32 px-6">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none" aria-hidden="true" style="background:radial-gradient(circle at 30% 30%,#1d4ed8 0,transparent 60%),radial-gradient(circle at 70% 55%,#0ea5e9 0,transparent 58%)"></div>
+    <div class="relative max-w-7xl mx-auto grid gap-20 xl:gap-28 lg:grid-cols-2 items-center">
+      <div>
+        <Hero
+          headline="Impulsa tu marca con diseño y estrategia digital." 
+          sub="En Mar Digital unimos creatividad y estrategia: desde páginas web y branding que hacen brillar tu negocio, hasta consultoría avanzada para que tu empresa crezca con bases sólidas." 
+          primaryCtaText="Empieza tu proyecto hoy"
+          primaryCtaHref="/contacto"
+          secondaryCtaText="Explora nuestros paquetes"
+          secondaryCtaHref="#planes"
+          kicker="Mar Digital"
+          client:load />
       </div>
+      <!-- Visual identity montage actualizado -->
       <div class="relative">
-        <div class="absolute -inset-10 bg-gradient-to-br from-brand/10 to-brand-dark/20 blur-3xl rounded-full" />
-        <div class="relative grid gap-4 sm:grid-cols-2">
-          {features.slice(0,4).map(f => (
-            <div class="p-5 rounded-xl bg-white/80 backdrop-blur border shadow-sm animate-fade-in-up" style="animation-delay:150ms">
-              <p class="text-2xl mb-2">{f.icon}</p>
-              <p class="font-semibold text-sm">{f.title}</p>
-              <p class="text-xs text-gray-500 leading-relaxed mt-1">{f.description}</p>
+        <div class="absolute -inset-12 bg-gradient-to-br from-brand/10 via-cyan-400/10 to-brand-dark/30 blur-3xl rounded-full" aria-hidden="true" />
+        <div class="relative aspect-[4/3] w-full max-w-xl mx-auto rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-tr from-[#0f3d91] via-[#0ea5e9] to-[#38bdf8]" />
+          <div class="absolute inset-0 opacity-30 mix-blend-overlay" style="background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.35)_0_2px,transparent_2px_6px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0_2px,transparent_2px_6px);"></div>
+          <div class="absolute inset-0 opacity-45" style="background:radial-gradient(circle at 18% 80%,rgba(255,255,255,0.55),transparent 60%),radial-gradient(circle at 82% 24%,rgba(255,255,255,0.4),transparent 55%),radial-gradient(circle at 55% 50%,rgba(255,255,255,0.25),transparent 65%);"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-6">
+            <div class="grid gap-4 w-full max-w-sm">
+              <div class="h-20 rounded-xl bg-white/25 backdrop-blur-md border border-white/30 shadow-lg animate-fade-in-up" style="animation-delay:60ms"></div>
+              <div class="h-12 rounded-xl bg-white/15 backdrop-blur-md border border-white/25 shadow-md animate-fade-in-up" style="animation-delay:140ms"></div>
+              <div class="h-28 rounded-xl bg-white/30 backdrop-blur-md border border-white/40 shadow-lg animate-fade-in-up" style="animation-delay:220ms"></div>
             </div>
-          ))}
+          </div>
+          <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[160%] h-48 opacity-60" style="background:radial-gradient(circle at 50% 0%,rgba(255,255,255,0.55),transparent 70%); filter:blur(40px);"></div>
         </div>
       </div>
     </div>
-    <div class="mt-16">
-      <StatsStrip items={stats} />
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="quienes-somos" class="relative py-24 px-6">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_20%_30%,#1d4ed8,transparent_60%),radial-gradient(circle_at_80%_70%,#0ea5e9,transparent_65%)]"></div>
+    <div class="relative max-w-4xl mx-auto">
+      <SectionTitle eyebrow="Quiénes somos" title="Creatividad + consultoría estratégica" sub="Somos un equipo que combina diseño creativo y consultoría estratégica. Nuestro propósito es ayudarte a construir una marca fuerte y un negocio preparado para crecer en digital." />
+      <div class="mt-10 flex justify-center">
+        <a href="#divisiones" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Conoce más de nuestras divisiones</a>
+      </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section id="servicios" class="py-24 px-6 bg-gray-50 relative">
-    <SectionTitle eyebrow="Capacidades" title="Lo que desbloqueamos" sub="Ejecución técnica y estrategia alineadas a resultados medibles." />
-    <div class="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
-      {features.map(f => <FeatureCard icon={f.icon} title={f.title} description={f.description} />)}
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL (Carousel) -->
-  <section class="relative py-32 px-6 overflow-hidden">
-    <!-- Gradient Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand/70"></div>
-    <div class="absolute inset-0 opacity-25 mix-blend-overlay" style="background:radial-gradient(circle at 20% 30%,rgba(255,255,255,0.35),transparent 60%),radial-gradient(circle at 80% 65%,rgba(255,255,255,0.25),transparent 55%)"></div>
+  <!-- DIVISIONES -->
+  <section id="divisiones" class="py-24 px-6 bg-gray-50 relative">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[radial-gradient(circle_at_25%_40%,#0ea5e9,transparent_60%),radial-gradient(circle_at_75%_60%,#1d4ed8,transparent_60%)]"></div>
     <div class="relative max-w-6xl mx-auto">
-  <SectionTitle eyebrow="Confianza" title="Lo que dicen" sub="Colaboraciones que generan tracción y aprendizaje acelerado." theme="dark" />
-      <div class="mt-16">
-        <TestimonialCarousel items={testimonials} client:load />
+      <SectionTitle eyebrow="Nuestras Divisiones" title="Dos focos, un mismo objetivo: crecimiento" />
+      <div class="grid gap-10 md:grid-cols-2">
+        <div class="group relative p-8 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm overflow-hidden">
+          <div class="absolute -inset-0.5 bg-gradient-to-br from-brand/10 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition pointer-events-none blur"></div>
+          <div class="relative">
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">🔹</span> Mar Digital Creative</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Diseño Web, Branding, Social Media y Marketing Digital.</p>
+            <p class="mt-3 text-xs text-gray-500">Ideal para emprendedores y empresas que buscan identidad sólida y presencia real en línea.</p>
+          </div>
+        </div>
+        <div class="group relative p-8 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm overflow-hidden">
+          <div class="absolute -inset-0.5 bg-gradient-to-br from-cyan-400/20 to-brand/10 opacity-0 group-hover:opacity-100 transition pointer-events-none blur"></div>
+          <div class="relative">
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">🔹</span> Mar Digital Business</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Consultoría estratégica en modelos de negocio, transformación digital y análisis financiero.</p>
+            <p class="mt-3 text-xs text-gray-500">Pensado para empresas que necesitan claridad, estructura y rutas de crecimiento.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/about" class="px-7 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Conoce más de nuestras divisiones</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="py-24 px-6 relative">
+    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_50%_50%,#1d4ed8,transparent_70%)] pointer-events-none"></div>
+    <div class="relative max-w-5xl mx-auto">
+      <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con nosotros?" />
+      <ul class="grid gap-6 sm:grid-cols-2 mt-6">
+        {beneficios.map(b => (
+          <li class="flex items-start gap-3 p-4 rounded-xl bg-white/70 backdrop-blur border border-white shadow-sm">
+            <span class="mt-0.5 text-green-600">✅</span>
+            <span class="text-sm font-medium text-gray-700 leading-relaxed">{b}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICIOS DESTACADOS -->
+  <section id="servicios" class="py-24 px-6 bg-gray-50 relative">
+    <div class="absolute inset-0 opacity-[0.04] bg-[radial-gradient(circle_at_30%_40%,#0ea5e9,transparent_65%),radial-gradient(circle_at_70%_60%,#1d4ed8,transparent_60%)] pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto">
+      <SectionTitle eyebrow="Servicios destacados" title="Lo esencial para impulsar tu marca" />
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {serviciosDestacados.map(s => (
+          <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm flex flex-col gap-3">
+            <div class="text-3xl">{s.icon}</div>
+            <h3 class="text-base font-semibold">{s.title}</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/servicios" class="px-7 py-3 rounded-full bg-white text-brand font-semibold shadow hover:shadow-md border border-brand/20 transition">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES PLACEHOLDER (ancla para CTA) -->
+  <section id="planes" class="py-20 px-6 relative">
+    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_60%_40%,#0ea5e9,transparent_70%)]"></div>
+    <div class="relative max-w-4xl mx-auto text-center">
+      <SectionTitle eyebrow="Paquetes" title="Explora nuestros paquetes" sub="(Próximamente) Estructuras listas para cada etapa: lanzamiento, crecimiento y optimización." />
+      <p class="text-sm text-gray-500 mt-4">Mientras preparamos esta sección, puedes escribirnos y te guiamos en la mejor opción.</p>
+      <div class="mt-8 flex justify-center">
+        <a href="/contacto" class="px-7 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Solicitar recomendación</a>
       </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
-  <section class="px-6 pt-32 pb-40 relative">
-    <!-- Fondo con imagen (reemplaza la URL por la tuya o mueve la imagen a /public/images/cta/cta-bg.jpg) -->
+  <section class="relative py-32 px-6">
     <div class="absolute inset-0 -z-10">
-      <div class="w-full h-full bg-cover bg-center" style="background-image:url('https://images.pexels.com/photos/3169299/pexels-photo-3169299.jpeg?_gl=1*xrz72x*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NTg2ODAyNjEkbzQkZzEkdDE3NTg2ODA3OTYkajQ3JGwwJGgw'); filter:brightness(.75);"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-white/30 mix-blend-overlay"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white/40"></div>
+      <div class="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_30%_30%,#1d4ed8,transparent_65%),radial-gradient(circle_at_70%_70%,#0ea5e9,transparent_60%)]"></div>
     </div>
-    <div class="relative max-w-6xl mx-auto">
-      <CTASection 
-        title="Listo para acelerar tu impacto?" 
-        sub="Agendemos una conversación y revisemos oportunidades concretas." 
-        backgroundImage="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1600" 
-        animated={true}
-      />
+    <div class="relative max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-dark via-brand to-cyan-400">Haz crecer tu negocio hoy.</h2>
+      <p class="mt-6 text-base md:text-lg text-gray-600 leading-relaxed">No importa si apenas empiezas o ya lideras una empresa consolidada. En <strong>Mar Digital</strong> tenemos la combinación perfecta de <strong>creatividad + estrategia</strong> para que tu marca brille en digital.</p>
+      <div class="mt-10 flex justify-center">
+        <a href="/contacto" class="px-10 py-4 rounded-full bg-brand text-white font-semibold text-base shadow-xl shadow-brand/30 hover:bg-brand-dark transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand">Quiero mi propuesta personalizada</a>
+      </div>
     </div>
   </section>
-
   <Footer />
 </BaseLayout>
