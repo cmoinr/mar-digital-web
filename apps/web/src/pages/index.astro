@@ -22,10 +22,22 @@ const serviciosDestacados = [
 ---
 <BaseLayout title="Inicio" description="Impulsa tu marca con diseño y estrategia digital - Mar Digital">
   <!-- HERO PRINCIPAL -->
-  <section class="relative overflow-hidden pt-28 pb-32 px-6">
-    <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none" aria-hidden="true" style="background:radial-gradient(circle at 30% 30%,#1d4ed8 0,transparent 60%),radial-gradient(circle at 70% 55%,#0ea5e9 0,transparent 58%)"></div>
-    <div class="relative max-w-7xl mx-auto grid gap-20 xl:gap-28 lg:grid-cols-2 items-center">
-      <div>
+  <section class="relative overflow-hidden pt-32 pb-40 px-6 lg:pt-40 lg:pb-48">
+    <!-- Decorative gradient overlay -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none select-none" aria-hidden="true">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.3),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(6,182,212,0.2),transparent_50%)]"></div>
+    </div>
+    
+    <!-- Floating particles decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-[10%] w-2 h-2 rounded-full bg-blue-400/30 animate-pulse-glow"></div>
+      <div class="absolute top-40 right-[15%] w-1.5 h-1.5 rounded-full bg-cyan-400/40 animate-pulse-glow" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-32 left-[20%] w-1 h-1 rounded-full bg-blue-300/30 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto grid gap-16 xl:gap-24 lg:grid-cols-2 items-center">
+      <!-- Hero Content -->
+      <div class="relative">
         <Hero
           headline="Impulsa tu marca con diseño y estrategia digital." 
           sub="En Mar Digital unimos creatividad y estrategia: desde páginas web y branding que hacen brillar tu negocio, hasta consultoría avanzada para que tu empresa crezca con bases sólidas." 
@@ -36,76 +48,242 @@ const serviciosDestacados = [
           kicker="Mar Digital"
           client:load />
       </div>
-      <!-- Visual identity montage actualizado -->
-      <div class="relative">
-        <div class="absolute -inset-12 bg-gradient-to-br from-brand/10 via-cyan-400/10 to-brand-dark/30 blur-3xl rounded-full" aria-hidden="true" />
-        <div class="relative aspect-[4/3] w-full max-w-xl mx-auto rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
-          <div class="absolute inset-0 bg-gradient-to-tr from-[#0f3d91] via-[#0ea5e9] to-[#38bdf8]" />
-          <div class="absolute inset-0 opacity-30 mix-blend-overlay" style="background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.35)_0_2px,transparent_2px_6px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0_2px,transparent_2px_6px);"></div>
-          <div class="absolute inset-0 opacity-45" style="background:radial-gradient(circle at 18% 80%,rgba(255,255,255,0.55),transparent 60%),radial-gradient(circle at 82% 24%,rgba(255,255,255,0.4),transparent 55%),radial-gradient(circle at 55% 50%,rgba(255,255,255,0.25),transparent 65%);"></div>
-          <div class="absolute inset-0 flex items-center justify-center p-6">
-            <div class="grid gap-4 w-full max-w-sm">
-              <div class="h-20 rounded-xl bg-white/25 backdrop-blur-md border border-white/30 shadow-lg animate-fade-in-up" style="animation-delay:60ms"></div>
-              <div class="h-12 rounded-xl bg-white/15 backdrop-blur-md border border-white/25 shadow-md animate-fade-in-up" style="animation-delay:140ms"></div>
-              <div class="h-28 rounded-xl bg-white/30 backdrop-blur-md border border-white/40 shadow-lg animate-fade-in-up" style="animation-delay:220ms"></div>
+
+      <!-- Visual Identity Montage - Representación de servicios -->
+      <div class="relative lg:pl-8 scroll-reveal">
+        <!-- Glow effect background -->
+        <div class="absolute -inset-16 bg-gradient-to-br from-blue-500/10 via-cyan-400/10 to-blue-600/5 blur-3xl rounded-full animate-pulse-glow" aria-hidden="true"></div>
+        
+        <!-- Main display card -->
+        <div class="relative aspect-[4/3] w-full max-w-xl mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 ring-1 ring-white/20 backdrop-blur-xl">
+          <!-- Animated gradient background -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 via-cyan-500 to-blue-700 animate-gradient-shift bg-[length:200%_200%]"></div>
+          
+          <!-- Grid pattern overlay -->
+          <div class="absolute inset-0 opacity-20 mix-blend-overlay" style="background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.4)_0_1.5px,transparent_1.5px_8px),repeating-linear-gradient(90deg,rgba(255,255,255,0.2)_0_1.5px,transparent_1.5px_8px);"></div>
+          
+          <!-- Light spots for depth -->
+          <div class="absolute inset-0 opacity-40">
+            <div class="absolute top-[15%] left-[15%] w-32 h-32 rounded-full bg-white/40 blur-3xl animate-pulse-glow"></div>
+            <div class="absolute bottom-[20%] right-[20%] w-40 h-40 rounded-full bg-cyan-200/30 blur-3xl animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white/20 blur-2xl"></div>
+          </div>
+          
+          <!-- Service cards representation -->
+          <div class="absolute inset-0 flex items-center justify-center p-8">
+            <div class="grid gap-4 w-full max-w-md">
+              <!-- Web Design Card -->
+              <div class="group relative h-24 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/30 shadow-xl hover:bg-white/20 transition-all duration-500 animate-fade-in-up overflow-hidden" style="animation-delay:100ms">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full flex items-center px-6 gap-4">
+                  <div class="text-4xl animate-float" style="animation-delay:0.5s">💻</div>
+                  <div class="flex-1">
+                    <div class="h-3 w-32 bg-white/40 rounded-full mb-2"></div>
+                    <div class="h-2 w-24 bg-white/25 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Branding Card -->
+              <div class="group relative h-16 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/25 shadow-lg hover:bg-white/15 transition-all duration-500 animate-fade-in-up overflow-hidden" style="animation-delay:200ms">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full flex items-center px-5 gap-3">
+                  <div class="text-3xl animate-float" style="animation-delay:1s">🎨</div>
+                  <div class="flex-1">
+                    <div class="h-2.5 w-28 bg-white/35 rounded-full mb-1.5"></div>
+                    <div class="h-1.5 w-20 bg-white/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Strategy Card -->
+              <div class="group relative h-32 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 shadow-xl hover:bg-white/25 transition-all duration-500 animate-fade-in-up overflow-hidden" style="animation-delay:300ms">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/15 to-cyan-300/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full flex items-center px-6 gap-4">
+                  <div class="text-5xl animate-float" style="animation-delay:1.5s">📊</div>
+                  <div class="flex-1">
+                    <div class="h-3.5 w-36 bg-white/45 rounded-full mb-2"></div>
+                    <div class="h-2.5 w-28 bg-white/30 rounded-full mb-2"></div>
+                    <div class="h-2 w-32 bg-white/25 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[160%] h-48 opacity-60" style="background:radial-gradient(circle at 50% 0%,rgba(255,255,255,0.55),transparent 70%); filter:blur(40px);"></div>
+          
+          <!-- Bottom glow -->
+          <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[140%] h-40 opacity-50 pointer-events-none">
+            <div class="w-full h-full bg-gradient-radial from-white/60 to-transparent blur-3xl"></div>
+          </div>
+        </div>
+
+        <!-- Floating badges around the montage -->
+        <div class="hidden lg:block">
+          <!-- Badge 1 -->
+          <div class="absolute -left-8 top-[20%] animate-float" style="animation-delay: 0.5s;">
+            <div class="px-4 py-2 rounded-xl bg-white/90 backdrop-blur-xl shadow-xl border border-blue-100/50 hover:scale-110 transition-transform duration-300">
+              <div class="text-xs font-semibold text-blue-600 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                Diseño Web
+              </div>
+            </div>
+          </div>
+          
+          <!-- Badge 2 -->
+          <div class="absolute -right-12 top-[35%] animate-float" style="animation-delay: 1s;">
+            <div class="px-4 py-2 rounded-xl bg-white/90 backdrop-blur-xl shadow-xl border border-cyan-100/50 hover:scale-110 transition-transform duration-300">
+              <div class="text-xs font-semibold text-cyan-600 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+                Branding
+              </div>
+            </div>
+          </div>
+          
+          <!-- Badge 3 -->
+          <div class="absolute -left-4 bottom-[25%] animate-float" style="animation-delay: 1.5s;">
+            <div class="px-4 py-2 rounded-xl bg-white/90 backdrop-blur-xl shadow-xl border border-blue-100/50 hover:scale-110 transition-transform duration-300">
+              <div class="text-xs font-semibold text-blue-600 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                Estrategia
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- QUIÉNES SOMOS -->
-  <section id="quienes-somos" class="relative py-24 px-6">
-    <div class="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_20%_30%,#1d4ed8,transparent_60%),radial-gradient(circle_at_80%_70%,#0ea5e9,transparent_65%)]"></div>
-    <div class="relative max-w-4xl mx-auto">
+  <section id="quienes-somos" class="relative py-28 px-6">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.1),transparent_50%)]"></div>
+    <div class="relative max-w-4xl mx-auto scroll-reveal">
       <SectionTitle eyebrow="Quiénes somos" title="Creatividad + consultoría estratégica" sub="Somos un equipo que combina diseño creativo y consultoría estratégica. Nuestro propósito es ayudarte a construir una marca fuerte y un negocio preparado para crecer en digital." />
-      <div class="mt-10 flex justify-center">
-        <a href="#divisiones" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Conoce más de nuestras divisiones</a>
+      <div class="mt-10 flex justify-center scroll-reveal">
+        <a href="#divisiones" class="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+          <span class="relative z-10">Conoce más de nuestras divisiones</span>
+          <svg class="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- DIVISIONES -->
-  <section id="divisiones" class="py-24 px-6 bg-gray-50 relative">
-    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[radial-gradient(circle_at_25%_40%,#0ea5e9,transparent_60%),radial-gradient(circle_at_75%_60%,#1d4ed8,transparent_60%)]"></div>
+  <section id="divisiones" class="py-28 px-6 relative">
+    <!-- Subtle background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent"></div>
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.3),transparent_70%)]"></div>
+    
     <div class="relative max-w-6xl mx-auto">
-      <SectionTitle eyebrow="Nuestras Divisiones" title="Dos focos, un mismo objetivo: crecimiento" />
-      <div class="grid gap-10 md:grid-cols-2">
-        <div class="group relative p-8 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm overflow-hidden">
-          <div class="absolute -inset-0.5 bg-gradient-to-br from-brand/10 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition pointer-events-none blur"></div>
+      <div class="scroll-reveal">
+        <SectionTitle eyebrow="Nuestras Divisiones" title="Dos focos, un mismo objetivo: crecimiento" />
+      </div>
+      
+      <div class="grid gap-8 md:grid-cols-2 mt-12">
+        <!-- Creative Division Card -->
+        <div class="scroll-reveal-left group relative p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-2">
+          <!-- Gradient glow on hover -->
+          <div class="absolute -inset-1 bg-gradient-to-br from-blue-500/20 via-cyan-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+          
+          <!-- Card content -->
           <div class="relative">
-            <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">🔹</span> Mar Digital Creative</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">Diseño Web, Branding, Social Media y Marketing Digital.</p>
-            <p class="mt-3 text-xs text-gray-500">Ideal para emprendedores y empresas que buscan identidad sólida y presencia real en línea.</p>
+            <!-- Icon badge -->
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/30 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">🔹</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-700 transition-colors">
+              Mar Digital <span class="text-gradient-blue">Creative</span>
+            </h3>
+            
+            <p class="text-base text-gray-700 leading-relaxed mb-4">
+              Diseño Web, Branding, Social Media y Marketing Digital.
+            </p>
+            
+            <div class="flex items-start gap-2 p-4 rounded-xl bg-blue-50/50 border border-blue-100/50">
+              <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              <p class="text-sm text-gray-600">
+                Ideal para emprendedores y empresas que buscan identidad sólida y presencia real en línea.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="group relative p-8 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm overflow-hidden">
-          <div class="absolute -inset-0.5 bg-gradient-to-br from-cyan-400/20 to-brand/10 opacity-0 group-hover:opacity-100 transition pointer-events-none blur"></div>
+        
+        <!-- Business Division Card -->
+        <div class="scroll-reveal-right group relative p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-2">
+          <!-- Gradient glow on hover -->
+          <div class="absolute -inset-1 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+          
+          <!-- Card content -->
           <div class="relative">
-            <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-2xl">🔹</span> Mar Digital Business</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">Consultoría estratégica en modelos de negocio, transformación digital y análisis financiero.</p>
-            <p class="mt-3 text-xs text-gray-500">Pensado para empresas que necesitan claridad, estructura y rutas de crecimiento.</p>
+            <!-- Icon badge -->
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/30 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">🔹</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-cyan-700 transition-colors">
+              Mar Digital <span class="text-gradient-cyan">Business</span>
+            </h3>
+            
+            <p class="text-base text-gray-700 leading-relaxed mb-4">
+              Consultoría estratégica en modelos de negocio, transformación digital y análisis financiero.
+            </p>
+            
+            <div class="flex items-start gap-2 p-4 rounded-xl bg-cyan-50/50 border border-cyan-100/50">
+              <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+              <p class="text-sm text-gray-600">
+                Pensado para empresas que necesitan claridad, estructura y rutas de crecimiento.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="mt-12 text-center">
-        <a href="/about" class="px-7 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Conoce más de nuestras divisiones</a>
+      
+      <div class="mt-16 text-center scroll-reveal">
+        <a href="/about" class="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-blue-700 font-semibold shadow-xl hover:shadow-2xl border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+          <span class="relative z-10">Conoce más de nuestras divisiones</span>
+          <svg class="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+          <span class="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- BENEFICIOS -->
-  <section id="beneficios" class="py-24 px-6 relative">
-    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_50%_50%,#1d4ed8,transparent_70%)] pointer-events-none"></div>
+  <section id="beneficios" class="py-28 px-6 relative">
+    <div class="absolute inset-0 opacity-[0.015] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.2),transparent_70%)] pointer-events-none"></div>
+    
     <div class="relative max-w-5xl mx-auto">
-      <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con nosotros?" />
-      <ul class="grid gap-6 sm:grid-cols-2 mt-6">
-        {beneficios.map(b => (
-          <li class="flex items-start gap-3 p-4 rounded-xl bg-white/70 backdrop-blur border border-white shadow-sm">
-            <span class="mt-0.5 text-green-600">✅</span>
-            <span class="text-sm font-medium text-gray-700 leading-relaxed">{b}</span>
+      <div class="scroll-reveal">
+        <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con nosotros?" />
+      </div>
+      
+      <ul class="grid gap-6 sm:grid-cols-2 mt-12">
+        {beneficios.map((b, index) => (
+          <li class="scroll-reveal group relative p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={`animation-delay: ${index * 100}ms`}>
+            <!-- Hover gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            
+            <div class="relative flex items-start gap-4">
+              <!-- Checkmark icon with gradient -->
+              <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              
+              <span class="text-base font-medium text-gray-800 leading-relaxed group-hover:text-gray-900 transition-colors">
+                {b}
+              </span>
+            </div>
           </li>
         ))}
       </ul>
@@ -113,48 +291,168 @@ const serviciosDestacados = [
   </section>
 
   <!-- SERVICIOS DESTACADOS -->
-  <section id="servicios" class="py-24 px-6 bg-gray-50 relative">
-    <div class="absolute inset-0 opacity-[0.04] bg-[radial-gradient(circle_at_30%_40%,#0ea5e9,transparent_65%),radial-gradient(circle_at_70%_60%,#1d4ed8,transparent_60%)] pointer-events-none"></div>
+  <section id="servicios" class="py-28 px-6 relative">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-50/20 to-transparent"></div>
+    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(ellipse_at_top_left,rgba(6,182,212,0.3),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.2),transparent_50%)] pointer-events-none"></div>
+    
     <div class="relative max-w-6xl mx-auto">
-      <SectionTitle eyebrow="Servicios destacados" title="Lo esencial para impulsar tu marca" />
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {serviciosDestacados.map(s => (
-          <div class="p-6 rounded-2xl bg-white/80 backdrop-blur border border-white shadow-sm flex flex-col gap-3">
-            <div class="text-3xl">{s.icon}</div>
-            <h3 class="text-base font-semibold">{s.title}</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">{s.description}</p>
+      <div class="scroll-reveal">
+        <SectionTitle eyebrow="Servicios destacados" title="Lo esencial para impulsar tu marca" />
+      </div>
+      
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+        {serviciosDestacados.map((s, index) => (
+          <div class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col gap-4 hover:-translate-y-2" style={`animation-delay: ${index * 100}ms`}>
+            <!-- Gradient glow -->
+            <div class="absolute -inset-0.5 bg-gradient-to-br from-blue-500/10 via-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-3xl"></div>
+            
+            <div class="relative">
+              <!-- Icon with animated background -->
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 shadow-md mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <span class="text-4xl animate-float" style={`animation-delay: ${index * 0.3}s`}>{s.icon}</span>
+              </div>
+              
+              <h3 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors">
+                {s.title}
+              </h3>
+              
+              <p class="text-sm text-gray-600 leading-relaxed">
+                {s.description}
+              </p>
+              
+              <!-- Decorative line -->
+              <div class="mt-4 h-1 w-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full group-hover:w-full transition-all duration-500"></div>
+            </div>
           </div>
         ))}
       </div>
-      <div class="mt-12 text-center">
-        <a href="/servicios" class="px-7 py-3 rounded-full bg-white text-brand font-semibold shadow hover:shadow-md border border-brand/20 transition">Ver todos los servicios</a>
+      
+      <div class="mt-16 text-center scroll-reveal">
+        <a href="/servicios" class="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-blue-700 font-semibold shadow-xl hover:shadow-2xl border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+          <span class="relative z-10">Ver todos los servicios</span>
+          <svg class="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+          <span class="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- PLANES PLACEHOLDER (ancla para CTA) -->
-  <section id="planes" class="py-20 px-6 relative">
-    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_60%_40%,#0ea5e9,transparent_70%)]"></div>
+  <section id="planes" class="py-28 px-6 relative">
+    <div class="absolute inset-0 opacity-[0.015] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.2),transparent_70%)]"></div>
+    
     <div class="relative max-w-4xl mx-auto text-center">
-      <SectionTitle eyebrow="Paquetes" title="Explora nuestros paquetes" sub="(Próximamente) Estructuras listas para cada etapa: lanzamiento, crecimiento y optimización." />
-      <p class="text-sm text-gray-500 mt-4">Mientras preparamos esta sección, puedes escribirnos y te guiamos en la mejor opción.</p>
-      <div class="mt-8 flex justify-center">
-        <a href="/contacto" class="px-7 py-3 rounded-full bg-brand text-white font-semibold shadow hover:bg-brand-dark transition">Solicitar recomendación</a>
+      <div class="scroll-reveal">
+        <SectionTitle eyebrow="Paquetes" title="Explora nuestros paquetes" sub="(Próximamente) Estructuras listas para cada etapa: lanzamiento, crecimiento y optimización." />
+      </div>
+      
+      <div class="scroll-reveal mt-8 p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100/50 shadow-xl">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+          <p class="text-sm font-semibold text-blue-700 uppercase tracking-wide">
+            Próximamente disponible
+          </p>
+          <div class="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style="animation-delay: 0.5s;"></div>
+        </div>
+        <p class="text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          Mientras preparamos esta sección, puedes escribirnos y te guiamos en la mejor opción para tu negocio.
+        </p>
+      </div>
+      
+      <div class="mt-10 flex justify-center scroll-reveal">
+        <a href="/contacto" class="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-[length:200%_100%] text-white font-semibold shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:bg-right hover:scale-[1.02] overflow-hidden">
+          <span class="relative z-10">Solicitar recomendación personalizada</span>
+          <svg class="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+          <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
-  <section class="relative py-32 px-6">
+  <section class="relative py-32 lg:py-40 px-6 overflow-hidden">
+    <!-- Animated background -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white/40"></div>
-      <div class="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_30%_30%,#1d4ed8,transparent_65%),radial-gradient(circle_at_70%_70%,#0ea5e9,transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white"></div>
+      <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.4),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.3),transparent_50%)]"></div>
+      
+      <!-- Floating decoration -->
+      <div class="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-3xl animate-pulse-glow"></div>
+      <div class="absolute bottom-20 right-[10%] w-80 h-80 bg-gradient-to-tl from-cyan-400/10 to-transparent rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 2s;"></div>
     </div>
-    <div class="relative max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-dark via-brand to-cyan-400">Haz crecer tu negocio hoy.</h2>
-      <p class="mt-6 text-base md:text-lg text-gray-600 leading-relaxed">No importa si apenas empiezas o ya lideras una empresa consolidada. En <strong>Mar Digital</strong> tenemos la combinación perfecta de <strong>creatividad + estrategia</strong> para que tu marca brille en digital.</p>
-      <div class="mt-10 flex justify-center">
-        <a href="/contacto" class="px-10 py-4 rounded-full bg-brand text-white font-semibold text-base shadow-xl shadow-brand/30 hover:bg-brand-dark transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand">Quiero mi propuesta personalizada</a>
+    
+    <div class="relative max-w-4xl mx-auto text-center">
+      <!-- Main headline -->
+      <div class="scroll-reveal">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-8 tracking-tight">
+          <span class="inline-block bg-gradient-to-r from-blue-700 via-cyan-600 to-blue-700 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
+            Haz crecer tu negocio hoy.
+          </span>
+        </h2>
+      </div>
+      
+      <!-- Description -->
+      <div class="scroll-reveal">
+        <p class="mt-6 text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+          No importa si apenas empiezas o ya lideras una empresa consolidada. En <strong class="text-blue-700">Mar Digital</strong> tenemos la combinación perfecta de <strong class="text-cyan-600">creatividad + estrategia</strong> para que tu marca brille en digital.
+        </p>
+      </div>
+      
+      <!-- Features grid -->
+      <div class="scroll-reveal mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl mb-3">🚀</div>
+          <p class="text-sm font-semibold text-gray-800">Resultados rápidos</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl mb-3">💎</div>
+          <p class="text-sm font-semibold text-gray-800">Calidad premium</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl mb-3">🤝</div>
+          <p class="text-sm font-semibold text-gray-800">Soporte continuo</p>
+        </div>
+      </div>
+      
+      <!-- CTA Button -->
+      <div class="mt-14 flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal">
+        <a href="/contacto" class="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-[length:200%_100%] text-white font-bold text-lg shadow-2xl shadow-blue-500/40 hover:shadow-3xl hover:shadow-blue-500/50 transition-all duration-300 hover:bg-right hover:scale-[1.05] active:scale-[0.98] overflow-hidden">
+          <span class="relative z-10">Quiero mi propuesta personalizada</span>
+          <svg class="relative z-10 w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+          <!-- Shine effect -->
+          <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></span>
+          <!-- Pulse ring -->
+          <span class="absolute inset-0 rounded-full border-2 border-white/50 animate-ping opacity-75"></span>
+        </a>
+      </div>
+      
+      <!-- Trust badges -->
+      <div class="scroll-reveal mt-12 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Sin compromiso</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Respuesta en 24h</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>100% personalizado</span>
+        </div>
       </div>
     </div>
   </section>

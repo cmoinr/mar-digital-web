@@ -6,46 +6,155 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>{title} | Impacto</title>
+    <title>{title} | Mar Digital</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script>
+      // Importar y ejecutar scroll reveal
+      import('../utils/scrollReveal.ts').then(module => {
+        if (module.initScrollReveal) {
+          module.initScrollReveal();
+        }
+      });
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
-      <!-- Fondo dinámico difuminado (parallax) -->
+      <!-- Fondo dinámico mejorado con parallax y scroll effects -->
       <div id="bg-dynamic" aria-hidden="true">
-        <div class="blob blob-a"></div>
-        <div class="blob blob-b"></div>
-        <div class="blob blob-c"></div>
+        <!-- Gradiente base suave -->
+        <div class="bg-base"></div>
+        
+        <!-- Blobs animados con parallax -->
+        <div class="blob blob-primary"></div>
+        <div class="blob blob-secondary"></div>
+        <div class="blob blob-accent"></div>
+        <div class="blob blob-highlight"></div>
+        
+        <!-- Grid sutil animado -->
+        <div class="bg-grid"></div>
+        
+        <!-- Overlay de luminosidad -->
+        <div class="bg-luminosity"></div>
+        
+        <!-- Vignette suave -->
+        <div class="bg-vignette"></div>
       </div>
     <Nav />
-    <main class="flex-1">
+    <main class="flex-1 relative z-10">
       <slot />
     </main>
       <script is:inline>
-        // Parallax suave de blobs al hacer scroll
-        const root = document.getElementById('bg-dynamic');
-        if (root) {
-          const a = root.querySelector('.blob-a');
-          const b = root.querySelector('.blob-b');
-          const c = root.querySelector('.blob-c');
+        // Sistema de parallax mejorado con múltiples capas y efectos de scroll
+        const bgDynamic = document.getElementById('bg-dynamic');
+        
+        if (bgDynamic && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const blobPrimary = bgDynamic.querySelector('.blob-primary');
+          const blobSecondary = bgDynamic.querySelector('.blob-secondary');
+          const blobAccent = bgDynamic.querySelector('.blob-accent');
+          const blobHighlight = bgDynamic.querySelector('.blob-highlight');
+          const bgGrid = bgDynamic.querySelector('.bg-grid');
+          
           let ticking = false;
-          const update = () => {
-            const y = window.scrollY || 0;
-            // Factores distintos para sensación de profundidad
-              a && (a.style.transform = `translateY(${y * 0.12}px)`);
-              b && (b.style.transform = `translateY(${y * 0.08}px)`);
-              c && (c.style.transform = `translateY(${y * 0.15}px)`);
+          let lastScrollY = 0;
+          let scrollSpeed = 0;
+          
+          const updateBackground = () => {
+            const scrollY = window.scrollY;
+            const scrollProgress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+            const viewportHeight = window.innerHeight;
+            
+            // Calcular velocidad de scroll
+            scrollSpeed = Math.abs(scrollY - lastScrollY);
+            lastScrollY = scrollY;
+            
+            // Parallax diferenciado para cada blob (múltiples velocidades y direcciones)
+            if (blobPrimary) {
+              const translateY = scrollY * 0.15;
+              const translateX = Math.sin(scrollProgress * Math.PI) * 50;
+              const scale = 1 + (scrollProgress * 0.15);
+              const rotate = scrollProgress * 45;
+              blobPrimary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+            }
+            
+            if (blobSecondary) {
+              const translateY = scrollY * 0.08;
+              const translateX = -Math.sin(scrollProgress * Math.PI * 1.5) * 70;
+              const scale = 1 + (scrollProgress * 0.1);
+              const rotate = -scrollProgress * 30;
+              blobSecondary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+            }
+            
+            if (blobAccent) {
+              const translateY = scrollY * 0.12;
+              const translateX = Math.cos(scrollProgress * Math.PI * 0.8) * 60;
+              const scale = 1 + (scrollProgress * 0.2);
+              const rotate = scrollProgress * 60;
+              blobAccent.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+            }
+            
+            if (blobHighlight) {
+              const translateY = scrollY * 0.05;
+              const translateX = Math.sin(scrollProgress * Math.PI * 2) * 40;
+              const opacity = 0.4 + (Math.sin(scrollProgress * Math.PI * 4) * 0.2);
+              const scale = 1 + (scrollProgress * 0.05);
+              blobHighlight.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+              blobHighlight.style.opacity = opacity;
+            }
+            
+            // Grid que se mueve sutilmente
+            if (bgGrid) {
+              const gridY = -(scrollY * 0.03) % 100;
+              const gridOpacity = 0.15 + (scrollSpeed * 0.002);
+              bgGrid.style.transform = `translateY(${gridY}px)`;
+              bgGrid.style.opacity = Math.min(gridOpacity, 0.25);
+            }
+            
+            // Ajustar saturación del fondo basado en el scroll
+            const saturation = 100 + (scrollProgress * 40);
+            bgDynamic.style.filter = `saturate(${saturation}%)`;
           };
+          
+          // Optimized scroll listener
           window.addEventListener('scroll', () => {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             if (!ticking) {
               requestAnimationFrame(() => {
-                update();
+                updateBackground();
                 ticking = false;
               });
               ticking = true;
             }
           }, { passive: true });
+          
+          // Mouse parallax effect (sutil)
+          let mouseX = 0;
+          let mouseY = 0;
+          let currentX = 0;
+          let currentY = 0;
+          
+          document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+          });
+          
+          const animateMouse = () => {
+            currentX += (mouseX - currentX) * 0.05;
+            currentY += (mouseY - currentY) * 0.05;
+            
+            if (blobPrimary) {
+              const currentTransform = blobPrimary.style.transform || '';
+              blobPrimary.style.transform = currentTransform + ` translate3d(${currentX * 20}px, ${currentY * 20}px, 0)`;
+            }
+            if (blobSecondary) {
+              const currentTransform = blobSecondary.style.transform || '';
+              blobSecondary.style.transform = currentTransform + ` translate3d(${currentX * -15}px, ${currentY * -15}px, 0)`;
+            }
+            
+            requestAnimationFrame(animateMouse);
+          };
+          animateMouse();
+          
+          // Initial update
+          updateBackground();
         }
       </script>
   </body>
