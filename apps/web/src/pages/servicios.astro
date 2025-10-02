@@ -1,159 +1,368 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Card from "../components/Card.astro";
 import SectionTitle from "../components/SectionTitle.astro";
+import Footer from "../components/Footer.astro";
+
+// Creative Services
+const creativeServices = [
+  {
+    icon: '💻',
+    title: 'Diseño y Desarrollo Web',
+    description: 'Landing Pages, Websites Corporativos y E-commerce optimizados para conversión.',
+    features: ['Responsive Design', 'SEO Optimizado', 'Performance']
+  },
+  {
+    icon: '🎨',
+    title: 'Branding & Diseño Gráfico',
+    description: 'Logos, identidades visuales y packs de contenido para una marca sólida y profesional.',
+    features: ['Identidad Visual', 'Manual de Marca', 'Assets Digitales']
+  },
+  {
+    icon: '📱',
+    title: 'Social Media & Copywriting',
+    description: 'Contenido gráfico + textos estratégicos para redes sociales que conectan y venden.',
+    features: ['Content Strategy', 'Diseño de Posts', 'Copy Persuasivo']
+  },
+  {
+    icon: '📊',
+    title: 'Marketing Digital & Ads',
+    description: 'Configuración de plataformas, gestión de Google Ads y Meta Ads para atraer más clientes.',
+    features: ['Google Ads', 'Meta Ads', 'Analytics']
+  }
+];
+
+// Business Services
+const businessServices = [
+  {
+    icon: '🎯',
+    title: 'Consultoría en Modelos de Negocio',
+    description: 'Diagnóstico y rediseño estratégico para maximizar el valor de tu empresa.'
+  },
+  {
+    icon: '🚀',
+    title: 'Transformación Digital',
+    description: 'Procesos, herramientas y KPIs para evolucionar tu empresa hacia el futuro digital.'
+  },
+  {
+    icon: '💎',
+    title: 'Valoración de Empresas',
+    description: 'Métodos financieros avanzados para conocer el valor real de tu compañía.'
+  },
+  {
+    icon: '📈',
+    title: 'Análisis y Proyección Financiera',
+    description: 'Modelos dinámicos, escenarios y planificación de capital inteligente.'
+  },
+  {
+    icon: '💰',
+    title: 'Estructuración de Capital',
+    description: 'Estrategias para optimizar financiamiento y atraer inversionistas estratégicos.'
+  }
+];
+
+// Paquetes Creative
+const creativePacks = [
+  { name: 'Starter', level: 'Emprendedores', color: 'from-blue-500 to-cyan-400' },
+  { name: 'Growth', level: 'Marcas en expansión', color: 'from-cyan-500 to-blue-600' },
+  { name: 'Premium', level: 'Presencia integral', color: 'from-blue-600 to-purple-500' }
+];
 ---
-<BaseLayout title="Servicios" description="Qué ofrecemos para acelerar tu impacto.">
-  <!-- Hero / Intro -->
-  <section class="relative pt-28 pb-20 overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_35%,rgba(46,106,255,0.12),transparent_70%),radial-gradient(circle_at_75%_55%,rgba(46,106,255,0.08),transparent_65%)]"></div>
-    <div class="absolute -inset-px -z-10 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
-    <div class="max-w-5xl mx-auto px-6 relative">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur border border-white/70 text-xs font-medium text-brand-dark shadow-sm">
-        <span class="h-2 w-2 rounded-full bg-gradient-to-r from-brand to-brand-dark animate-pulse"></span>
-        Portafolio de capacidades
-      </div>
-      <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent max-w-3xl">Habilitamos crecimiento con un stack de servicios especializado</h1>
-      <p class="mt-6 max-w-2xl text-lg text-gray-700 leading-relaxed">Integramos estrategia, producto, datos y ejecución ágil para pasar de la intuición a mejoras medibles y compuestas. Cada servicio se puede contratar de forma modular o como parte de un programa integral.</p>
-      <div class="mt-10 flex flex-wrap gap-3">
-        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">B2B & SaaS</span>
-        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">eCommerce con escala</span>
-        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Equipos en crecimiento</span>
-        <span class="px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm text-gray-700">Startups post-PMF</span>
-      </div>
+<BaseLayout title="Servicios" description="En Mar Digital integramos creatividad y estrategia para que tu marca tenga presencia, identidad y resultados medibles en digital.">
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.3),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.2),transparent_50%)]"></div>
     </div>
-  </section>
+    
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-[15%] w-2 h-2 rounded-full bg-blue-400/30 animate-pulse-glow"></div>
+      <div class="absolute top-32 right-[20%] w-1.5 h-1.5 rounded-full bg-cyan-400/40 animate-pulse-glow" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-40 left-[25%] w-1 h-1 rounded-full bg-blue-300/30 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    </div>
 
-  <!-- Services Grid Expanded -->
-  <section class="relative py-14">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_65%_30%,rgba(46,106,255,0.10),transparent_70%)]"></div>
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionTitle eyebrow="Servicios" title="Lo que hacemos" subtitle="Seis bloques que combinan para construir un sistema de crecimiento continuo." />
-      <div class="mt-12 grid gap-8 md:grid-cols-3">
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Estrategia & Dirección</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Alineamos objetivos, narrativa y focos trimestrales.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• Research & diagnóstico</li>
-            <li>• Roadmap priorizado</li>
-            <li>• Modelo de métricas</li>
-          </ul>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Badge -->
+      <div class="scroll-reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-100/50 shadow-lg mb-8">
+        <span class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 animate-pulse"></span>
+        <span class="text-xs font-semibold tracking-wide uppercase bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">
+          Servicios
+        </span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="scroll-reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+        <span class="inline-block bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
+          Nuestros Servicios
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="scroll-reveal text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-12">
+        En <strong class="text-blue-700">Mar Digital</strong> integramos <strong class="text-cyan-600">creatividad y estrategia</strong> para que tu marca tenga presencia, identidad y resultados medibles en digital.
+      </p>
+
+      <!-- Division Badges -->
+      <div class="scroll-reveal flex flex-wrap justify-center gap-4">
+        <div class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎨</span>
+            <span class="text-sm font-semibold text-gray-800">Mar Digital Creative</span>
+          </div>
         </div>
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Desarrollo & Producto</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Implementación ágil de funcionalidades y activos.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• Sitios & landings</li>
-            <li>• Componentes UI</li>
-            <li>• Integraciones API</li>
-          </ul>
-        </div>
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Optimización & Performance</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Mejoramos velocidad, conversión y experiencia.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• SEO & Core Web Vitals</li>
-            <li>• CRO & UX heurístico</li>
-            <li>• Refactor incremental</li>
-          </ul>
-        </div>
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Automatización & Flujos</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Eliminamos fricción y tareas repetitivas.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• Integraciones SaaS</li>
-            <li>• Zaps / Webhooks</li>
-            <li>• Enriquecimiento de datos</li>
-          </ul>
-        </div>
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Analytics & Instrumentación</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Medimos lo que importa y limpiamos ruido.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• Eventos & tracking</li>
-            <li>• Dashboards accionables</li>
-            <li>• Cohortes & funnels</li>
-          </ul>
-        </div>
-        <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-          <h3 class="relative font-semibold text-gray-900">Experimentación & Aprendizaje</h3>
-          <p class="relative mt-2 text-sm text-gray-600">Validamos hipótesis rápido y con rigor.</p>
-          <ul class="relative mt-4 space-y-1.5 text-sm text-gray-600">
-            <li>• Diseño de pruebas</li>
-            <li>• Análisis estadístico</li>
-            <li>• Knowledge base</li>
-          </ul>
+        <div class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📊</span>
+            <span class="text-sm font-semibold text-gray-800">Mar Digital Business</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process / Methodology -->
-  <section class="relative py-20">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_60%,rgba(46,106,255,0.10),transparent_70%)]"></div>
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionTitle eyebrow="Método" title="Cómo trabajamos" subtitle="Un ciclo iterativo que mantiene foco y reduce desperdicio." />
-      <ol class="mt-12 relative grid gap-10 md:grid-cols-5">
-        {[
-          { n: 1, t: 'Descubrir', d: 'Contexto, métricas base y fricciones clave.' },
-          { n: 2, t: 'Priorizar', d: 'Alineamos impacto vs. esfuerzo y definimos apuestas.' },
-          { n: 3, t: 'Implementar', d: 'Sprints cortos con entregables claros.' },
-          { n: 4, t: 'Medir', d: 'Dashboards y retro sobre señal real.' },
-          { n: 5, t: 'Iterar', d: 'Escalamos lo que funciona y archivamos lo que no.' }
-        ].map(step => (
-          <li class="group relative flex flex-col">
-            <div class="flex items-center gap-3">
-              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white font-semibold shadow">{step.n}</span>
-              <h3 class="font-semibold text-gray-900">{step.t}</h3>
+  <!-- Mar Digital Creative Section -->
+  <section class="relative py-24 lg:py-32 overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.4),transparent_60%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg mb-6">
+          <span class="text-3xl">🎨</span>
+          <span class="text-white font-bold text-lg tracking-wide">Mar Digital Creative</span>
+        </div>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Creamos soluciones digitales que <strong class="text-blue-600">elevan la identidad</strong> de tu marca y generan <strong class="text-cyan-600">confianza</strong> en tus clientes.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+        {creativeServices.map((service, index) => (
+          <div 
+            class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            <!-- Hover Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Icon Badge -->
+            <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-3xl shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
+              {service.icon}
             </div>
-            <p class="mt-3 text-sm text-gray-600 leading-relaxed">{step.d}</p>
-            <div class="absolute left-5 top-10 w-px h-full bg-gradient-to-b from-brand/40 to-transparent pointer-events-none"></div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
 
-  <!-- Differentiators -->
-  <section class="relative py-20">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_40%,rgba(46,106,255,0.10),transparent_70%)]"></div>
-    <div class="max-w-6xl mx-auto px-6">
-      <SectionTitle eyebrow="Diferenciales" title="Por qué nosotros" subtitle="No somos una fábrica de tareas: operamos como una extensión estratégica orientada a compuestos." />
-      <div class="mt-12 grid gap-8 md:grid-cols-3">
-        {[
-          { t: 'Integración real', d: 'Nos sumamos a tus rituales, stack y forma de trabajar.' },
-          { t: 'Data sobre ego', d: 'Decisiones basadas en señal, no en narrativas internas.' },
-          { t: 'Escalabilidad', d: 'Diseñamos para iterar rápido sin incurrir en deuda tóxica.' },
-          { t: 'Velocidad responsable', d: 'Entregamos rápido sin sacrificar mantenibilidad.' },
-          { t: 'Contexto profundo', d: 'Aprendizaje acumulativo documentado y reutilizable.' },
-          { t: 'Trazabilidad', d: 'Cada iniciativa se vincula a una métrica o hipótesis.' }
-        ].map(item => (
-          <div class="group relative p-6 rounded-2xl bg-white/70 backdrop-blur border border-white/60 shadow-sm overflow-hidden">
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-brand/10 to-brand-dark/10"></div>
-            <h3 class="relative font-semibold text-gray-900">{item.t}</h3>
-            <p class="relative mt-2 text-sm text-gray-600 leading-relaxed">{item.d}</p>
+            <!-- Content -->
+            <h3 class="relative text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors">
+              {service.title}
+            </h3>
+            <p class="relative text-gray-600 leading-relaxed mb-6">
+              {service.description}
+            </p>
+
+            <!-- Features -->
+            {service.features && (
+              <div class="relative flex flex-wrap gap-2">
+                {service.features.map(feature => (
+                  <span class="px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-sm font-medium text-blue-700">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <!-- Decorative corner -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="relative py-24">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(46,106,255,0.12),transparent_75%)]"></div>
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">¿Listo para acelerar?</h2>
-      <p class="mt-6 text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">Empecemos con una evaluación breve: en 30-45 minutos identificamos quick wins y definimos si hay encaje. Sin compromiso.</p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-semibold px-7 py-3 shadow hover:brightness-110 transition">Solicitar contacto</a>
-        <a href="/blog" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 backdrop-blur border border-white/60 text-sm font-semibold px-7 py-3 text-gray-800 hover:text-brand-dark hover:shadow transition">Ver ideas & aprendizajes</a>
+      <!-- Paquetes Creative -->
+      <div class="scroll-reveal">
+        <div class="text-center mb-10">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Paquetes Creative</h3>
+          <p class="text-gray-600">Planes diseñados para cada etapa de tu crecimiento</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {creativePacks.map((pack, index) => (
+            <div 
+              class="group relative p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              style={`animation-delay: ${index * 150}ms;`}
+            >
+              <!-- Gradient Overlay -->
+              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              
+              <!-- Content -->
+              <div class="relative text-center">
+                <div class={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${pack.color} text-white font-bold text-lg mb-4 shadow-lg`}>
+                  {pack.name}
+                </div>
+                <p class="text-gray-600 font-medium">{pack.level}</p>
+                
+                <!-- Decorative line -->
+                <div class="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Mar Digital Business Section -->
+  <section class="relative py-24 lg:py-32 overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/30 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.4),transparent_60%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg mb-6">
+          <span class="text-3xl">📊</span>
+          <span class="text-white font-bold text-lg tracking-wide">Mar Digital Business</span>
+        </div>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Acompañamos a empresas y startups con <strong class="text-cyan-600">consultoría estratégica</strong> para crecer con bases sólidas y <strong class="text-blue-600">visión a futuro</strong>.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {businessServices.map((service, index) => (
+          <div 
+            class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            <!-- Hover Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Icon Badge -->
+            <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-3xl shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              {service.icon}
+            </div>
+
+            <!-- Content -->
+            <h3 class="relative text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-700 transition-colors leading-tight">
+              {service.title}
+            </h3>
+            <p class="relative text-gray-600 leading-relaxed text-sm">
+              {service.description}
+            </p>
+
+            <!-- Decorative elements -->
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bottom Accent -->
+      <div class="scroll-reveal mt-16 text-center">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-100 shadow-lg">
+          <span class="text-sm font-medium text-gray-700">Estrategias basadas en datos y experiencia comprobada</span>
+          <svg class="w-5 h-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950"></div>
+    
+    <!-- Floating Blobs -->
+    <div class="absolute inset-0 overflow-hidden opacity-40">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl animate-blob-float"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-blob-float-delayed"></div>
+    </div>
+
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Badge -->
+      <div class="scroll-reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-8 shadow-2xl">
+        <span class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-300 animate-pulse"></span>
+        <span class="text-xs font-semibold tracking-wide uppercase text-white">
+          ¿Listo para empezar?
+        </span>
+      </div>
+
+      <!-- Main Title -->
+      <h2 class="scroll-reveal text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8">
+        <span class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+          Ya sea que necesites creatividad para tu marca
+        </span>
+        <br />
+        <span class="bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent">
+          o consultoría estratégica para tu empresa
+        </span>
+      </h2>
+
+      <!-- Description -->
+      <p class="scroll-reveal text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+        En <strong class="text-white">Mar Digital</strong> tenemos el servicio perfecto para ti. 
+        Conectemos y construyamos algo extraordinario juntos.
+      </p>
+
+      <!-- CTA Button -->
+      <div class="scroll-reveal">
+        <a 
+          href="/contacto" 
+          class="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white text-lg font-bold shadow-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden"
+        >
+          <!-- Shine Effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          
+          <!-- Content -->
+          <span class="relative">👉 Solicita tu propuesta personalizada</span>
+          
+          <!-- Arrow -->
+          <svg class="relative w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="scroll-reveal mt-16 flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Sin compromiso</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Respuesta en 24hs</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Propuesta personalizada</span>
+        </div>
+      </div>
+
+      <!-- Decorative Elements -->
+      <div class="absolute top-10 left-10 w-3 h-3 rounded-full bg-cyan-400/50 animate-pulse-glow"></div>
+      <div class="absolute bottom-20 right-10 w-2 h-2 rounded-full bg-blue-400/50 animate-pulse-glow" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-20 w-2 h-2 rounded-full bg-cyan-300/40 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>
