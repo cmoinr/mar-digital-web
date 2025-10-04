@@ -54,7 +54,7 @@ export default function Hero({
       <h1 className="hero-animate opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
         <span className="inline-block bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
           {headline.split(' ').map((word, i) => (
-            <span key={i} className="inline-block mr-3 hover:scale-105 transition-transform duration-300">
+            <span key={i} className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300">
               {word}
             </span>
           ))}
@@ -63,7 +63,7 @@ export default function Hero({
       
       {/* Subtitle con mejor tipografía */}
       {sub && (
-        <p className="hero-animate opacity-0 text-lg sm:text-xl lg:text-2xl text-gray-600 mb-10 leading-relaxed max-w-2xl font-light">
+        <p className="hero-animate opacity-0 text-lg sm:text-xl lg:text-2xl text-white mb-10 leading-relaxed max-w-2xl font-light">
           {sub}
         </p>
       )}

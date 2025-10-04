@@ -4,8 +4,8 @@
 const links = [
   { href: '/', label: 'Inicio' },
   { href: '/servicios', label: 'Servicios' },
-  { href: '/optimizacion', label: 'Optimiza tu negocio' },
-  { href: '/about', label: 'Nosotros' },
+  { href: '/about#creative', label: 'Creative' },
+  { href: '/about#business', label: 'Business' },
   { href: '/blog', label: 'Blog' }
 ];
 
@@ -26,15 +26,9 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
       <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]"></div>
       
       <!-- Brand -->
-      <a href="/" class="relative font-bold tracking-tight text-xl flex items-center gap-3 group z-10">
-        <!-- Logo placeholder -->
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-xl group-hover:shadow-blue-500/40 transition-all duration-300 group-hover:scale-105">
-          <span class="text-white font-bold text-sm">MD</span>
-        </div>
-        <span class="brand-text relative">
-          Mar Digital
-        </span>
-        <span class="absolute -bottom-1 left-12 h-0.5 w-0 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 transition-all duration-500 group-hover:w-[calc(100%-3rem)] rounded-full"></span>
+      <a href="/" class="relative flex items-center group z-10">
+        <!-- Logo -->
+        <img src="/main-logo.png" alt="Mar Digital" class="h-12 w-auto transition-all duration-300 group-hover:scale-105 object-contain" />
       </a>
 
       <!-- Desktop Nav -->
@@ -72,28 +66,28 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
       <!-- Mobile Menu Toggle -->
       <details class="md:hidden relative group z-10">
-        <summary class="list-none flex items-center justify-center w-10 h-10 rounded-xl border border-white/50 bg-white/80 backdrop-blur-xl cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60">
+        <summary class="list-none flex items-center justify-center w-10 h-10 rounded-xl border border-blue-300/50 bg-blue-800/60 backdrop-blur-xl cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60">
           <div class="relative w-5 h-4">
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full transition-all duration-300 origin-center group-open:rotate-45 group-open:top-1.5"></span>
-            <span class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full transition-all duration-300 group-open:opacity-0 group-open:scale-0"></span>
-            <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full transition-all duration-300 origin-center group-open:-rotate-45 group-open:bottom-1.5"></span>
+            <span class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center group-open:rotate-45 group-open:top-1.5"></span>
+            <span class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 group-open:opacity-0 group-open:scale-0"></span>
+            <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center group-open:-rotate-45 group-open:bottom-1.5"></span>
           </div>
         </summary>
-        <div class="mobile-menu absolute right-0 mt-4 w-72 origin-top-right shadow-2xl rounded-2xl border border-white/60 bg-white/85 backdrop-blur-2xl p-5 flex flex-col gap-2 overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-50/80 via-transparent to-cyan-50/60" />
+        <div class="mobile-menu absolute right-0 mt-4 w-72 origin-top-right shadow-2xl rounded-2xl border border-blue-300/40 bg-blue-900/90 backdrop-blur-2xl p-5 flex flex-col gap-2 overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-800/60 via-transparent to-cyan-900/40" />
           <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-300/20 rounded-full blur-2xl animate-blob-pulse-fast"></div>
           {links.map(l => {
             const active = l.href === pathname || (l.href !== '/' && pathname.startsWith(l.href));
             return (
               <a href={l.href} class={`mobile-link relative px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 z-10
-                ${active ? 'bg-gradient-to-r from-blue-500/20 to-cyan-400/20 text-blue-700 shadow-inner font-semibold' : 'text-gray-700 hover:bg-blue-50/80 hover:text-blue-600 hover:translate-x-1'}
+                ${active ? 'bg-gradient-to-r from-blue-500/30 to-cyan-400/30 text-white shadow-inner font-semibold' : 'text-blue-100 hover:bg-blue-800/60 hover:text-white hover:translate-x-1'}
               `}>
                 {l.label}
-                {active && <span class="absolute left-2 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></span>}
+                {active && <span class="absolute left-2 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-gradient-to-b from-blue-300 to-cyan-300 rounded-full"></span>}
               </a>
             );
           })}
-          <a href="/contacto" class="mobile-cta relative mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 text-white text-sm font-semibold px-5 py-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 hover:bg-right z-10">
+          <a href="/contacto" class="mobile-cta relative mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-200 bg-size-200 text-white text-sm font-semibold px-5 py-3 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-300/40 transition-all duration-300 hover:bg-right z-10">
             <span>Contacto</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -106,7 +100,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 </nav>
 
 <!-- Spacer to avoid content hidden under fixed navbar -->
-<div class="h-28"></div>
+<div class="h-0"></div>
 
 <style lang="css">
   /* Navbar wrapper animation on load */
@@ -128,19 +122,19 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
   .nav-glass {
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.7) 25%,
-      rgba(255, 255, 255, 0.6) 50%,
-      rgba(255, 255, 255, 0.7) 75%,
-      rgba(255, 255, 255, 0.9)
+      rgba(30, 58, 138, 0.15),
+      rgba(37, 99, 235, 0.25) 25%,
+      rgba(59, 130, 246, 0.25) 50%,
+      rgba(37, 99, 235, 0.25) 75%,
+      rgba(30, 58, 138, 0.15)
     );
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     box-shadow: 
-      0 8px 32px rgba(59, 130, 246, 0.1),
-      0 4px 16px rgba(6, 182, 212, 0.08),
-      inset 0 1px 2px rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+      0 8px 32px rgba(30, 58, 138, 0.2),
+      0 4px 16px rgba(37, 99, 235, 0.15),
+      inset 0 1px 2px rgba(147, 197, 253, 0.2);
+    border: 1px solid rgba(147, 197, 253, 0.2);
     transition: all 0.3s ease;
   }
 
@@ -149,11 +143,11 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     background: linear-gradient(
       110deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.8) 15%,
+      rgba(255, 255, 255, 0.486) 15%,
       rgba(59, 130, 246, 0.15) 35%,
       rgba(6, 182, 212, 0.15) 50%,
       rgba(59, 130, 246, 0.15) 65%,
-      rgba(255, 255, 255, 0.8) 85%,
+      rgba(255, 255, 255, 0.612) 85%,
       transparent 100%
     );
     background-size: 200% 100%;
@@ -228,19 +222,19 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   /* Nav links styling with enhanced interactions */
   .nav-link {
-    color: #475569;
+    color: #e0e7ff;
     position: relative;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .nav-link:hover {
-    color: #1e40af;
+    color: #ffffff;
     transform: translateY(-1px);
   }
 
   .nav-link.is-active {
-    color: #1e3a8a;
+    color: #ffffff;
     font-weight: 600;
   }
 
@@ -251,8 +245,8 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     border-radius: 9999px;
     background: radial-gradient(
       circle at 50% 50%,
-      rgba(59, 130, 246, 0.15),
-      rgba(6, 182, 212, 0.1),
+      rgba(147, 197, 253, 0.25),
+      rgba(96, 165, 250, 0.15),
       transparent 70%
     );
     opacity: 0;
@@ -265,7 +259,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     transform: scale(1);
   }
   .nav-link.is-active .hover-glow {
-    opacity: 0.7;
+    opacity: 0.8;
     transform: scale(1);
   }
 
@@ -276,7 +270,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     bottom: 6px;
     width: 0;
     height: 2.5px;
-    background: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6);
+    background: linear-gradient(90deg, #93c5fd, #60a5fa, #93c5fd);
     border-radius: 2px;
     transform: translateX(-50%);
     transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -310,7 +304,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
   .cta-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #2563eb 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 50%, #0e7490 100%);
     transition: all 0.4s ease;
     z-index: 0;
   }
@@ -343,15 +337,15 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
   .cta-btn:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
-      0 8px 28px rgba(59, 130, 246, 0.4),
-      0 4px 12px rgba(6, 182, 212, 0.3),
+      0 8px 28px rgba(6, 182, 212, 0.4),
+      0 4px 12px rgba(14, 116, 144, 0.3),
       inset 0 1px 2px rgba(255, 255, 255, 0.4);
   }
   .cta-btn:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 
-      0 2px 12px rgba(59, 130, 246, 0.3),
-      0 1px 4px rgba(6, 182, 212, 0.2);
+      0 2px 12px rgba(6, 182, 212, 0.3),
+      0 1px 4px rgba(14, 116, 144, 0.2);
   }
 
   /* CTA particles effect */
