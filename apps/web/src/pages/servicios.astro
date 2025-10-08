@@ -6,25 +6,25 @@ import Footer from "../components/Footer.astro";
 // Creative Services
 const creativeServices = [
   {
-    icon: '💻',
+    image: 'https://images.pexels.com/photos/326514/pexels-photo-326514.jpeg',
     title: 'Diseño y Desarrollo Web',
     description: 'Landing Pages, Websites Corporativos y E-commerce optimizados para conversión.',
     features: ['Responsive Design', 'SEO Optimizado', 'Performance']
   },
   {
-    icon: '🎨',
+    image: 'https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg',
     title: 'Branding & Diseño Gráfico',
     description: 'Logos, identidades visuales y packs de contenido para una marca sólida y profesional.',
     features: ['Identidad Visual', 'Manual de Marca', 'Assets Digitales']
   },
   {
-    icon: '📱',
+    image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg',
     title: 'Social Media & Copywriting',
     description: 'Contenido gráfico + textos estratégicos para redes sociales que conectan y venden.',
     features: ['Content Strategy', 'Diseño de Posts', 'Copy Persuasivo']
   },
   {
-    icon: '📊',
+    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg',
     title: 'Marketing Digital & Ads',
     description: 'Configuración de plataformas, gestión de Google Ads y Meta Ads para atraer más clientes.',
     features: ['Google Ads', 'Meta Ads', 'Analytics']
@@ -34,27 +34,27 @@ const creativeServices = [
 // Business Services
 const businessServices = [
   {
-    icon: '🎯',
+    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
     title: 'Consultoría en Modelos de Negocio',
     description: 'Diagnóstico y rediseño estratégico para maximizar el valor de tu empresa.'
   },
   {
-    icon: '🚀',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
     title: 'Transformación Digital',
     description: 'Procesos, herramientas y KPIs para evolucionar tu empresa hacia el futuro digital.'
   },
   {
-    icon: '💎',
+    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg',
     title: 'Valoración de Empresas',
     description: 'Métodos financieros avanzados para conocer el valor real de tu compañía.'
   },
   {
-    icon: '📈',
+    image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg',
     title: 'Análisis y Proyección Financiera',
     description: 'Modelos dinámicos, escenarios y planificación de capital inteligente.'
   },
   {
-    icon: '💰',
+    image: 'https://images.pexels.com/photos/7567528/pexels-photo-7567528.jpeg',
     title: 'Estructuración de Capital',
     description: 'Estrategias para optimizar financiamiento y atraer inversionistas estratégicos.'
   }
@@ -83,14 +83,6 @@ const creativePacks = [
     </div>
 
     <div class="relative max-w-5xl mx-auto px-6 text-center">
-      <!-- Badge -->
-      <div class="scroll-reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-100/50 shadow-lg mb-8">
-        <span class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 animate-pulse"></span>
-        <span class="text-xs font-semibold tracking-wide uppercase bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">
-          Servicios
-        </span>
-      </div>
-
       <!-- Main Title -->
       <h1 class="scroll-reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
         <span class="inline-block bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
@@ -105,27 +97,30 @@ const creativePacks = [
 
       <!-- Division Badges -->
       <div class="scroll-reveal flex flex-wrap justify-center gap-4">
-        <div class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <a href="#creative-section" class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
           <div class="flex items-center gap-3">
-            <span class="text-2xl">🎨</span>
-            <span class="text-sm font-semibold text-gray-800">Mar Digital Creative</span>
+            <span class="text-sm font-semibold text-blue-700">Mar Digital Creative</span>
           </div>
-        </div>
-        <div class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        </a>
+        <a href="#business-section" class="group px-6 py-3 rounded-2xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
           <div class="flex items-center gap-3">
-            <span class="text-2xl">📊</span>
-            <span class="text-sm font-semibold text-gray-800">Mar Digital Business</span>
+            <span class="text-sm font-semibold text-cyan-600">Mar Digital Business</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Mar Digital Creative Section -->
-  <section class="relative py-24 lg:py-32 overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white"></div>
-    <div class="absolute inset-0 opacity-[0.03]">
+  <section id="creative-section" class="relative py-24 lg:py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-cyan-900/80 to-blue-800/85"></div>
+      <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <!-- Decorative overlay -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none select-none" aria-hidden="true">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.4),transparent_60%)]"></div>
     </div>
 
@@ -133,50 +128,57 @@ const creativePacks = [
       <!-- Section Header -->
       <div class="text-center mb-16 scroll-reveal">
         <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg mb-6">
-          <span class="text-3xl">🎨</span>
           <span class="text-white font-bold text-lg tracking-wide">Mar Digital Creative</span>
         </div>
-        <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Creamos soluciones digitales que <strong class="text-blue-600">elevan la identidad</strong> de tu marca y generan <strong class="text-cyan-600">confianza</strong> en tus clientes.
+        <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          Creamos soluciones digitales que <strong class="text-cyan-200">elevan la identidad</strong> de tu marca y generan <strong class="text-blue-200">confianza</strong> en tus clientes.
         </p>
       </div>
 
       <!-- Services Grid -->
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
         {creativeServices.map((service, index) => (
           <div 
-            class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            class="scroll-reveal group relative rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col"
             style={`animation-delay: ${index * 100}ms;`}
           >
             <!-- Hover Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <!-- Icon Badge -->
-            <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-3xl shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
-              {service.icon}
+            <!-- Image Header -->
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <!-- Gradient overlay on image -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/60"></div>
             </div>
 
             <!-- Content -->
-            <h3 class="relative text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors">
-              {service.title}
-            </h3>
-            <p class="relative text-gray-600 leading-relaxed mb-6">
-              {service.description}
-            </p>
+            <div class="relative p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-white/90 leading-relaxed mb-6 flex-grow text-sm">
+                {service.description}
+              </p>
 
-            <!-- Features -->
-            {service.features && (
-              <div class="relative flex flex-wrap gap-2">
-                {service.features.map(feature => (
-                  <span class="px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-sm font-medium text-blue-700">
-                    {feature}
-                  </span>
-                ))}
-              </div>
-            )}
+              <!-- Features -->
+              {service.features && (
+                <div class="flex flex-wrap gap-2">
+                  {service.features.map(feature => (
+                    <span class="px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-300/30 text-xs font-medium text-white/90">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <!-- Decorative corner -->
-            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         ))}
       </div>
@@ -184,28 +186,28 @@ const creativePacks = [
       <!-- Paquetes Creative -->
       <div class="scroll-reveal">
         <div class="text-center mb-10">
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">Paquetes Creative</h3>
-          <p class="text-gray-600">Planes diseñados para cada etapa de tu crecimiento</p>
+          <h3 class="text-2xl font-bold text-white mb-3">Paquetes Creative</h3>
+          <p class="text-white/80">Planes diseñados para cada etapa de tu crecimiento</p>
         </div>
         
         <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {creativePacks.map((pack, index) => (
             <div 
-              class="group relative p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              class="group relative p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
               style={`animation-delay: ${index * 150}ms;`}
             >
               <!-- Gradient Overlay -->
-              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
               
               <!-- Content -->
               <div class="relative text-center">
                 <div class={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${pack.color} text-white font-bold text-lg mb-4 shadow-lg`}>
                   {pack.name}
                 </div>
-                <p class="text-gray-600 font-medium">{pack.level}</p>
+                <p class="text-white/90 font-medium">{pack.level}</p>
                 
                 <!-- Decorative line -->
-                <div class="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+                <div class="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
               </div>
             </div>
           ))}
@@ -215,10 +217,15 @@ const creativePacks = [
   </section>
 
   <!-- Mar Digital Business Section -->
-  <section class="relative py-24 lg:py-32 overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/30 to-white"></div>
-    <div class="absolute inset-0 opacity-[0.03]">
+  <section id="business-section" class="relative py-24 lg:py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/85 via-blue-900/80 to-cyan-800/85"></div>
+      <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <!-- Decorative overlay -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none select-none" aria-hidden="true">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.4),transparent_60%)]"></div>
     </div>
 
@@ -226,11 +233,10 @@ const creativePacks = [
       <!-- Section Header -->
       <div class="text-center mb-16 scroll-reveal">
         <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg mb-6">
-          <span class="text-3xl">📊</span>
           <span class="text-white font-bold text-lg tracking-wide">Mar Digital Business</span>
         </div>
-        <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Acompañamos a empresas y startups con <strong class="text-cyan-600">consultoría estratégica</strong> para crecer con bases sólidas y <strong class="text-blue-600">visión a futuro</strong>.
+        <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          Acompañamos a empresas y startups con <strong class="text-cyan-200">consultoría estratégica</strong> para crecer con bases sólidas y <strong class="text-blue-200">visión a futuro</strong>.
         </p>
       </div>
 
@@ -238,37 +244,44 @@ const creativePacks = [
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {businessServices.map((service, index) => (
           <div 
-            class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            class="scroll-reveal group relative rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col"
             style={`animation-delay: ${index * 100}ms;`}
           >
             <!-- Hover Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <!-- Icon Badge -->
-            <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-3xl shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              {service.icon}
+            <!-- Image Header -->
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <!-- Gradient overlay on image -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cyan-900/60"></div>
             </div>
 
             <!-- Content -->
-            <h3 class="relative text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-700 transition-colors leading-tight">
-              {service.title}
-            </h3>
-            <p class="relative text-gray-600 leading-relaxed text-sm">
-              {service.description}
-            </p>
+            <div class="relative p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors leading-tight">
+                {service.title}
+              </h3>
+              <p class="text-white/90 leading-relaxed text-sm flex-grow">
+                {service.description}
+              </p>
+            </div>
 
-            <!-- Decorative elements -->
-            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <!-- Decorative corner -->
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         ))}
       </div>
 
       <!-- Bottom Accent -->
       <div class="scroll-reveal mt-16 text-center">
-        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-100 shadow-lg">
-          <span class="text-sm font-medium text-gray-700">Estrategias basadas en datos y experiencia comprobada</span>
-          <svg class="w-5 h-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg">
+          <span class="text-sm font-medium text-white/90">Estrategias basadas en datos y experiencia comprobada</span>
+          <svg class="w-5 h-5 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </div>
