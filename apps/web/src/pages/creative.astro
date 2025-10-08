@@ -1,0 +1,414 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import Footer from "../components/Footer.astro";
+
+// Servicios Creative
+const creativesServices = [
+  {
+    title: 'Diseño y Desarrollo Web',
+    description: 'Creamos sitios web que transmiten confianza y venden. Desde landing pages para captar leads hasta e-commerce robustos con todo lo que necesitas para crecer.',
+    image: 'https://images.pexels.com/photos/326514/pexels-photo-326514.jpeg'
+  },
+  {
+    title: 'Branding & Diseño Gráfico',
+    description: 'Tu identidad visual es la cara de tu negocio. Diseñamos logos, manuales de marca y piezas gráficas que reflejan la esencia de tu empresa y generan impacto.',
+    image: 'https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg'
+  },
+  {
+    title: 'Social Media & Copywriting',
+    description: 'No se trata solo de publicar, sino de conectar. Creamos piezas gráficas y textos estratégicos que construyen comunidad y generan ventas en redes sociales.',
+    image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg'
+  },
+  {
+    title: 'Marketing Digital & Ads',
+    description: 'Hacemos que tu marca llegue a más personas. Configuramos y gestionamos Google Ads y Meta Ads, optimizamos tu ficha de Google Business y medimos resultados.',
+    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg'
+  }
+];
+
+// Paquetes Creative (Branding + Diseño + Redes)
+const creativePacks = [
+  {
+    name: 'Starter Creative Pack',
+    description: 'Incluye logo, flyer digital y 10 piezas gráficas para redes.',
+    target: 'Perfecto para emprendedores que quieren arrancar con una identidad clara y profesional.',
+    color: 'from-blue-500 to-cyan-400'
+  },
+  {
+    name: 'Growth Creative Pack',
+    description: 'Branding completo, 20 piezas gráficas y 10 captions estratégicos.',
+    target: 'Diseñado para marcas en expansión que buscan consistencia y una imagen sólida en redes.',
+    color: 'from-cyan-500 to-blue-600'
+  },
+  {
+    name: 'Premium Creative Pack',
+    description: 'Branding completo, 30 piezas gráficas premium y 30 captions avanzados.',
+    target: 'La solución integral para empresas que quieren destacar con identidad sólida y gestión avanzada de contenidos.',
+    color: 'from-blue-600 to-purple-500'
+  }
+];
+
+// Paquetes Business (Web + SEO + Ads)
+const businessPacks = [
+  {
+    name: 'Starter Business Pack',
+    description: 'Landing Page Semi Pro en WordPress + Google Business Setup.',
+    target: 'Ideal para empresas que necesitan una presencia digital básica para captar clientes locales.',
+    color: 'from-emerald-500 to-teal-400'
+  },
+  {
+    name: 'Growth Business Pack',
+    description: 'Website corporativo (WordPress), optimización SEO y Pixel de Meta.',
+    target: 'Una web optimizada + métricas claras para hacer crecer tu negocio en digital.',
+    color: 'from-teal-500 to-emerald-600'
+  },
+  {
+    name: 'Premium Business Pack',
+    description: 'Website corporativo Pro (código), gestión de Google Ads y Meta Ads.',
+    target: 'Estrategia completa de ventas online con web avanzada y campañas publicitarias profesionales.',
+    color: 'from-emerald-600 to-green-700'
+  }
+];
+
+// Paquetes E-Commerce (Tiendas Online)
+const ecommercePacks = [
+  {
+    name: 'Starter E-Commerce Pack',
+    description: 'Tienda básica en WordPress + Google Business Setup.',
+    target: 'La forma más rápida y accesible de empezar a vender en línea.',
+    color: 'from-orange-500 to-amber-400'
+  },
+  {
+    name: 'Growth E-Commerce Pack',
+    description: 'E-commerce Pro (código), SEO y Pixel de Meta.',
+    target: 'Tienda robusta con optimización de tráfico y métricas para crecer sostenidamente.',
+    color: 'from-amber-500 to-orange-600'
+  },
+  {
+    name: 'Premium E-Commerce Pack',
+    description: 'E-commerce Pro (código), gestión de Google Ads y Meta Ads.',
+    target: 'Tienda avanzada con estrategia publicitaria completa para escalar ventas.',
+    color: 'from-orange-600 to-red-600'
+  }
+];
+
+// Beneficios
+const beneficios = [
+  'Diseño profesional con propósito',
+  'Identidad de marca sólida y coherente',
+  'Contenido pensado para atraer y vender',
+  'Soluciones escalables a la medida de tu negocio'
+];
+---
+<BaseLayout title="Mar Digital Creative" description="Creatividad que impulsa tu marca - Diseño web, branding, social media y marketing digital">
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-cyan-900/80 to-blue-800/85"></div>
+      <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <!-- Decorative overlay -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.3),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.2),transparent_50%)]"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-[15%] w-2 h-2 rounded-full bg-blue-400/30 animate-pulse-glow"></div>
+      <div class="absolute top-32 right-[20%] w-1.5 h-1.5 rounded-full bg-cyan-400/40 animate-pulse-glow" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-40 left-[25%] w-1 h-1 rounded-full bg-blue-300/30 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Badge -->
+      <div class="scroll-reveal inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg mb-8">
+        <span class="text-white font-bold text-lg tracking-wide">Mar Digital Creative</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="scroll-reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+        <span class="inline-block bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+          Creatividad que impulsa tu marca.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="scroll-reveal text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto">
+        Desde un logo hasta una tienda online completa: en <strong class="text-cyan-200">Mar Digital Creative</strong> diseñamos experiencias que conectan con tu público y convierten visitas en clientes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios Creative Section -->
+  <section class="relative py-24 lg:py-32">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.4),transparent_60%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-reveal">
+        <SectionTitle eyebrow="Nuestros Servicios" title="Lo que hacemos por ti" />
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        {creativesServices.map((service, index) => (
+          <div 
+            class="scroll-reveal group relative rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col"
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            <!-- Hover Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Image Header -->
+            <div class="relative h-56 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/40"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative p-8 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed flex-grow">
+                {service.description}
+              </p>
+            </div>
+
+            <!-- Decorative corner -->
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Paquetes Section -->
+  <section class="relative py-24 lg:py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95"></div>
+      <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.4),transparent_70%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <!-- Creative Packs -->
+      <div class="mb-20">
+        <div class="text-center mb-12 scroll-reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">División Creative</h2>
+          <p class="text-lg text-white/80">Branding + Diseño + Redes</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          {creativePacks.map((pack, index) => (
+            <div 
+              class="scroll-reveal group relative p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              style={`animation-delay: ${index * 100}ms;`}
+            >
+              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
+              
+              <div class="relative">
+                <div class={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${pack.color} text-white font-bold text-lg mb-6 shadow-lg`}>
+                  {pack.name.split(' ')[0]}
+                </div>
+                
+                <h3 class="text-xl font-bold text-white mb-4">{pack.name}</h3>
+                <p class="text-white/90 text-sm leading-relaxed mb-6">{pack.description}</p>
+                
+                <div class="flex items-start gap-2 p-4 rounded-xl bg-white/5 border border-white/20">
+                  <span class="text-2xl">👉</span>
+                  <p class="text-sm text-white/80 leading-relaxed">{pack.target}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Business Packs -->
+      <div class="mb-20">
+        <div class="text-center mb-12 scroll-reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">División Business</h2>
+          <p class="text-lg text-white/80">Web + SEO + Ads</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          {businessPacks.map((pack, index) => (
+            <div 
+              class="scroll-reveal group relative p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              style={`animation-delay: ${index * 100}ms;`}
+            >
+              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
+              
+              <div class="relative">
+                <div class={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${pack.color} text-white font-bold text-lg mb-6 shadow-lg`}>
+                  {pack.name.split(' ')[0]}
+                </div>
+                
+                <h3 class="text-xl font-bold text-white mb-4">{pack.name}</h3>
+                <p class="text-white/90 text-sm leading-relaxed mb-6">{pack.description}</p>
+                
+                <div class="flex items-start gap-2 p-4 rounded-xl bg-white/5 border border-white/20">
+                  <span class="text-2xl">👉</span>
+                  <p class="text-sm text-white/80 leading-relaxed">{pack.target}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- E-Commerce Packs -->
+      <div>
+        <div class="text-center mb-12 scroll-reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">División E-Commerce</h2>
+          <p class="text-lg text-white/80">Tiendas Online</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          {ecommercePacks.map((pack, index) => (
+            <div 
+              class="scroll-reveal group relative p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              style={`animation-delay: ${index * 100}ms;`}
+            >
+              <div class={`absolute inset-0 bg-gradient-to-br ${pack.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
+              
+              <div class="relative">
+                <div class={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${pack.color} text-white font-bold text-lg mb-6 shadow-lg`}>
+                  {pack.name.split(' ')[0]}
+                </div>
+                
+                <h3 class="text-xl font-bold text-white mb-4">{pack.name}</h3>
+                <p class="text-white/90 text-sm leading-relaxed mb-6">{pack.description}</p>
+                
+                <div class="flex items-start gap-2 p-4 rounded-xl bg-white/5 border border-white/20">
+                  <span class="text-2xl">👉</span>
+                  <p class="text-sm text-white/80 leading-relaxed">{pack.target}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios Section -->
+  <section class="relative py-24 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/20 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.2),transparent_70%)]"></div>
+    </div>
+    
+    <div class="relative max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-reveal">
+        <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con Creative?" />
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {beneficios.map((beneficio, index) => (
+          <div 
+            class="scroll-reveal group relative p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            
+            <div class="relative flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              
+              <span class="text-base font-medium text-gray-800 leading-relaxed group-hover:text-gray-900 transition-colors">
+                {beneficio}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950"></div>
+    
+    <!-- Floating Blobs -->
+    <div class="absolute inset-0 overflow-hidden opacity-40">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl animate-blob-float"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-blob-float-delayed"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Main Title -->
+      <h2 class="scroll-reveal text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8">
+        <span class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+          Haz que tu marca brille en digital
+        </span>
+        <br />
+        <span class="bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent">
+          con creatividad y estrategia.
+        </span>
+      </h2>
+
+      <!-- CTA Button -->
+      <div class="scroll-reveal mt-12">
+        <a 
+          href="/contacto" 
+          class="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white text-lg font-bold shadow-2xl hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden"
+        >
+          <!-- Shine Effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          
+          <!-- Content -->
+          <span class="relative text-xl">👉 Quiero mi propuesta Creative</span>
+          
+          <!-- Arrow -->
+          <svg class="relative w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="scroll-reveal mt-16 flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Sin compromiso</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Respuesta en 24hs</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Propuesta personalizada</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

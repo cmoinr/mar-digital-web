@@ -1,0 +1,379 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import Footer from "../components/Footer.astro";
+
+// Servicios Business
+const businessServices = [
+  {
+    title: 'Consultoría en Modelos de Negocio',
+    description: 'Análisis 360° de tu empresa, rediseño de propuesta de valor y plan estratégico para crecer de manera sostenible.',
+    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg'
+  },
+  {
+    title: 'Transformación Digital',
+    description: 'Diagnóstico de madurez digital, identificación de procesos clave y plan de implementación con herramientas y KPIs.',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg'
+  },
+  {
+    title: 'Valoración de Empresas',
+    description: 'Estimación objetiva del valor real de tu compañía con metodologías como DCF, múltiplos de mercado y análisis de activos.',
+    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg'
+  },
+  {
+    title: 'Análisis Financiero Avanzado',
+    description: 'Revisión de liquidez, rentabilidad, deuda y eficiencia. Incluye escenarios financieros y recomendaciones estratégicas.',
+    image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg'
+  },
+  {
+    title: 'Modelación y Proyección Financiera',
+    description: 'Modelos dinámicos en Excel o Power BI para anticipar necesidades de capital y planear el crecimiento.',
+    image: 'https://images.pexels.com/photos/7567528/pexels-photo-7567528.jpeg'
+  },
+  {
+    title: 'Formulación y Evaluación de Proyectos',
+    description: 'Estudios completos con VAN, TIR y análisis de viabilidad para tomar decisiones informadas.',
+    image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg'
+  },
+  {
+    title: 'Estructuración de Capital y Apalancamiento Financiero',
+    description: 'Definición del mix óptimo entre capital propio y externo, con estrategias para optimizar tu financiamiento y atraer inversionistas.',
+    image: 'https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg'
+  }
+];
+
+// Beneficios
+const beneficios = [
+  'Metodologías internacionales adaptadas a tu realidad',
+  'Enfoque premium: diagnóstico + plan de acción',
+  'Entregables claros (informes PDF, modelos en Excel/Power BI)',
+  'Acompañamiento estratégico hasta implementar resultados'
+];
+---
+<BaseLayout title="Mar Digital Business" description="Estrategia y consultoría para hacer crecer tu empresa - Transformación digital, valoración y gestión financiera">
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/85 via-blue-900/80 to-cyan-800/85"></div>
+      <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <!-- Decorative overlay -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.3),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.2),transparent_50%)]"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-[15%] w-2 h-2 rounded-full bg-cyan-400/30 animate-pulse-glow"></div>
+      <div class="absolute top-32 right-[20%] w-1.5 h-1.5 rounded-full bg-blue-400/40 animate-pulse-glow" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-40 left-[25%] w-1 h-1 rounded-full bg-cyan-300/30 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Badge -->
+      <div class="scroll-reveal inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg mb-8">
+        <span class="text-white font-bold text-lg tracking-wide">Mar Digital Business</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="scroll-reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+        <span class="inline-block bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
+          Estrategia y consultoría para hacer crecer tu empresa.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="scroll-reveal text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto">
+        En <strong class="text-cyan-200">Mar Digital Business</strong> te ayudamos a estructurar tu negocio con modelos sólidos, transformación digital y gestión financiera avanzada. No entregamos solo diagnósticos, sino <strong class="text-blue-200">rutas claras de crecimiento</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios Business Section -->
+  <section class="relative py-24 lg:py-32">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/30 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.4),transparent_60%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-reveal">
+        <SectionTitle eyebrow="Nuestros Servicios" title="Soluciones estratégicas y financieras" />
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {businessServices.map((service, index) => (
+          <div 
+            class="scroll-reveal group relative rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col"
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            <!-- Hover Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Image Header -->
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cyan-900/40"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-700 transition-colors leading-tight">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm flex-grow">
+                {service.description}
+              </p>
+            </div>
+
+            <!-- Decorative corner -->
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios Section -->
+  <section class="relative py-24 lg:py-32">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/85 via-blue-900/80 to-cyan-800/85"></div>
+      <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg" alt="" class="w-full h-full object-cover" />
+    </div>
+    
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.4),transparent_70%)]"></div>
+    </div>
+    
+    <div class="relative max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Por qué trabajar con Business?</h2>
+        <p class="text-lg text-white/80">Consultoría de alto nivel con entregables concretos</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {beneficios.map((beneficio, index) => (
+          <div 
+            class="scroll-reveal group relative p-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            
+            <div class="relative flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              
+              <span class="text-base font-medium text-white/90 leading-relaxed group-hover:text-white transition-colors">
+                {beneficio}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodologías & Herramientas Section -->
+  <section class="relative py-24 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white"></div>
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(6,182,212,0.4),transparent_60%)]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-reveal">
+        <SectionTitle eyebrow="Herramientas" title="Metodologías y entregables profesionales" />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Metodologías -->
+        <div class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          
+          <div class="relative">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/30 mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-cyan-700 transition-colors">
+              Metodologías
+            </h3>
+            
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                Canvas de modelo de negocio
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                DCF y múltiplos de mercado
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                VAN, TIR, Payback
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                Análisis de madurez digital
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Herramientas -->
+        <div class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" style="animation-delay: 100ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          
+          <div class="relative">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/30 mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors">
+              Herramientas
+            </h3>
+            
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                Excel avanzado (modelos dinámicos)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                Power BI (dashboards interactivos)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                Google Analytics & Data Studio
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                Plataformas de automatización
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entregables -->
+        <div class="scroll-reveal group relative p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-cyan-100/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2" style="animation-delay: 200ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          
+          <div class="relative">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-400 shadow-lg shadow-emerald-500/30 mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">
+              Entregables
+            </h3>
+            
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Informes ejecutivos en PDF
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Modelos financieros editables
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Planes de acción paso a paso
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Presentaciones ejecutivas
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-950"></div>
+    
+    <!-- Floating Blobs -->
+    <div class="absolute inset-0 overflow-hidden opacity-40">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl animate-blob-float"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-600/20 rounded-full blur-3xl animate-blob-float-delayed"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <!-- Main Title -->
+      <h2 class="scroll-reveal text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8">
+        <span class="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
+          Tu empresa merece crecer
+        </span>
+        <br />
+        <span class="bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent">
+          con visión estratégica y bases financieras sólidas.
+        </span>
+      </h2>
+
+      <!-- CTA Button -->
+      <div class="scroll-reveal mt-12">
+        <a 
+          href="/contacto" 
+          class="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-600 text-white text-lg font-bold shadow-2xl hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] transition-all duration-300 hover:scale-105 overflow-hidden"
+        >
+          <!-- Shine Effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          
+          <!-- Content -->
+          <span class="relative text-xl">👉 Solicita tu consultoría Business</span>
+          
+          <!-- Arrow -->
+          <svg class="relative w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="scroll-reveal mt-16 flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Consultoría de alto nivel</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Entregables profesionales</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Acompañamiento integral</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
