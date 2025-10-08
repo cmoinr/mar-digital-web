@@ -85,24 +85,6 @@ const contactMethods = [
       <p class="scroll-reveal text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-12">
         Cuéntanos tu visión y te responderemos con una <strong class="text-blue-700">propuesta personalizada</strong> en menos de 24 horas.
       </p>
-
-      <!-- Trust Indicators -->
-      <div class="scroll-reveal grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-        {[
-          { icon: '⚡', value: '<24h', label: 'Tiempo de respuesta' },
-          { icon: '🎯', value: '100%', label: 'Propuestas personalizadas' },
-          { icon: '🔒', value: 'Gratis', label: 'Consulta inicial' }
-        ].map((stat, index) => (
-          <div 
-            class="p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            style={`animation-delay: ${index * 100}ms;`}
-          >
-            <div class="text-3xl mb-2">{stat.icon}</div>
-            <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">{stat.value}</div>
-            <div class="text-sm text-gray-600 mt-1">{stat.label}</div>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
