@@ -12,7 +12,7 @@ const links = [
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 <nav class="fixed top-0 inset-x-0 z-50 nav-wrapper" role="navigation" aria-label="Principal">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">ancho 
     <div class="nav-glass mt-4 flex items-center justify-between rounded-2xl py-3.5 pl-6 pr-4 relative overflow-hidden">
       <!-- Liquid glass animated blobs background -->
       <div class="pointer-events-none absolute -top-16 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-blue-400/30 via-cyan-300/25 to-indigo-400/30 blur-3xl animate-blob-float"></div>
@@ -51,50 +51,49 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
       <!-- CTA / Actions -->
       <div class="hidden md:flex items-center gap-3 relative z-10">
-        <a href="/contacto" class="cta-btn group">
-          <span class="cta-bg"></span>
-          <span class="cta-shine"></span>
+        <a href="/contacto" class="cta-btn-glass group">
           <span class="relative z-10 flex items-center gap-2">
             <span>Contacto</span>
             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </span>
-          <span class="cta-particles"></span>
         </a>
       </div>
 
       <!-- Mobile Menu Toggle -->
-      <details class="md:hidden relative group z-10">
-        <summary class="list-none flex items-center justify-center w-10 h-10 rounded-xl border border-blue-300/50 bg-blue-800/60 backdrop-blur-xl cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60">
-          <div class="relative w-5 h-4">
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center group-open:rotate-45 group-open:top-1.5"></span>
-            <span class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 group-open:opacity-0 group-open:scale-0"></span>
-            <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center group-open:-rotate-45 group-open:bottom-1.5"></span>
+      <button class="md:hidden relative group z-10 mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <div class="flex items-center justify-center w-10 h-10 rounded-xl border border-blue-300/50 bg-blue-800/60 backdrop-blur-xl cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div class="relative w-5 h-4 hamburger-icon">
+            <span class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center hamburger-line-1"></span>
+            <span class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 hamburger-line-2"></span>
+            <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full transition-all duration-300 origin-center hamburger-line-3"></span>
           </div>
-        </summary>
-        <div class="mobile-menu absolute right-0 mt-4 w-72 origin-top-right shadow-2xl rounded-2xl border border-blue-300/40 bg-blue-900/90 backdrop-blur-2xl p-5 flex flex-col gap-2 overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-800/60 via-transparent to-cyan-900/40" />
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-300/20 rounded-full blur-2xl animate-blob-pulse-fast"></div>
-          {links.map(l => {
-            const active = l.href === pathname || (l.href !== '/' && pathname.startsWith(l.href));
-            return (
-              <a href={l.href} class={`mobile-link relative px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 z-10
-                ${active ? 'bg-gradient-to-r from-blue-500/30 to-cyan-400/30 text-white shadow-inner font-semibold' : 'text-blue-100 hover:bg-blue-800/60 hover:text-white hover:translate-x-1'}
-              `}>
-                {l.label}
-                {active && <span class="absolute left-2 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-gradient-to-b from-blue-300 to-cyan-300 rounded-full"></span>}
-              </a>
-            );
-          })}
-          <a href="/contacto" class="mobile-cta relative mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-200 bg-size-200 text-white text-sm font-semibold px-5 py-3 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-300/40 transition-all duration-300 hover:bg-right z-10">
-            <span>Contacto</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
         </div>
-      </details>
+      </button>
+
+      <!-- Mobile Menu Dropdown -->
+      <div class="mobile-menu-dropdown md:hidden absolute right-0 top-full mt-4 w-72 origin-top-right shadow-2xl rounded-2xl border border-blue-300/40 bg-blue-900/90 backdrop-blur-2xl p-5 flex-col gap-2 overflow-hidden hidden">
+        <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-800/60 via-transparent to-cyan-900/40" />
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-300/20 rounded-full blur-2xl animate-blob-pulse-fast"></div>
+        {links.map(l => {
+          const active = l.href === pathname || (l.href !== '/' && pathname.startsWith(l.href));
+          return (
+            <a href={l.href} class={`mobile-link relative px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 z-10 block
+              ${active ? 'bg-gradient-to-r from-blue-500/30 to-cyan-400/30 text-white shadow-inner font-semibold' : 'text-blue-100 hover:bg-blue-800/60 hover:text-white hover:translate-x-1'}
+            `}>
+              {l.label}
+              {active && <span class="absolute left-2 top-1/2 -translate-y-1/2 w-1 h-1/2 bg-gradient-to-b from-blue-300 to-cyan-300 rounded-full"></span>}
+            </a>
+          );
+        })}
+        <a href="/contacto" class="mobile-cta relative mt-3 inline-flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-200 bg-size-200 text-white text-sm font-semibold px-5 py-3 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-300/40 transition-all duration-300 hover:bg-right z-10">
+          <span>Contacto</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </nav>
@@ -280,37 +279,41 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     width: 70%;
   }
 
-  /* Enhanced CTA Button */
-  .cta-btn {
+  /* Enhanced CTA Button with Glass Effect */
+  .cta-btn-glass {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0.7rem 1.75rem;
     border-radius: 9999px;
-    color: #1e40af;
+    color: #ffffff;
     font-weight: 600;
     font-size: 0.875rem;
     letter-spacing: 0.01em;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 
-      0 4px 20px rgba(30, 64, 175, 0.3),
-      0 2px 8px rgba(59, 130, 246, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      0 4px 20px rgba(59, 130, 246, 0.3),
+      0 2px 8px rgba(6, 182, 212, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  /* CTA background gradient */
-  .cta-bg {
+  /* CTA glass background with backdrop blur */
+  .cta-bg-glass {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(6, 182, 212, 0.3) 50%, rgba(59, 130, 246, 0.3) 100%);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
     transition: all 0.4s ease;
     z-index: 0;
   }
-  .cta-btn:hover .cta-bg {
-    transform: scale(1.05);
-    filter: brightness(1.1) saturate(1.1);
+  .cta-btn-glass:hover .cta-bg-glass {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(6, 182, 212, 0.4) 50%, rgba(59, 130, 246, 0.4) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
   }
 
   /* CTA shine effect */
@@ -320,75 +323,57 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     background: linear-gradient(
       120deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.6) 45%,
-      rgba(255, 255, 255, 0.8) 50%,
-      rgba(255, 255, 255, 0.6) 55%,
+      rgba(255, 255, 255, 0.4) 45%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.4) 55%,
       transparent 100%
     );
     transform: translateX(-100%) skewX(-15deg);
     transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 1;
   }
-  .cta-btn:hover .cta-shine {
+  .cta-btn-glass:hover .cta-shine {
     transform: translateX(100%) skewX(-15deg);
   }
 
   /* CTA hover effects */
-  .cta-btn:hover {
+  .cta-btn-glass:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
-      0 8px 28px rgba(30, 64, 175, 0.4),
-      0 4px 12px rgba(59, 130, 246, 0.3),
-      inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      0 8px 28px rgba(59, 130, 246, 0.4),
+      0 4px 12px rgba(6, 182, 212, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
   }
-  .cta-btn:active {
+  .cta-btn-glass:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 
-      0 2px 12px rgba(30, 64, 175, 0.3),
-      0 1px 4px rgba(59, 130, 246, 0.2);
+      0 2px 12px rgba(59, 130, 246, 0.3),
+      0 1px 4px rgba(6, 182, 212, 0.2);
   }
 
-  /* CTA particles effect */
-  .cta-particles {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    overflow: hidden;
+  /* Mobile menu toggle animations */
+  .mobile-menu-toggle.is-open .hamburger-line-1 {
+    transform: rotate(45deg);
+    top: 50%;
+    margin-top: -0.25px;
+  }
+  .mobile-menu-toggle.is-open .hamburger-line-2 {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: scale(0);
   }
-  .cta-btn:hover .cta-particles {
-    opacity: 1;
+  .mobile-menu-toggle.is-open .hamburger-line-3 {
+    transform: rotate(-45deg);
+    bottom: 50%;
+    margin-bottom: -0.25px;
   }
-  .cta-particles::before,
-  .cta-particles::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    animation: particleFloat 2s ease-in-out infinite;
+
+  /* Mobile menu dropdown */
+  .mobile-menu-dropdown {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .cta-particles::before {
-    top: 20%;
-    left: 20%;
-    animation-delay: 0s;
-  }
-  .cta-particles::after {
-    top: 60%;
-    right: 25%;
-    animation-delay: 0.5s;
-  }
-  @keyframes particleFloat {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-      opacity: 0;
-    }
-    50% {
-      transform: translateY(-20px) scale(0.5);
-      opacity: 1;
-    }
+  .mobile-menu-dropdown.is-open {
+    display: flex;
+    animation: menuSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   /* Mobile menu animations */
@@ -456,8 +441,143 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
       animation: none !important;
     }
     .nav-link,
-    .cta-btn {
+    .cta-btn-glass {
       transition: none !important;
     }
   }
+
+  /* Mobile optimizations for small screens (480px and below) */
+  @media (max-width: 480px) {
+    /* Reduce container padding */
+    .nav-wrapper > div {
+      max-width: 50%;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    /* Reduce navbar glass padding */
+    .nav-glass {
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.5rem;
+      border-radius: 1rem;
+    }
+
+    /* Reduce logo size */
+    .nav-glass img {
+      height: 2.5rem;
+    }
+
+    /* Adjust mobile menu toggle button */
+    .mobile-menu-toggle > div {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+
+    .hamburger-icon {
+      width: 1.125rem;
+      height: 0.875rem;
+    }
+
+    /* Adjust mobile dropdown menu */
+    .mobile-menu-dropdown {
+      width: calc(100vw - 2rem);
+      max-width: 18rem;
+      right: -0.5rem;
+      padding: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    /* Reduce mobile link padding */
+    .mobile-link {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.8125rem;
+    }
+
+    /* Reduce mobile CTA button size */
+    .mobile-cta {
+      padding: 0.625rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .mobile-cta svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    /* Hide decorative blobs on very small screens for performance */
+    .animate-blob-float,
+    .animate-blob-float-delayed,
+    .animate-blob-pulse,
+    .animate-blob-pulse-fast {
+      display: none;
+    }
+
+    /* Simplify shimmer effect */
+    .nav-shimmer {
+      opacity: 0.2;
+    }
+  }
+
+  /* Extra small screens (360px and below) */
+  @media (max-width: 360px) {
+    .nav-wrapper > div {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .nav-glass {
+      padding: 0.5rem;
+      margin-top: 0.375rem;
+    }
+
+    .nav-glass img {
+      height: 2.25rem;
+    }
+
+    .mobile-menu-dropdown {
+      width: calc(100vw - 1.5rem);
+      right: -0.25rem;
+      padding: 0.875rem;
+    }
+
+    .mobile-menu-toggle > div {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 </style>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu-dropdown');
+    
+    if (toggleButton && mobileMenu) {
+      toggleButton.addEventListener('click', () => {
+        const isOpen = toggleButton.classList.toggle('is-open');
+        mobileMenu.classList.toggle('is-open');
+        toggleButton.setAttribute('aria-expanded', isOpen.toString());
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!toggleButton.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
+          toggleButton.classList.remove('is-open');
+          mobileMenu.classList.remove('is-open');
+          toggleButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close menu when clicking on a link
+      const menuLinks = mobileMenu.querySelectorAll('a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          toggleButton.classList.remove('is-open');
+          mobileMenu.classList.remove('is-open');
+          toggleButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+</script>

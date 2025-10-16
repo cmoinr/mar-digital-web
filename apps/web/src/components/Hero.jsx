@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 /**
  * Hero textual block con CTAs y animaciones mejoradas
@@ -14,27 +14,28 @@ export default function Hero({
   headline,
   sub,
   primaryCtaText,
-  primaryCtaHref = '/contacto',
+  primaryCtaHref = "/contacto",
   secondaryCtaText,
   secondaryCtaHref,
   kicker,
-  align = 'left'
+  align = "left",
 }) {
-  const alignment = align === 'center' ? 'text-center items-center' : 'text-left items-start';
+  const alignment =
+    align === "center" ? "text-center items-center" : "text-left items-start";
   const heroRef = useRef(null);
 
   useEffect(() => {
     // Animación de aparición escalonada
-    const elements = heroRef.current?.querySelectorAll('.hero-animate');
+    const elements = heroRef.current?.querySelectorAll(".hero-animate");
     elements?.forEach((el, index) => {
       setTimeout(() => {
-        el.classList.add('hero-revealed');
+        el.classList.add("hero-revealed");
       }, index * 150);
     });
   }, []);
 
   return (
-    <div ref={heroRef} className={`flex flex-col ${alignment} max-w-3xl`}>      
+    <div ref={heroRef} className={`flex flex-col ${alignment} max-w-3xl`}>
       {/* Kicker Badge */}
       {kicker && (
         <div className="hero-animate opacity-0">
@@ -43,55 +44,86 @@ export default function Hero({
             <span className="text-xs font-semibold tracking-wide uppercase bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">
               {kicker}
             </span>
-            <svg className="w-3 h-3 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"/>
+            <svg
+              className="w-3 h-3 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </div>
       )}
-      
+
       {/* Headline con gradiente animado */}
       <h1 className="hero-animate opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-        <span className="inline-block bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
-          {headline.split(' ').map((word, i) => (
-            <span key={i} className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300">
-              {word}
-            </span>
-          ))}
-        </span>
+        {headline.split(" ").map((word, i) => (
+          <span
+            key={i}
+            className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300 bg-gradient-to-r from-teal-100 via-teal-300 to-sky-300 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]"
+          >
+            {word}
+          </span>
+        ))}
       </h1>
-      
+
       {/* Subtitle con mejor tipografía */}
       {sub && (
-        <p className="hero-animate opacity-0 text-lg sm:text-xl lg:text-2xl text-white mb-10 leading-relaxed max-w-2xl font-light">
+        <p className="hero-animate opacity-0 text-lg sm:text-xl lg:text-2xl text-teal-100 mb-10 leading-relaxed max-w-2xl font-light">
           {sub}
         </p>
       )}
-      
+
       {/* CTAs mejorados con efectos hover */}
       {(primaryCtaText || secondaryCtaText) && (
         <div className="hero-animate opacity-0 flex flex-wrap gap-4">
           {primaryCtaText && (
-            <a 
-              href={primaryCtaHref} 
-              className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full overflow-hidden bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-[length:200%_100%] text-white font-semibold text-base shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:bg-right hover:scale-[1.02] active:scale-[0.98]"
+            <a
+              href={primaryCtaHref}
+              className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full overflow-hidden bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-[length:200%_100%] text-white font-semibold text-base shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:bg-right hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="relative z-10">{primaryCtaText}</span>
-              <svg className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              <svg
+                className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
               </svg>
               {/* Shine effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></span>
             </a>
           )}
           {secondaryCtaText && (
-            <a 
-              href={secondaryCtaHref} 
+            <a
+              href={secondaryCtaHref}
               className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/90 backdrop-blur-sm text-blue-700 font-semibold text-base shadow-lg hover:shadow-xl border border-blue-200/50 hover:border-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="relative z-10">{secondaryCtaText}</span>
-              <svg className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"/>
+              <svg
+                className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
               {/* Gradient overlay on hover */}
               <span className="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
