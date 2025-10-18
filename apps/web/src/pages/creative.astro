@@ -107,8 +107,8 @@ const beneficios = [
   <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-cyan-900/80 to-blue-800/85"></div>
-      <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg" alt="" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/50"></div>
+      <img src="https://images.pexels.com/photos/31622943/pexels-photo-31622943.jpeg?_gl=1*8jaewq*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NjA3NDk0MzQkbzE1JGcxJHQxNzYwNzUxODc4JGo2MCRsMCRoMA.." alt="" class="w-full h-full object-cover" />
     </div>
     
     <!-- Decorative overlay -->
@@ -199,8 +199,8 @@ const beneficios = [
   <section class="relative py-24 lg:py-32 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95"></div>
-      <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg" alt="" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/50"></div>
+      <img src="https://images.pexels.com/photos/1910229/pexels-photo-1910229.jpeg?_gl=1*fvv2xl*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NjA3NDk0MzQkbzE1JGcxJHQxNzYwNzUxMjIzJGo1NSRsMCRoMA.." alt="" class="w-full h-full object-cover" />
     </div>
     
     <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
@@ -310,24 +310,24 @@ const beneficios = [
   </section>
 
   <!-- Beneficios Section -->
-  <section class="relative py-24 lg:py-32">
-    <div class="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/20 to-white"></div>
-    <div class="absolute inset-0 opacity-[0.02] pointer-events-none">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.2),transparent_70%)]"></div>
+  <section class="relative py-24 lg:py-32 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+    <!-- Background -->
+    <div class="absolute inset-0 opacity-[0.08] pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.4),transparent_60%)]"></div>
     </div>
     
     <div class="relative max-w-5xl mx-auto px-6">
       <div class="text-center mb-16 scroll-reveal">
-        <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con Creative?" />
+        <SectionTitle eyebrow="Beneficios" title="¿Por qué trabajar con Creative?" theme="dark" />
       </div>
       
       <div class="grid md:grid-cols-2 gap-6">
         {beneficios.map((beneficio, index) => (
           <div 
-            class="scroll-reveal group relative p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-blue-100/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            class="scroll-reveal group relative p-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             style={`animation-delay: ${index * 100}ms`}
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
             
             <div class="relative flex items-start gap-4">
               <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
@@ -336,7 +336,7 @@ const beneficios = [
                 </svg>
               </div>
               
-              <span class="text-base font-medium text-gray-800 leading-relaxed group-hover:text-gray-900 transition-colors">
+              <span class="text-base font-medium text-white leading-relaxed group-hover:text-cyan-200 transition-colors">
                 {beneficio}
               </span>
             </div>
@@ -348,8 +348,11 @@ const beneficios = [
 
   <!-- CTA Final Section -->
   <section class="relative py-32 overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950"></div>
+    <!-- Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-black/70"></div>
+      <img src="https://images.pexels.com/photos/14754067/pexels-photo-14754067.jpeg?_gl=1*egslx9*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NjA3NDk0MzQkbzE1JGcxJHQxNzYwNzUxODc4JGo2MCRsMCRoMA.." alt="" class="w-full h-full object-cover" />
+    </div>
     
     <!-- Floating Blobs -->
     <div class="absolute inset-0 overflow-hidden opacity-40">

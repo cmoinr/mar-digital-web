@@ -12,7 +12,7 @@ const links = [
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 <nav class="fixed top-0 inset-x-0 z-50 nav-wrapper" role="navigation" aria-label="Principal">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">ancho 
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
     <div class="nav-glass mt-4 flex items-center justify-between rounded-2xl py-3.5 pl-6 pr-4 relative overflow-hidden">
       <!-- Liquid glass animated blobs background -->
       <div class="pointer-events-none absolute -top-16 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-blue-400/30 via-cyan-300/25 to-indigo-400/30 blur-3xl animate-blob-float"></div>
@@ -268,8 +268,8 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
     left: 50%;
     bottom: 6px;
     width: 0;
-    height: 2.5px;
-    background: linear-gradient(90deg, #93c5fd, #60a5fa, #93c5fd);
+    height: 1px;
+    background: linear-gradient(90deg, #93c5fd, #60a5fa);
     border-radius: 2px;
     transform: translateX(-50%);
     transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
