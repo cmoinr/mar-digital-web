@@ -27,7 +27,7 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
       });
     </script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col overflow-x-hidden w-full max-w-full">
       <!-- Fondo dinámico mejorado con parallax y scroll effects -->
       <div id="bg-dynamic" aria-hidden="true">
         <!-- Gradiente base suave -->
@@ -49,14 +49,16 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
         <div class="bg-vignette"></div>
       </div>
     <Nav />
-    <main class="flex-1 relative z-10">
+    <main class="flex-1 relative z-10 overflow-x-hidden w-full max-w-full">
       <slot />
     </main>
       <script is:inline>
-        // Sistema de parallax mejorado con múltiples capas y efectos de scroll
+        // Sistema de parallax OPTIMIZADO para móviles
         const bgDynamic = document.getElementById('bg-dynamic');
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
-        if (bgDynamic && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (bgDynamic && !prefersReducedMotion) {
           const blobPrimary = bgDynamic.querySelector('.blob-primary');
           const blobSecondary = bgDynamic.querySelector('.blob-secondary');
           const blobAccent = bgDynamic.querySelector('.blob-accent');
@@ -65,105 +67,107 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
           
           let ticking = false;
           let lastScrollY = 0;
-          let scrollSpeed = 0;
           
-          const updateBackground = () => {
-            const scrollY = window.scrollY;
-            const scrollProgress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
-            const viewportHeight = window.innerHeight;
+          // VERSIÓN MÓVIL SIMPLIFICADA
+          if (isMobile) {
+            const updateBackgroundMobile = () => {
+              const scrollY = window.scrollY;
+              
+              // Solo actualizar blobs primarios con valores simples
+              if (blobPrimary) {
+                const translateY = scrollY * 0.15;
+                blobPrimary.style.transform = `translate3d(0, ${translateY}px, 0)`;
+              }
+              
+              if (blobSecondary) {
+                const translateY = scrollY * 0.08;
+                blobSecondary.style.transform = `translate3d(0, ${translateY}px, 0)`;
+              }
+              
+              // Desactivar grid en móviles por rendimiento
+              if (bgGrid) {
+                bgGrid.style.opacity = '0.1';
+              }
+            };
             
-            // Calcular velocidad de scroll
-            scrollSpeed = Math.abs(scrollY - lastScrollY);
-            lastScrollY = scrollY;
+            // Scroll listener para móviles con mayor throttling
+            window.addEventListener('scroll', () => {
+              if (!ticking) {
+                requestAnimationFrame(() => {
+                  updateBackgroundMobile();
+                  ticking = false;
+                });
+                ticking = true;
+              }
+            }, { passive: true });
             
-            // Parallax diferenciado para cada blob (múltiples velocidades y direcciones)
-            if (blobPrimary) {
-              const translateY = scrollY * 0.15;
-              const translateX = Math.sin(scrollProgress * Math.PI) * 50;
-              const scale = 1 + (scrollProgress * 0.15);
-              const rotate = scrollProgress * 45;
-              blobPrimary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
-            }
+            updateBackgroundMobile();
+          } 
+          // VERSIÓN DESKTOP COMPLETA
+          else {
+            const updateBackground = () => {
+              const scrollY = window.scrollY;
+              const scrollProgress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+              
+              // Parallax diferenciado para cada blob
+              if (blobPrimary) {
+                const translateY = scrollY * 0.15;
+                const translateX = Math.sin(scrollProgress * Math.PI) * 50;
+                const scale = 1 + (scrollProgress * 0.15);
+                const rotate = scrollProgress * 45;
+                blobPrimary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+              }
+              
+              if (blobSecondary) {
+                const translateY = scrollY * 0.08;
+                const translateX = -Math.sin(scrollProgress * Math.PI * 1.5) * 70;
+                const scale = 1 + (scrollProgress * 0.1);
+                const rotate = -scrollProgress * 30;
+                blobSecondary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+              }
+              
+              if (blobAccent) {
+                const translateY = scrollY * 0.12;
+                const translateX = Math.cos(scrollProgress * Math.PI * 0.8) * 60;
+                const scale = 1 + (scrollProgress * 0.2);
+                const rotate = scrollProgress * 60;
+                blobAccent.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+              }
+              
+              if (blobHighlight) {
+                const translateY = scrollY * 0.05;
+                const translateX = Math.sin(scrollProgress * Math.PI * 2) * 40;
+                const opacity = 0.4 + (Math.sin(scrollProgress * Math.PI * 4) * 0.2);
+                const scale = 1 + (scrollProgress * 0.05);
+                blobHighlight.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+                blobHighlight.style.opacity = opacity;
+              }
+              
+              // Grid que se mueve sutilmente
+              if (bgGrid) {
+                const gridY = -(scrollY * 0.03) % 100;
+                bgGrid.style.transform = `translateY(${gridY}px)`;
+                bgGrid.style.opacity = '0.25';
+              }
+              
+              // Ajustar saturación del fondo basado en el scroll
+              const saturation = 100 + (scrollProgress * 40);
+              bgDynamic.style.filter = `saturate(${saturation}%)`;
+            };
             
-            if (blobSecondary) {
-              const translateY = scrollY * 0.08;
-              const translateX = -Math.sin(scrollProgress * Math.PI * 1.5) * 70;
-              const scale = 1 + (scrollProgress * 0.1);
-              const rotate = -scrollProgress * 30;
-              blobSecondary.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
-            }
+            // Scroll listener para desktop
+            window.addEventListener('scroll', () => {
+              if (!ticking) {
+                requestAnimationFrame(() => {
+                  updateBackground();
+                  ticking = false;
+                });
+                ticking = true;
+              }
+            }, { passive: true });
             
-            if (blobAccent) {
-              const translateY = scrollY * 0.12;
-              const translateX = Math.cos(scrollProgress * Math.PI * 0.8) * 60;
-              const scale = 1 + (scrollProgress * 0.2);
-              const rotate = scrollProgress * 60;
-              blobAccent.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`;
-            }
-            
-            if (blobHighlight) {
-              const translateY = scrollY * 0.05;
-              const translateX = Math.sin(scrollProgress * Math.PI * 2) * 40;
-              const opacity = 0.4 + (Math.sin(scrollProgress * Math.PI * 4) * 0.2);
-              const scale = 1 + (scrollProgress * 0.05);
-              blobHighlight.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
-              blobHighlight.style.opacity = opacity;
-            }
-            
-            // Grid que se mueve sutilmente
-            if (bgGrid) {
-              const gridY = -(scrollY * 0.03) % 100;
-              const gridOpacity = 0.15 + (scrollSpeed * 0.002);
-              bgGrid.style.transform = `translateY(${gridY}px)`;
-              bgGrid.style.opacity = Math.min(gridOpacity, 0.25);
-            }
-            
-            // Ajustar saturación del fondo basado en el scroll
-            const saturation = 100 + (scrollProgress * 40);
-            bgDynamic.style.filter = `saturate(${saturation}%)`;
-          };
-          
-          // Optimized scroll listener
-          window.addEventListener('scroll', () => {
-            if (!ticking) {
-              requestAnimationFrame(() => {
-                updateBackground();
-                ticking = false;
-              });
-              ticking = true;
-            }
-          }, { passive: true });
-          
-          // Mouse parallax effect (sutil)
-          let mouseX = 0;
-          let mouseY = 0;
-          let currentX = 0;
-          let currentY = 0;
-          
-          document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-          });
-          
-          const animateMouse = () => {
-            currentX += (mouseX - currentX) * 0.05;
-            currentY += (mouseY - currentY) * 0.05;
-            
-            if (blobPrimary) {
-              const currentTransform = blobPrimary.style.transform || '';
-              blobPrimary.style.transform = currentTransform + ` translate3d(${currentX * 20}px, ${currentY * 20}px, 0)`;
-            }
-            if (blobSecondary) {
-              const currentTransform = blobSecondary.style.transform || '';
-              blobSecondary.style.transform = currentTransform + ` translate3d(${currentX * -15}px, ${currentY * -15}px, 0)`;
-            }
-            
-            requestAnimationFrame(animateMouse);
-          };
-          animateMouse();
-          
-          // Initial update
-          updateBackground();
+            updateBackground();
+          }
         }
       </script>
   </body>
