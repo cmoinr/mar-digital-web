@@ -382,6 +382,60 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* ============================================
+   BACKDROP BLUR FIX FOR iOS/Safari
+   ============================================ */
+/* Ensures backdrop-blur works on iOS Safari and all browsers */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  /* Utility classes from Tailwind with webkit prefix for iOS */
+  .backdrop-blur-xl,
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur-value);
+    backdrop-filter: var(--tw-backdrop-blur-value);
+  }
+
+  /* Specific backdrop-blur values */
+  .backdrop-blur-xl {
+    --tw-backdrop-blur-value: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+
+  .backdrop-blur-lg {
+    --tw-backdrop-blur-value: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  .backdrop-blur {
+    --tw-backdrop-blur-value: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Ensure elements with backdrop-blur have proper z-index and positioning */
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur {
+    /* Enable GPU acceleration */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports (not (backdrop-filter: blur(1px))) and
+  (not (-webkit-backdrop-filter: blur(1px))) {
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur {
+    /* Increase opacity as fallback when blur is not supported */
+    background-color: rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
 /* Scroll reveal animations */
 .scroll-reveal {
   opacity: 0;

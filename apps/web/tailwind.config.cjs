@@ -12,7 +12,12 @@ module.exports = {
     "translate-x-1",
     "scale-105",
     "scale-110",
+    "backdrop-blur-xl",
+    "backdrop-blur-lg",
+    "backdrop-blur",
   ],
+  // Important for iOS/Safari support
+  important: false,
   theme: {
     extend: {
       colors: {
