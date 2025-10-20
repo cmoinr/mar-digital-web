@@ -1,0 +1,181 @@
+---
+/**
+ * BackgroundCarousel.astro
+ *
+ * Full-bleed background carousel for hero sections.
+ * Supports image and video slides with simple fade transitions.
+ */
+import OptimizedImage from './OptimizedImage.astro';
+
+export interface Slide {
+  type?: 'image' | 'video';
+  src: string;
+  alt?: string; // images
+  poster?: string; // videos
+}
+
+export interface Props {
+  slides: Slide[];
+  interval?: number; // ms between slides
+  transitionMs?: number; // fade duration
+  width?: number; // hint for image optimization
+  height?: number; // hint for image optimization
+  class?: string;
+  id?: string; // optional stable id for external controls
+  renderControls?: boolean; // render internal prev/next
+  renderDots?: boolean; // render internal dots
+}
+
+const {
+  slides = [],
+  interval = 7000,
+  transitionMs = 1000,
+  width,
+  height,
+  class: className = '',
+  id,
+  renderControls = true,
+  renderDots = true,
+} = Astro.props as Props;
+
+// Unique id to scope the script to this instance
+const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div id={instanceId} class={`absolute inset-0 ${className}`} style={`--fade-ms:${transitionMs}ms;`} data-interval={interval}>
+  <!-- Slides layer: background-only, non-interactive -->
+  <div class="absolute inset-0 pointer-events-none -z-20">
+    {slides.map((slide, idx) => (
+      <div class={`carousel-slide absolute inset-0 transition-opacity duration-[var(--fade-ms)] ${idx === 0 ? 'opacity-100' : 'opacity-0'}`} data-index={idx} aria-hidden={idx === 0 ? 'false' : 'true'}>
+        {slide.type === 'video' ? (
+          <video 
+            class="w-full h-full object-cover"
+            src={slide.src}
+            poster={slide.poster}
+            autoplay
+            muted
+            loop
+            playsinline
+          />
+        ) : (
+          // Fallback to image
+          <OptimizedImage 
+            src={slide.src} 
+            alt={slide.alt ?? ''} 
+            width={width} 
+            height={height} 
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            priority={idx === 0}
+            class="w-full h-full object-cover" />
+        )}
+      </div>
+    ))}
+  </div>
+
+  <!-- Controls layer: visible and clickable -->
+  {renderControls && (
+    <div class="absolute inset-0 z-10 flex items-center justify-between px-4 md:px-6 pointer-events-none select-none">
+      <button type="button" class="carousel-prev pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md shadow-lg transition-colors" aria-label="Anterior">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="carousel-next pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md shadow-lg transition-colors" aria-label="Siguiente">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  )}
+
+  <!-- Dots / pagination -->
+  {renderDots && (
+    <div class="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-3 pointer-events-auto">
+      {slides.map((_, idx) => (
+        <button type="button" class={`carousel-dot h-2 rounded-full transition-all duration-500 bg-white/40 ${idx === 0 ? 'w-8 bg-gradient-to-r from-blue-500 to-cyan-400' : 'w-2'}`} data-index={idx} aria-label={`Ir al slide ${idx + 1}`}></button>
+      ))}
+    </div>
+  )}
+
+  <script is:inline>
+    // @ts-nocheck
+    (function () {
+      const root = /** @type {HTMLElement|null} */ (document.currentScript && document.currentScript.parentElement);
+      if (!root) return;
+
+      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(root.querySelectorAll('.carousel-dot'));
+      const prevBtn = root.querySelector('.carousel-prev');
+      const nextBtn = root.querySelector('.carousel-next');
+      const intervalMsAttr = root.getAttribute('data-interval');
+      const intervalMs = intervalMsAttr ? parseInt(intervalMsAttr, 10) : 7000;
+
+      let current = 0;
+      let timer;
+
+      function updateDots(activeIndex) {
+        dots.forEach((dot, idx) => {
+          if (idx === activeIndex) {
+            dot.classList.add('w-8', 'bg-gradient-to-r', 'from-blue-500', 'to-cyan-400');
+            dot.classList.remove('w-2', 'bg-white/40');
+          } else {
+            dot.classList.remove('w-8', 'bg-gradient-to-r', 'from-blue-500', 'to-cyan-400');
+            dot.classList.add('w-2', 'bg-white/40');
+          }
+        });
+      }
+
+      function show(i) {
+        slides.forEach((el, idx) => {
+          /** @type {HTMLElement} */ (el).style.opacity = idx === i ? '1' : '0';
+          el.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
+        });
+        updateDots(i);
+        current = i;
+      }
+
+      function next() {
+        const n = (current + 1) % slides.length;
+        show(n);
+      }
+
+      function prev() {
+        const p = (current - 1 + slides.length) % slides.length;
+        show(p);
+      }
+
+      function start() {
+        stop();
+        if (slides.length > 1) {
+          timer = setInterval(next, intervalMs);
+        }
+      }
+
+      function stop() {
+        if (timer) {
+          clearInterval(timer);
+          timer = undefined;
+        }
+      }
+
+      // Controls
+      if (prevBtn) prevBtn.addEventListener('click', () => { prev(); start(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { next(); start(); });
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => { show(idx); start(); });
+      });
+
+      // Pause on hover of the hero section that contains this carousel
+      const heroSection = root.closest('section');
+      if (heroSection) {
+        heroSection.addEventListener('mouseenter', stop);
+        heroSection.addEventListener('mouseleave', start);
+      }
+
+      // Pause when tab not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else start();
+      });
+
+      // Init
+      show(0);
+      start();
+    })();
+  </script>
+</div>

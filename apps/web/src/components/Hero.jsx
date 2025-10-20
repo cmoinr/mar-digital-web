@@ -66,7 +66,7 @@ export default function Hero({
         {headline.split(" ").map((word, i) => (
           <span
             key={i}
-            className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300 bg-gradient-to-r from-teal-100 via-teal-300 to-sky-300 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]"
+            className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300 bg-gradient-to-r from-neutral-50 via-sky-200 to-fuchsia-300 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]"
           >
             {word}
           </span>
