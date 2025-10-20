@@ -1,0 +1,242 @@
+---
+/**
+ * TopBar.astro
+ * 
+ * Barra superior delgada estilo MacOS con iconos de redes sociales
+ * Se posiciona fija en la parte superior y está siempre visible
+ */
+
+const socialLinks = [
+  {
+    name: 'Instagram',
+    url: 'https://instagram.com',
+    icon: 'instagram'
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com',
+    icon: 'linkedin'
+  },
+  {
+    name: 'Twitter',
+    url: 'https://twitter.com',
+    icon: 'twitter'
+  },
+  {
+    name: 'Facebook',
+    url: 'https://facebook.com',
+    icon: 'facebook'
+  }
+];
+---
+
+<div class="top-bar">
+  <div class="top-bar-content">
+    <!-- Left Section: Text -->
+    <div class="left-section">
+      <span class="top-bar-text">📦 Nuevas features disponibles - Descubre las novedades</span>
+    </div>
+    
+    <!-- Right Section: Social Links -->
+    <div class="right-section">
+      <div class="social-links">
+        {socialLinks.map((social) => (
+          <a 
+            href={social.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="social-link group"
+            aria-label={social.name}
+            title={social.name}
+          >
+            {social.icon === 'instagram' && (
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 6.973h-1.004v-.32c0-.596-.094-.743-.596-.743h-1.339c-.502 0-.596.147-.596.743v.32h-1.004v-.32c0-1.405.596-1.935 1.598-1.935h1.339c1.004 0 1.602.53 1.602 1.935v.32zm-4.441 6.944c-1.339 0-2.376-1.061-2.376-2.432 0-1.374 1.037-2.435 2.376-2.435 1.339 0 2.376 1.061 2.376 2.435 0 1.371-1.037 2.432-2.376 2.432zm4.441-4.235h-.947c.095.32.143.743.143 1.163 0 2.071-1.598 3.76-3.637 3.76-2.04 0-3.637-1.689-3.637-3.76 0-.42.048-.843.143-1.163h-.947v3.932c0 .502.39.892.892.892h6.802c.502 0 .892-.39.892-.892v-3.932z"/>
+              </svg>
+            )}
+            {social.icon === 'linkedin' && (
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM9.5 16.5h-2v-7h2v7zm-1-7.966c-.645 0-1.167-.522-1.167-1.167s.522-1.167 1.167-1.167 1.167.522 1.167 1.167-.522 1.167-1.167 1.167zm9 7.966h-2v-3.5c0-.857-.306-1.44-1.072-1.44-.585 0-.932.391-1.084.77-.057.13-.071.312-.071.495v3.675h-2v-7h2v.959c.3-.462.838-1.122 2.036-1.122 1.487 0 2.603.973 2.603 3.065v4.098z"/>
+              </svg>
+            )}
+            {social.icon === 'twitter' && (
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 9.773c.006.146.009.293.009.44 0 4.465-3.393 9.617-9.608 9.617-1.905 0-3.68-.556-5.175-1.512.263.031.532.047.804.047 1.58 0 3.034-.537 4.19-1.44-1.476-.027-2.72-.998-3.15-2.332.206.031.417.047.633.047.308 0 .606-.04.893-.115-1.544-.31-2.704-1.67-2.704-3.3v-.041c.455.253.975.406 1.53.424-.906-.605-1.502-1.637-1.502-2.81 0-.619.166-1.199.456-1.698 1.664 2.042 4.15 3.385 6.949 3.53-.058-.246-.087-.502-.087-.766 0-1.855 1.504-3.359 3.359-3.359.967 0 1.839.408 2.453 1.061.765-.151 1.485-.43 2.133-.814-.251.783-.784 1.44-1.478 1.855.68-.068 1.325-.261 1.926-.527-.45.673-.1.418 1.018 1.018z"/>
+              </svg>
+            )}
+            {social.icon === 'facebook' && (
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.035 12h-1.968v6.998h-2.895V12H9.115v-2.408h1.057V8.184c0-1.044.526-2.682 2.68-2.682h2.08v2.36h-1.512c-.246 0-.461.123-.461.662v1.384h1.973L15.035 12z"/>
+              </svg>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="css">
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.98),
+      rgba(15, 15, 15, 0.96)
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .top-bar-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .left-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .top-bar-text {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+  }
+
+  .top-bar-text:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.25rem;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .social-link:hover {
+    color: rgba(59, 130, 246, 0.9);
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  .social-link::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.2),
+      transparent 70%
+    );
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: -1;
+  }
+
+  .social-link:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .social-icon {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .top-bar {
+      height: 24px;
+    }
+
+    .top-bar-text {
+      font-size: 0.65rem;
+    }
+
+    .social-links {
+      gap: 0.875rem;
+    }
+
+    .social-link {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* Ultra small screens */
+  @media (max-width: 480px) {
+    .top-bar {
+      height: 22px;
+    }
+
+    .top-bar-content {
+      padding: 0 1rem;
+    }
+
+    .left-section {
+      display: none;
+    }
+
+    .social-links {
+      gap: 0.75rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .social-link {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .social-link,
+    .social-link::before {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

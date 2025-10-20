@@ -6,6 +6,7 @@
  * Supports image and video slides with simple fade transitions.
  */
 import OptimizedImage from './OptimizedImage.astro';
+import OptimizedVideo from './OptimizedVideo.astro';
 
 export interface Slide {
   type?: 'image' | 'video';
@@ -22,19 +23,17 @@ export interface Props {
   height?: number; // hint for image optimization
   class?: string;
   id?: string; // optional stable id for external controls
-  renderControls?: boolean; // render internal prev/next
   renderDots?: boolean; // render internal dots
 }
 
 const {
   slides = [],
-  interval = 7000,
+  interval = 5000 /* 5 segundos */,
   transitionMs = 1000,
   width,
   height,
   class: className = '',
   id,
-  renderControls = true,
   renderDots = true,
 } = Astro.props as Props;
 
@@ -48,14 +47,14 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
     {slides.map((slide, idx) => (
       <div class={`carousel-slide absolute inset-0 transition-opacity duration-[var(--fade-ms)] ${idx === 0 ? 'opacity-100' : 'opacity-0'}`} data-index={idx} aria-hidden={idx === 0 ? 'false' : 'true'}>
         {slide.type === 'video' ? (
-          <video 
-            class="w-full h-full object-cover"
+          <OptimizedVideo 
             src={slide.src}
             poster={slide.poster}
-            autoplay
-            muted
-            loop
-            playsinline
+            alt={slide.alt ?? ''}
+            class="w-full h-full object-cover"
+            preload={idx === 0 ? 'auto' : 'metadata'}
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            fetchpriority={idx === 0 ? 'high' : 'low'}
           />
         ) : (
           // Fallback to image
@@ -72,17 +71,7 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
     ))}
   </div>
 
-  <!-- Controls layer: visible and clickable -->
-  {renderControls && (
-    <div class="absolute inset-0 z-10 flex items-center justify-between px-4 md:px-6 pointer-events-none select-none">
-      <button type="button" class="carousel-prev pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md shadow-lg transition-colors" aria-label="Anterior">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
-      </button>
-      <button type="button" class="carousel-next pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md shadow-lg transition-colors" aria-label="Siguiente">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
-  )}
+
 
   <!-- Dots / pagination -->
   {renderDots && (
@@ -93,89 +82,109 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
     </div>
   )}
 
-  <script is:inline>
-    // @ts-nocheck
-    (function () {
-      const root = /** @type {HTMLElement|null} */ (document.currentScript && document.currentScript.parentElement);
-      if (!root) return;
+  <script define:vars={{ instanceId }}>
+    // Encuentra el elemento raíz por ID
+    const root = document.getElementById(instanceId);
+    
+    if (!root) {
+      console.error(`BackgroundCarousel: Element with id "${instanceId}" not found`);
+      throw new Error(`BackgroundCarousel initialization failed for ${instanceId}`);
+    }
 
-      const slides = Array.from(root.querySelectorAll('.carousel-slide'));
-      const dots = Array.from(root.querySelectorAll('.carousel-dot'));
-      const prevBtn = root.querySelector('.carousel-prev');
-      const nextBtn = root.querySelector('.carousel-next');
-      const intervalMsAttr = root.getAttribute('data-interval');
-      const intervalMs = intervalMsAttr ? parseInt(intervalMsAttr, 10) : 7000;
+    const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(root.querySelectorAll('.carousel-dot'));
+    const intervalMsAttr = root.getAttribute('data-interval');
+    const intervalMs = intervalMsAttr ? parseInt(intervalMsAttr, 10) : 7000;
 
-      let current = 0;
-      let timer;
+    let current = 0;
+    let timer;
 
-      function updateDots(activeIndex) {
-        dots.forEach((dot, idx) => {
-          if (idx === activeIndex) {
-            dot.classList.add('w-8', 'bg-gradient-to-r', 'from-blue-500', 'to-cyan-400');
-            dot.classList.remove('w-2', 'bg-white/40');
-          } else {
-            dot.classList.remove('w-8', 'bg-gradient-to-r', 'from-blue-500', 'to-cyan-400');
-            dot.classList.add('w-2', 'bg-white/40');
-          }
-        });
-      }
+    console.log('[BackgroundCarousel] Initializing:', { 
+      instanceId, 
+      slidesCount: slides.length, 
+      dotsCount: dots.length,
+      intervalMs 
+    });
 
-      function show(i) {
-        slides.forEach((el, idx) => {
-          /** @type {HTMLElement} */ (el).style.opacity = idx === i ? '1' : '0';
-          el.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
-        });
-        updateDots(i);
-        current = i;
-      }
-
-      function next() {
-        const n = (current + 1) % slides.length;
-        show(n);
-      }
-
-      function prev() {
-        const p = (current - 1 + slides.length) % slides.length;
-        show(p);
-      }
-
-      function start() {
-        stop();
-        if (slides.length > 1) {
-          timer = setInterval(next, intervalMs);
-        }
-      }
-
-      function stop() {
-        if (timer) {
-          clearInterval(timer);
-          timer = undefined;
-        }
-      }
-
-      // Controls
-      if (prevBtn) prevBtn.addEventListener('click', () => { prev(); start(); });
-      if (nextBtn) nextBtn.addEventListener('click', () => { next(); start(); });
+    function updateDots(activeIndex) {
       dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => { show(idx); start(); });
+        if (idx === activeIndex) {
+          dot.style.background = 'linear-gradient(to right, #3b82f6, #06b6d4)';
+          dot.style.width = '2rem';
+        } else {
+          dot.style.background = 'rgba(255,255,255,0.3)';
+          dot.style.width = '0.75rem';
+        }
       });
+    }
 
-      // Pause on hover of the hero section that contains this carousel
-      const heroSection = root.closest('section');
-      if (heroSection) {
-        heroSection.addEventListener('mouseenter', stop);
-        heroSection.addEventListener('mouseleave', start);
+    function show(i) {
+      slides.forEach((el, idx) => {
+        el.style.opacity = idx === i ? '1' : '0';
+        el.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
+      });
+      updateDots(i);
+      current = i;
+      console.log('[BackgroundCarousel] Changed to slide:', i);
+    }
+
+    function next() {
+      const n = (current + 1) % slides.length;
+      show(n);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      timer = window.setInterval(next, intervalMs);
+      console.log('[BackgroundCarousel] Autoplay started, interval:', intervalMs);
+    }
+
+    function stopAutoPlay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = undefined;
+        console.log('[BackgroundCarousel] Autoplay stopped');
       }
+    }
 
-      // Pause when tab not visible
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop(); else start();
+    // Dot click handlers
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[BackgroundCarousel] Dot clicked:', idx);
+        show(idx);
+        startAutoPlay(); // Restart autoplay
       });
+    });
 
-      // Init
-      show(0);
-      start();
-    })();
+    // Pause on hover
+    const heroSection = root.closest('section');
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', () => {
+        console.log('[BackgroundCarousel] Mouse enter - pausing');
+        stopAutoPlay();
+      });
+      heroSection.addEventListener('mouseleave', () => {
+        console.log('[BackgroundCarousel] Mouse leave - resuming');
+        startAutoPlay();
+      });
+    }
+
+    // Pause when tab not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        console.log('[BackgroundCarousel] Tab hidden - pausing');
+        stopAutoPlay();
+      } else {
+        console.log('[BackgroundCarousel] Tab visible - resuming');
+        startAutoPlay();
+      }
+    });
+
+    // Initialize
+    show(0);
+    startAutoPlay();
+    console.log('[BackgroundCarousel] Initialization complete');
   </script>
 </div>

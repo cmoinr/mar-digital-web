@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
+import TopBar from "../components/TopBar.astro";
 import "../styles/global.css";
 const { title = "Sitio", description = "Impacto digital", } = Astro.props;
 ---
@@ -28,6 +29,9 @@ const { title = "Sitio", description = "Impacto digital", } = Astro.props;
     </script>
   </head>
   <body class="min-h-screen flex flex-col overflow-x-hidden w-full max-w-full">
+      <!-- Top Bar estilo MacOS con redes sociales -->
+      <TopBar />
+      
       <!-- Fondo dinámico mejorado con parallax y scroll effects -->
       <div id="bg-dynamic" aria-hidden="true">
         <!-- Gradiente base suave -->

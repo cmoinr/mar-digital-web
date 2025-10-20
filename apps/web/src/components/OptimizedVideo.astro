@@ -1,0 +1,103 @@
+---
+/**
+ * OptimizedVideo.astro
+ * 
+ * Componente para renderizar videos optimizados con configuraciones
+ * predefinidas para web performance.
+ * 
+ * Características:
+ * - Soporte para múltiples fuentes (fallback)
+ * - Atributos optimizados para autoplay, muted, loop
+ * - Lazy loading para videos no críticos
+ * - Poster image para mejor UX
+ * - Atributos de accesibilidad
+ */
+
+export interface Props {
+  src: string; // Ruta principal del video
+  poster?: string; // Imagen de preview
+  alt?: string; // Descripción accesible
+  type?: string; // MIME type (ej: 'video/mp4', 'video/webm')
+  class?: string; // Clases CSS
+  autoplay?: boolean; // Reproducción automática (default: true)
+  muted?: boolean; // Sin sonido (default: true - necesario para autoplay)
+  loop?: boolean; // Repetición continua (default: true)
+  playsinline?: boolean; // Reproducción inline en móviles (default: true)
+  controls?: boolean; // Mostrar controles (default: false)
+  preload?: 'none' | 'metadata' | 'auto'; // Estrategia de precarga (default: 'metadata')
+  loading?: 'lazy' | 'eager'; // Lazy loading (default: 'lazy')
+  width?: number; // Ancho en píxeles (para aspect ratio)
+  height?: number; // Alto en píxeles (para aspect ratio)
+  fetchpriority?: 'high' | 'low' | 'auto'; // Prioridad de fetch
+  fallbackSources?: Array<{ src: string; type: string }>; // Fuentes alternativas para fallback
+}
+
+const {
+  src,
+  poster,
+  alt = 'Video content',
+  type = 'video/mp4',
+  class: className = '',
+  autoplay = true,
+  muted = true,
+  loop = true,
+  playsinline = true,
+  controls = false,
+  preload = 'metadata',
+  loading = 'lazy',
+  width,
+  height,
+  fetchpriority = 'auto',
+  fallbackSources = [],
+} = Astro.props;
+
+// Generar aspect ratio si se proporcionan dimensiones
+const aspectRatio = width && height ? `${(height / width) * 100}%` : undefined;
+
+// Validar que muted sea true si autoplay es true (requerido por navegadores modernos)
+const effectiveMuted = autoplay ? true : muted;
+---
+
+<video
+  src={src}
+  poster={poster}
+  alt={alt}
+  class={`w-full h-full object-cover ${className}`}
+  autoplay={autoplay}
+  muted={effectiveMuted}
+  loop={loop}
+  playsinline={playsinline}
+  controls={controls}
+  preload={preload}
+  loading={loading}
+  width={width}
+  height={height}
+  fetchpriority={fetchpriority}
+  style={aspectRatio ? `aspect-ratio: ${width}/${height};` : ''}
+>
+  <!-- Fuentes alternativas para máxima compatibilidad -->
+  {fallbackSources.length > 0 && fallbackSources.map((source) => (
+    <source src={source.src} type={source.type} />
+  ))}
+  
+  <!-- Mensaje de fallback para navegadores sin soporte -->
+  <p>
+    Tu navegador no soporta la reproducción de video.
+    <a href={src} download>Descargar video</a>
+  </p>
+</video>
+
+<style define:vars={{ aspectRatio }}>
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Asegurar que respete el aspect ratio */
+  @supports (aspect-ratio: 1) {
+    video {
+      aspect-ratio: var(--aspectRatio, auto);
+    }
+  }
+</style>
