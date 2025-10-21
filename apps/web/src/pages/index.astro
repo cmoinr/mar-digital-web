@@ -36,14 +36,14 @@ const serviciosDestacados = [
 ---
 <BaseLayout title="Inicio" description="Impulsa tu marca con diseño y estrategia digital - Mar Digital">
   <!-- HERO PRINCIPAL -->
-  <section class="relative overflow-hidden pt-32 pb-40 px-6 lg:pt-40 lg:pb-48">
+  <section class="relative overflow-hidden pt-32 pb-40 px-6 lg:pt-35 lg:pb-48">
     <!-- Background Image (replace 'YOUR_IMAGE_URL' with actual image URL) -->
     <div class="absolute inset-0 -z-10">
       <!-- Dark gradient overlay from left to right (40%) for text readability -->
       <div class="absolute inset-0 bg-black/50"></div>
       <BackgroundCarousel 
         slides={[
-          { type: 'video', src: '/clip_index_hero.mp4', poster: 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg' },
+          { type: 'video', src: '/clip_index_hero.mp4', poster: '' },
           { type: 'image', src: 'https://images.pexels.com/photos/31622943/pexels-photo-31622943.jpeg?_gl=1*8jaewq*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NjA3NDk0MzQkbzE1JGcxJHQxNzYwNzUxODc4JGo2MCRsMCRoMA..', alt: '' },
           { type: 'image', src: 'https://images.pexels.com/photos/10050552/pexels-photo-10050552.jpeg?_gl=1*1rhn119*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NjA3NDk0MzQkbzE1JGcxJHQxNzYwNzUyMzEyJGo2MCRsMCRoMA..', alt: '' },
         ]}
@@ -67,7 +67,7 @@ const serviciosDestacados = [
       <div class="absolute bottom-32 left-[20%] w-1 h-1 rounded-full bg-blue-300/30 animate-pulse-glow" style="animation-delay: 2s;"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto">
+    <div class="relative max-w-7xl mb-[-20px] mx-auto">
       <!-- Hero Content -->
       <div class="relative max-w-3xl">
         <Hero
@@ -371,8 +371,8 @@ const serviciosDestacados = [
     <div class="relative max-w-4xl mx-auto text-center">
       <!-- Main headline -->
       <div class="scroll-reveal">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-10 tracking-tight">
-          <span class="inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-10 tracking-tight">
+          <span class="inline-block leading-tight pb-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]">
             Haz crecer tu negocio hoy.
           </span>
         </h2>

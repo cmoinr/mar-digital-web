@@ -62,11 +62,11 @@ export default function Hero({
       )}
 
       {/* Headline con gradiente animado */}
-      <h1 className="hero-animate opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+      <h1 className="hero-animate opacity-0 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
         {headline.split(" ").map((word, i) => (
           <span
             key={i}
-            className="inline-block mr-3 mb-2 hover:scale-105 transition-transform duration-300 bg-gradient-to-r from-neutral-50 via-sky-200 to-fuchsia-300 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]"
+            className="inline-block mr-3 pb-2 hover:scale-105 transition-transform duration-300 bg-gradient-to-r from-neutral-50 via-sky-200 to-fuchsia-300 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_100%]"
           >
             {word}
           </span>
@@ -75,7 +75,7 @@ export default function Hero({
 
       {/* Subtitle con mejor tipografía */}
       {sub && (
-        <p className="hero-animate opacity-0 text-lg sm:text-xl lg:text-2xl text-teal-100 mb-10 leading-relaxed max-w-2xl font-light">
+        <p className="hero-animate opacity-0 text-base sm:text-lg lg:text-xl text-teal-100 mb-10 leading-relaxed max-w-2xl font-light">
           {sub}
         </p>
       )}

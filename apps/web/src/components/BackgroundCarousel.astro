@@ -75,7 +75,7 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
 
   <!-- Dots / pagination -->
   {renderDots && (
-    <div class="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-3 pointer-events-auto">
+    <div class="absolute inset-x-0 bottom-16 z-10 flex items-center justify-center gap-3 pointer-events-auto">
       {slides.map((_, idx) => (
         <button type="button" class={`carousel-dot h-2 rounded-full transition-all duration-500 bg-white/40 ${idx === 0 ? 'w-8 bg-gradient-to-r from-blue-500 to-cyan-400' : 'w-2'}`} data-index={idx} aria-label={`Ir al slide ${idx + 1}`}></button>
       ))}
