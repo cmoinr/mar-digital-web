@@ -558,6 +558,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
       max-width: 100%;
       padding-left: 0.75rem;
       padding-right: 0.75rem;
+      margin-top: 30px;
     }
 
     /* Reduce navbar glass padding */
@@ -631,67 +632,6 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
     .mobile-link-indicator {
       display: none;
-    }
-  }
-
-  /* Extra small screens (360px and below) */
-  @media (max-width: 360px) {
-    .nav-wrapper > div {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      max-width: 100%;
-    }
-
-    .nav-glass {
-      padding: 0.5rem;
-      margin-top: 0.375rem;
-      width: 100%;
-    }
-
-    .nav-glass img {
-      height: 2.25rem;
-    }
-
-    .mobile-menu-dropdown {
-      width: calc(100vw - 2rem);
-      right: 1rem;
-      top: 4.5rem;
-      padding: 0.875rem;
-    }
-
-    .mobile-menu-toggle > div {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-
-  /* Prevent horizontal scroll on all mobile devices */
-  @media (max-width: 768px) {
-    .nav-wrapper {
-      overflow-x: hidden;
-      width: 100%;
-    }
-    
-    .nav-wrapper > div {
-      overflow-x: hidden;
-    }
-
-    /* FORCE mobile menu button visibility on tablets and below */
-    .mobile-menu-toggle {
-      display: block !important;
-    }
-
-    /* Ensure dropdown can appear */
-    .nav-glass {
-      overflow: visible !important;
-    }
-
-    /* FORCE dropdown display when opened */
-    .mobile-menu-dropdown.is-open {
-      display: flex !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      z-index: 9999 !important;
     }
   }
 </style>

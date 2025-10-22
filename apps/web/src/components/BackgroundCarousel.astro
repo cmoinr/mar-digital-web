@@ -45,12 +45,14 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
   <!-- Slides layer: background-only, non-interactive -->
   <div class="absolute inset-0 pointer-events-none -z-20">
     {slides.map((slide, idx) => (
-      <div class={`carousel-slide absolute inset-0 transition-opacity duration-[var(--fade-ms)] ${idx === 0 ? 'opacity-100' : 'opacity-0'}`} data-index={idx} aria-hidden={idx === 0 ? 'false' : 'true'}>
+      <div class={`carousel-slide absolute inset-0 transition-opacity duration-[var(--fade-ms)] overflow-hidden ${idx === 0 ? 'opacity-100' : 'opacity-0'}`} data-index={idx} aria-hidden={idx === 0 ? 'false' : 'true'}>
         {slide.type === 'video' ? (
           <OptimizedVideo 
             src={slide.src}
             poster={slide.poster}
             alt={slide.alt ?? ''}
+            width={1920}
+            height={1080}
             class="w-full h-full object-cover"
             preload={idx === 0 ? 'auto' : 'metadata'}
             loading={idx === 0 ? 'eager' : 'lazy'}
@@ -188,3 +190,27 @@ const instanceId = id ?? `bg-carousel-${Math.random().toString(36).slice(2, 8)}`
     console.log('[BackgroundCarousel] Initialization complete');
   </script>
 </div>
+
+<style>
+  /* Asegurar que videos se estiren completamente en dispositivos pequeños */
+  @media (max-width: 480px) {
+    :global(.carousel-slide) {
+      overflow: hidden !important;
+    }
+    
+    :global(.carousel-slide) video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      /* Girar el video 90 grados para que sea vertical */
+      transform: rotate(90deg) scale(1.5) !important;
+      transform-origin: center !important;
+    }
+  }
+  
+  /* Fallback para todos los tamaños */
+  :global(.carousel-slide) {
+    overflow: hidden !important;
+  }
+</style>

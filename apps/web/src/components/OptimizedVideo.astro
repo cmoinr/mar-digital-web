@@ -61,7 +61,6 @@ const effectiveMuted = autoplay ? true : muted;
 <video
   src={src}
   poster={poster}
-  alt={alt}
   class={`w-full h-full object-cover ${className}`}
   autoplay={autoplay}
   muted={effectiveMuted}
@@ -69,10 +68,8 @@ const effectiveMuted = autoplay ? true : muted;
   playsinline={playsinline}
   controls={controls}
   preload={preload}
-  loading={loading}
   width={width}
   height={height}
-  fetchpriority={fetchpriority}
   style={aspectRatio ? `aspect-ratio: ${width}/${height};` : ''}
 >
   <!-- Fuentes alternativas para máxima compatibilidad -->
@@ -91,13 +88,20 @@ const effectiveMuted = autoplay ? true : muted;
   video {
     display: block;
     max-width: 100%;
-    height: auto;
   }
   
   /* Asegurar que respete el aspect ratio */
   @supports (aspect-ratio: 1) {
     video {
       aspect-ratio: var(--aspectRatio, auto);
+    }
+  }
+  
+  /* Permitir transformaciones en dispositivos móviles */
+  @media (max-width: 480px) {
+    video {
+      height: 100% !important;
+      width: 100% !important;
     }
   }
 </style>
